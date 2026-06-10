@@ -1,0 +1,2851 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B World Market - Global Wholesale Trade</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1d4ed8', // Deep Blue
+                        primaryDark: '#1e3a8a',
+                        secondary: '#f97316', // Orange highlight (like Wolmart)
+                        textDark: '#333333',
+                        textLight: '#666666',
+                        borderGray: '#e5e7eb',
+                        bgGray: '#f8f9fa'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #333; overflow-x: hidden; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+        /* B2B Specific Styles */
+        .tier-price { font-size: 0.8rem; line-height: 1.2; }
+        .tier-price strong { font-size: 1.1rem; color: #333; }
+        .hover-primary:hover { color: #1d4ed8; transition: color 0.3s; }
+        .header-dropdown-shadow { box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    
+	
+	/* VIDEO icon */
+
+.video-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(to right,#ff0000,#ff2b2b);
+    color:#fff;
+    text-decoration:none;
+    padding:7px 14px;
+    border-radius:30px;
+    box-shadow:0 3px 10px rgba(255,0,0,.25);
+}
+
+
+.video-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    transition:.8s;
+}
+
+
+
+
+.video-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 20px 40px rgba(214,0,0,.25);
+}
+
+.video-play-icon{
+    width:26px;
+    height:26px;
+    background:#fff;
+    color:red;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+	transition:.3s;
+}
+
+.video-new{
+    background:#fff;
+    color:red;
+    font-size:9px;
+    padding:2px 5px;
+    border-radius:20px;
+    font-weight:bold;
+	animation:pulse 1.5s infinite;
+}	/* VIDEO icon ends*/
+	
+
+
+h2 {
+  margin: 20px 0 10px;
+  font-weight: 700;
+  font-size: 22px;
+  color: #111827;
+}
+
+/* Container Grid System */
+.container {
+  display: grid;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Desktop View: Exactly 4 columns */
+@media (min-width: 769px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile Screen View: Exactly 2 columns */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.media {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  background: #000;
+}
+.media video, .media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.media .active { opacity: 1; z-index: 2; }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.arrow.left { left: 6px; }
+.arrow.right { right: 6px; }
+
+.dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 5;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+.dot.active { background: #fff; }
+
+/* Circular Centered Play Watermark */
+.video-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(150, 150, 150, 0.7); /* Translucent gray circle */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.video-badge svg {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+  margin-left: 3px; /* Optically centers the triangle paths */
+}
+
+.city {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 5;
+}
+.card-body { padding: 8px 6px; }
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f2167;
+  margin-bottom: 2px;
+}
+.price {
+  font-size: 13px;
+  font-weight: 700;
+  color: #c40000;
+}
+.moq {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+.supplier {
+  font-size: 12px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+.contact-btn {
+  display: block;
+  width: 100%;
+  padding: 6px 0;
+  text-align: center;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .3s;
+}
+.contact-btn:hover { background: #e5e7eb; }	
+	
+
+
+
+/*  product code css start */
+/* ═══════════════════════════════════════════
+   ROOT TOKENS & THEME
+═══════════════════════════════════════════ */
+:root {
+  --gold:       #b8860b;
+  --gold-light: #f5e6a3;
+  --gold-dark:  #8a6200;
+  --red:        #b71c1c;
+  --red-light:  #fdecea;
+  --bg:         #f0f2f5;
+  --panel:      #ffffff;
+  --border:     rgba(0,0,0,0.07);
+  --text-dark:  #1a202c;
+  --text-mid:   #4a5568;
+  --text-light: #718096;
+  --green:      #25d366;
+  --radius:     12px;
+  --shadow:     0 4px 24px rgba(0,0,0,0.07);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-dark);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ─── STICKY TOP NAVBAR ─── */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 52px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.top-nav::-webkit-scrollbar { display: none; }
+.top-nav a {
+  white-space: nowrap;
+  padding: 0 16px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.top-nav a:hover, .top-nav a.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ─── LAYOUT ─── */
+.page-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.section-header {
+  background: #fafbfc;
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.section-header h2 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-header h2 i { color: var(--gold); font-size: 1rem; }
+.section-body { padding: 24px; }
+
+/* ─── GOLD ACCENT ─── */
+.gold { color: var(--gold); }
+.red  { color: var(--red); }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.badge-gold { background: linear-gradient(90deg,#b38728,#fbf5b7,#daaf38); color: #000; }
+.badge-red   { background: var(--red); color: #fff; }
+.badge-green { background: #e8f5e9; color: #2e7d32; }
+.badge-blue  { background: #e3f2fd; color: #1565c0; }
+.badge-gray  { background: #f1f3f4; color: #555; }
+
+/* ─────────────────────────────────────────
+   SECTION 1 — HERO GALLERY + KEY INFO
+───────────────────────────────────────── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  gap: 0;
+  min-height: 520px;
+}
+
+/* Gallery */
+.gallery-pane { padding: 24px; border-right: 1px solid var(--border); }
+
+.main-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f7fafc;
+  border: 1px solid rgba(184,134,11,0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.main-image-box img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.main-image-box:hover img { transform: scale(1.04); }
+.img-badge-row {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 6px;
+}
+.wishlist-btn {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 34px; height: 34px;
+  background: #fff;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--gold);
+  font-size: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.wishlist-btn:hover { background: var(--gold); color: #fff; transform: scale(1.08); }
+
+.nav-arrows {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: calc(100% - 20px);
+  left: 10px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.nav-arrows button {
+  pointer-events: all;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.nav-arrows button:hover { background: var(--gold); color: #fff; }
+
+.thumbs-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.thumb {
+  width: 60px; height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb.active, .thumb:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(184,134,11,0.25);
+}
+
+.share-row {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+.share-row i {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+  cursor: pointer;
+  color: #fff;
+}
+.fa-facebook-f { background:#3b5998; }
+.fa-x-twitter  { background:#444; }
+.fa-linkedin-in{ background:#0077b5; }
+.fa-whatsapp   { background:#25d366; }
+.fa-pinterest-p{ background:#e60023; }
+
+/* Info Pane */
+.info-pane { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.product-title-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.35;
+}
+
+.ratings-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+}
+.stars { color: #f59e0b; letter-spacing: 1px; }
+.review-count { color: var(--text-light); }
+.sold-count { color: var(--text-light); border-left: 1px solid var(--border); padding-left: 10px; }
+
+.price-block {
+  background: linear-gradient(90deg, rgba(184,134,11,0.08), rgba(184,134,11,0.01));
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 14px 20px;
+}
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.price-currency { font-size: 1.1rem; font-weight: 800; color: var(--gold); }
+.price-value    { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; }
+.price-unit     { font-size: 0.85rem; color: var(--text-light); }
+
+.price-tiers {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.78rem;
+}
+.tier-col {
+  flex: 1;
+  text-align: center;
+  padding: 8px 6px;
+  border-right: 1px solid var(--border);
+}
+.tier-col:last-child { border-right: none; }
+.tier-qty { color: var(--text-light); margin-bottom: 2px; }
+.tier-price { font-weight: 800; color: var(--red); font-size: 0.95rem; }
+
+.key-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.82rem;
+}
+.spec-cell {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+.spec-cell:nth-child(even) { border-right: none; }
+.spec-cell:nth-last-child(-n+2) { border-bottom: none; }
+.spec-label { color: var(--text-light); margin-bottom: 2px; font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.spec-value { color: var(--text-dark); font-weight: 600; }
+
+.customization-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fffbeb;
+  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+}
+.customization-row i { color: var(--gold); font-size: 1.1rem; }
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.btn {
+  height: 42px;
+  border-radius: 21px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.btn:active { transform: scale(0.97); }
+.btn-outline { background: #fff; border: 1px solid rgba(0,0,0,0.15); color: var(--text-dark); }
+.btn-outline:hover { border-color: var(--text-dark); background: #f7f8fa; }
+.btn-red { background: linear-gradient(180deg,#d32f2f,#b71c1c); color: #fff; box-shadow: 0 4px 12px rgba(183,28,28,0.3); }
+.btn-red:hover { box-shadow: 0 6px 20px rgba(183,28,28,0.4); }
+.btn-whatsapp { background: linear-gradient(180deg,#25d366,#128c7e); color: #fff; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+.btn-gold { background: linear-gradient(180deg,#d4a017,var(--gold)); color: #fff; box-shadow: 0 4px 12px rgba(184,134,11,0.3); }
+
+/* ─────────────────────────────────────────
+   SECTION 2 — PRODUCT DESCRIPTION / LONG COPY
+───────────────────────────────────────── */
+.desc-body { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; }
+.desc-body h3 {
+  font-size: 1rem; font-weight: 700; color: var(--text-dark);
+  margin: 20px 0 8px;
+  border-left: 3px solid var(--gold);
+  padding-left: 10px;
+}
+.desc-body p { margin-bottom: 12px; }
+.desc-body ul { padding-left: 20px; margin-bottom: 12px; }
+.desc-body ul li { margin-bottom: 5px; }
+
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.ftag {
+  background: #f0f4ff;
+  color: #3949ab;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(57,73,171,0.2);
+}
+
+/* ─────────────────────────────────────────
+   SECTION 3 — FULL SPECIFICATIONS TABLE
+───────────────────────────────────────── */
+.spec-full-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.spec-full-table tr:nth-child(even) { background: #fafbfc; }
+.spec-full-table td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.84rem;
+}
+.spec-full-table td:first-child {
+  width: 220px;
+  color: var(--text-light);
+  font-weight: 600;
+  background: #f8fafc;
+  border-right: 1px solid var(--border);
+}
+.spec-full-table td:last-child { color: var(--text-dark); }
+
+/* ─────────────────────────────────────────
+   SECTION 4 — CATALOGUE UPLOAD / PHOTO GALLERY
+───────────────────────────────────────── */
+.catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.cat-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.cat-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.cat-card-img {
+  width: 100%; aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.cat-card-label {
+  padding: 10px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: #fff;
+  border-top: 1px solid var(--border);
+}
+
+.upload-btn-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(184,134,11,0.4);
+  border-radius: 10px;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-light);
+  font-size: 0.8rem;
+}
+.upload-btn-zone:hover { background: rgba(184,134,11,0.05); }
+.upload-btn-zone i { font-size: 2rem; color: var(--gold); }
+
+/* ─────────────────────────────────────────
+   SECTION 5 — PRICING TIERS TABLE
+───────────────────────────────────────── */
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+.pricing-table th {
+  background: var(--text-dark);
+  color: #fff;
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.pricing-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.pricing-table tr:hover td { background: #fffbeb; }
+.pricing-table td.price-col { font-weight: 800; color: var(--red); font-size: 1rem; }
+.pricing-table td.saving-col { color: #2e7d32; font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   SECTION 6 — CUSTOMIZATION OPTIONS
+───────────────────────────────────────── */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.option-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.option-card:hover { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,134,11,0.12); }
+.option-icon { font-size: 2rem; margin-bottom: 10px; }
+.option-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; }
+.option-desc { font-size: 0.78rem; color: var(--text-light); }
+
+/* ─────────────────────────────────────────
+   SECTION 7 — PACKAGING & SHIPPING
+───────────────────────────────────────── */
+.pack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.pack-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.pack-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.84rem;
+}
+.pack-table td:first-child {
+  color: var(--text-light);
+  font-weight: 600;
+  background: #f8fafc;
+  width: 160px;
+  border-right: 1px solid var(--border);
+}
+
+.shipping-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ship-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  transition: border-color 0.2s;
+}
+.ship-row:hover { border-color: var(--gold); }
+.ship-method { font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+.ship-method i { color: var(--gold); width: 20px; }
+.ship-time { color: var(--text-light); }
+.ship-price { font-weight: 800; color: var(--red); }
+
+/* ─────────────────────────────────────────
+   SECTION 8 — CERTIFICATES
+───────────────────────────────────────── */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cert-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.cert-card:hover { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,134,11,0.1); transform: translateY(-2px); }
+.cert-icon-wrap {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 1.6rem;
+}
+.cert-icon-gold  { background: linear-gradient(135deg,#f5e6a3,#b8860b); color: #fff; }
+.cert-icon-blue  { background: linear-gradient(135deg,#bbdefb,#1565c0); color: #fff; }
+.cert-icon-green { background: linear-gradient(135deg,#c8e6c9,#2e7d32); color: #fff; }
+.cert-icon-red   { background: linear-gradient(135deg,#ffcdd2,#b71c1c); color: #fff; }
+.cert-name { font-weight: 800; font-size: 0.88rem; color: var(--text-dark); margin-bottom: 4px; }
+.cert-issuer { font-size: 0.74rem; color: var(--text-light); margin-bottom: 8px; }
+.cert-valid { font-size: 0.7rem; background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-block; }
+
+/* ─────────────────────────────────────────
+   SECTION 9 — COMPANY PROFILE
+───────────────────────────────────────── */
+.company-hero {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  border-radius: 10px;
+  padding: 30px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.company-logo-big {
+  width: 80px; height: 80px;
+  border-radius: 16px;
+  background: linear-gradient(135deg,var(--gold),#f5e6a3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #1a202c;
+  flex-shrink: 0;
+}
+.company-name-block h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+.company-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.company-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.stat-box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+.stat-num  { font-size: 1.8rem; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 4px; font-family: 'DM Mono', monospace; }
+.stat-label{ font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.company-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ci-cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  font-size: 0.83rem;
+}
+.ci-cell:nth-child(even) { border-right: none; }
+.ci-label { color: var(--text-light); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px; }
+.ci-value { font-weight: 600; color: var(--text-dark); }
+
+/* ─────────────────────────────────────────
+   SECTION 10 — FACTORY / PRODUCTION
+───────────────────────────────────────── */
+.factory-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.factory-img-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.factory-img {
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  object-fit: cover;
+  width: 100%;
+  border: 1px solid var(--border);
+}
+.factory-img:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/7;
+}
+.capability-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.capability-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: var(--text-mid);
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.capability-list li i { color: var(--gold); width: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─────────────────────────────────────────
+   SECTION 11 — QUALITY CONTROL
+───────────────────────────────────────── */
+.qc-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.qc-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s;
+}
+.qc-step:hover { border-color: var(--gold); }
+.qc-num {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg,var(--gold),var(--gold-dark));
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.qc-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 3px; }
+.qc-desc  { font-size: 0.8rem; color: var(--text-light); }
+
+/* ─────────────────────────────────────────
+   SECTION 12 — CUSTOMER REVIEWS
+───────────────────────────────────────── */
+.review-summary {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+.overall-score {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.score-big { font-size: 3.5rem; font-weight: 900; color: var(--gold); line-height: 1; font-family: 'DM Mono', monospace; }
+.score-stars { font-size: 1.4rem; color: #f59e0b; margin: 6px 0; }
+.score-count { font-size: 0.8rem; color: var(--text-light); }
+
+.rating-bars { display: flex; flex-direction: column; gap: 8px; }
+.rbar-row { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; }
+.rbar-label { width: 40px; color: var(--text-light); text-align: right; }
+.rbar-track { flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
+.rbar-fill  { height: 100%; border-radius: 4px; background: linear-gradient(90deg,#f59e0b,#d97706); }
+.rbar-count { width: 30px; color: var(--text-light); }
+
+.reviews-list { display: flex; flex-direction: column; gap: 16px; }
+.review-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  transition: border-color 0.2s;
+}
+.review-card:hover { border-color: rgba(184,134,11,0.3); }
+.reviewer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.reviewer-info { display: flex; align-items: center; gap: 10px; }
+.avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.av1 { background: #e3f2fd; color: #1565c0; }
+.av2 { background: #fce4ec; color: #c62828; }
+.av3 { background: #e8f5e9; color: #2e7d32; }
+.av4 { background: #fff3e0; color: #e65100; }
+.av5 { background: #f3e5f5; color: #6a1b9a; }
+.reviewer-name { font-weight: 700; font-size: 0.85rem; }
+.reviewer-country { font-size: 0.75rem; color: var(--text-light); }
+.review-date { font-size: 0.75rem; color: var(--text-light); }
+.review-stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 8px; }
+.review-text { font-size: 0.84rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; }
+.review-product-info { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Comment Box */
+.comment-form {
+  margin-top: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  background: #fafbfc;
+}
+.comment-form h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; color: var(--text-dark); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 4px; }
+.form-group label { font-size: 0.75rem; font-weight: 600; color: var(--text-mid); }
+.form-group input, .form-group select, .form-group textarea {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.83rem;
+  color: var(--text-dark);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.star-select { display: flex; gap: 4px; font-size: 1.4rem; color: #ddd; cursor: pointer; }
+.star-select i.lit { color: #f59e0b; }
+
+/* ─────────────────────────────────────────
+   SECTION 13 — FAQ
+───────────────────────────────────────── */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.88rem;
+  background: #fff;
+  transition: background 0.2s;
+}
+.faq-q:hover { background: #fffbeb; }
+.faq-q i { color: var(--gold); transition: transform 0.3s; }
+.faq-a {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.2s;
+  font-size: 0.83rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  background: #fafbfc;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 14px 18px; }
+.faq-item.open .faq-q i { transform: rotate(45deg); }
+
+/* ─────────────────────────────────────────
+   SECTION 14 — TRADE ASSURANCE
+───────────────────────────────────────── */
+.assurance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.assurance-card {
+  text-align: center;
+  padding: 22px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.assurance-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: var(--shadow); }
+.assurance-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.ai-gold  { background: linear-gradient(135deg,#f5e6a3,#b8860b); color: #fff; }
+.ai-blue  { background: linear-gradient(135deg,#bbdefb,#1565c0); color: #fff; }
+.ai-green { background: linear-gradient(135deg,#c8e6c9,#2e7d32); color: #fff; }
+.ai-red   { background: linear-gradient(135deg,#ffcdd2,#c62828); color: #fff; }
+.ai-purple{ background: linear-gradient(135deg,#e1bee7,#6a1b9a); color: #fff; }
+.ai-teal  { background: linear-gradient(135deg,#b2dfdb,#00695c); color: #fff; }
+.assurance-title { font-weight: 800; font-size: 0.88rem; margin-bottom: 5px; }
+.assurance-text  { font-size: 0.77rem; color: var(--text-light); line-height: 1.5; }
+
+/* ─────────────────────────────────────────
+   SECTION 15 — RELATED PRODUCTS
+───────────────────────────────────────── */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+.rel-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.rel-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: rgba(184,134,11,0.3); }
+.rel-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+.rel-info { padding: 10px 12px; }
+.rel-name { font-size: 0.78rem; font-weight: 600; color: var(--text-dark); margin-bottom: 5px; line-height: 1.35; }
+.rel-price { font-size: 0.88rem; font-weight: 800; color: var(--red); }
+
+/* ─────────────────────────────────────────
+   SECTION 16 — CONTACT / INQUIRY FORM
+───────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+.contact-form-body { display: flex; flex-direction: column; gap: 12px; }
+.contact-info-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.83rem;
+}
+.contact-method i {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.ci-gold   { background: linear-gradient(135deg,#f5e6a3,#b8860b); color: #fff; }
+.ci-blue   { background: linear-gradient(135deg,#bbdefb,#1565c0); color: #fff; }
+.ci-green  { background: linear-gradient(135deg,#c8e6c9,#25d366); color: #fff; }
+.contact-method-label { color: var(--text-light); font-size: 0.7rem; }
+.contact-method-value { font-weight: 700; color: var(--text-dark); }
+
+/* ─────────────────────────────────────────
+   SECTION 17 — VIDEO SHOWCASE
+───────────────────────────────────────── */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.video-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #1a202c;
+  cursor: pointer;
+}
+.video-thumb { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+.play-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(184,134,11,0.9);
+  color: #fff;
+  font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+.video-card:hover .play-btn { transform: scale(1.1); background: var(--gold); }
+.video-title { color: #fff; font-size: 0.85rem; font-weight: 700; text-align: center; padding: 0 20px; }
+
+/* ─────────────────────────────────────────
+   SECTION 18 — OEM/ODM SERVICES
+───────────────────────────────────────── */
+.oem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.oem-steps-list { display: flex; flex-direction: column; gap: 0; }
+.oem-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.oem-step:last-child { border-bottom: none; }
+.oem-step-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg,rgba(184,134,11,0.15),rgba(184,134,11,0.05));
+  color: var(--gold);
+}
+.oem-step-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 3px; }
+.oem-step-desc  { font-size: 0.78rem; color: var(--text-light); line-height: 1.5; }
+
+/* ─────────────────────────────────────────
+   SECTION 19 — MARKET REGIONS
+───────────────────────────────────────── */
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.market-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+.market-card:hover { border-color: var(--gold); background: #fffbeb; }
+.market-flag { font-size: 2rem; }
+.market-region { font-weight: 700; font-size: 0.85rem; margin-bottom: 2px; }
+.market-share  { font-size: 0.75rem; color: var(--text-light); }
+.market-bar {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+.market-bar-fill { height: 100%; background: linear-gradient(90deg,var(--gold),var(--gold-dark)); border-radius: 2px; }
+
+/* ─────────────────────────────────────────
+   SECTION 20 — STICKY BOTTOM CTA BAR
+───────────────────────────────────────── */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.cta-product-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cta-mini-img {
+  width: 44px; height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+.cta-mini-title { font-weight: 700; font-size: 0.85rem; }
+.cta-mini-price { font-weight: 800; color: var(--red); font-size: 1rem; }
+.cta-btns { display: flex; gap: 10px; }
+
+/* ─────────────────────────────────────────
+   UTILITY / RESPONSIVE
+───────────────────────────────────────── */
+.divider { height: 1px; background: var(--border); margin: 16px 0; }
+.text-sm { font-size: 0.78rem; }
+.fw-7 { font-weight: 700; }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .gallery-pane { border-right: none; border-bottom: 1px solid var(--border); }
+  .catalogue-grid, .cert-grid { grid-template-columns: repeat(2,1fr); }
+  .related-grid { grid-template-columns: repeat(3,1fr); }
+  .options-grid, .assurance-grid, .market-grid { grid-template-columns: repeat(2,1fr); }
+  .company-stats { grid-template-columns: repeat(2,1fr); }
+  .pack-grid, .factory-cols, .oem-grid, .contact-grid, .video-grid { grid-template-columns: 1fr; }
+  .company-hero { grid-template-columns: 1fr; text-align: center; }
+  .company-info-grid { grid-template-columns: 1fr; }
+  .ci-cell { border-right: none !important; }
+}
+@media (max-width: 600px) {
+  .catalogue-grid, .cert-grid, .related-grid, .options-grid, .assurance-grid, .market-grid { grid-template-columns: repeat(2,1fr); }
+  .action-grid { grid-template-columns: 1fr; }
+  .key-specs-grid { grid-template-columns: 1fr; }
+  .spec-cell { border-right: none !important; }
+  .spec-cell:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .spec-cell:last-child { border-bottom: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .sticky-cta { flex-direction: column; gap: 10px; }
+  .cta-btns { width: 100%; }
+  .cta-btns .btn { flex: 1; }
+}
+
+/* product css ends */	
+
+	
+	</style>
+</head>
+<body class="bg-white">
+
+    <div class="bg-gray-100 text-xs text-textLight py-2 border-b border-gray-200 hidden md:block">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-7xl">
+            <div class="flex items-center space-x-4">
+                <span>Welcome to B2B GoX - Global Sourcing Made Easy!</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
+                    <span>USD</span> <i class="fas fa-chevron-down text-[10px]"></i>
+                </div>
+                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
+                    <img src="https://flagcdn.com/w20/us.png" alt="ENG" class="h-3 w-4">
+                    <span>ENG</span> <i class="fas fa-chevron-down text-[10px]"></i>
+                </div>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover-primary">Become a Supplier</a>
+                <a href="#" class="hover-primary">Help Center</a>
+                <a href="#" class="hover-primary">My Account</a>
+				
+              
+			   <div class="relative group py-1">
+                    <a href="#" class="hover-primary font-semibold text-textDark flex items-center">
+                        <i class="far fa-user mr-1"></i> Sign In / Register
+                    </a>
+
+                    <div class="dropdown-card absolute right-0 top-full mt-1 w-[250px] bg-white border border-red-200 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-sm">
+                        
+                        <div class="absolute -top-1.5 right-4 w-3 h-3 bg-white border-t border-l border-red-200 transform rotate-45"></div>
+
+                        <div class="p-4 border-b border-gray-100 ">
+                            <a href="#" class="block w-full bg-primary text-white text-base font-semibold py-2 rounded-full text-center hover:bg-primaryDark transition mb-3">Sign in</a>
+                            
+                            <div class="p-4 py-2 flex justify-center items-center space-x-4 mb-4">
+    <a href="https://accounts.google.com" target="_blank" class="transform hover:scale-110 transition duration-200" title="Sign in with Google">
+        <img src="https://cdnjs.cloudflare.com/ajax/libs/logos/1.0.0/google-icon.svg" alt="Google" class="w-6 h-6">
+		
+    </a>
+    <a href="https://www.facebook.com/login" target="_blank" class="transform hover:scale-110 transition duration-200" title="Sign in with Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" class="w-6 h-6 rounded-full">
+    </a>
+    <a href="https://x.com/i/flow/login" target="_blank" class="w-8 h-8 rounded-full bg-[#f6ab2e] flex items-center justify-center text-white text-xl font-bold transform hover:scale-110 transition duration-200" title="Sign in with X">X</a>
+    <a href="https://www.linkedin.com/login" target="_blank" class="w-8 h-8 rounded-full bg-[#3077b5] flex items-center justify-center text-white text-lg font-bold transform hover:scale-110 transition duration-200" title="Sign in with LinkedIn">in</a>
+</div>
+
+                <p class="text-xs text-textLight text-center mb-3">By clicking Sign in the <a href="#" class="text-textLight underline">Privacy Policy</a> .</p>
+                            
+                            <div class="relative flex py-2 items-center">
+                                <div class="flex-grow border-t border-gray-200"></div>
+                                <span class="flex-shrink mx-3 text-xs text-textLight">OR</span>
+                                <div class="flex-grow border-t border-gray-200"></div>
+                            </div>              
+ <a href="login2.html" class="block w-full text-white text-sm font-semibold py-3 bg-secondary rounded-full text-center hover:bg-primaryLight transition">
+    Register for free
+</a>
+                        </div>
+
+                        <ul class="py-2 text-textDark text-[15px] font-medium">
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">Buyer Center</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Inquires</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My RFQ</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Messages</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Orders</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Cart</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+			  
+			  
+            </div>
+        </div>
+    </div>
+
+    <header class="border-gray-200 sticky top-0 bg-white z-40">
+        <div class="container mx-auto px-1 flex flex-wrap justify-between items-center max-w-7xl">
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl mr-4" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+			<!--logo-->
+         <div class="flex items-center flex-shrink-0 mr-1">
+    <a href="/">
+        <img
+            src="https://i.ibb.co/xvhHV92/b2bx.png"
+            alt="B2B World Market"
+            class="h-16 lg:h-20 w-auto object-contain">
+    </a>
+</div>
+
+            <!-- Search Bar (B2B optimized) -->
+            <div class="flex-grow hidden md:flex max-w-3xl border-2 border-primary rounded-full overflow-hidden h-12">
+                <select class="bg-gray-50 text-sm px-4 border-r border-gray-200 outline-none text-gray-600 font-medium cursor-pointer w-40 flex-shrink-0">
+                    <option>Products</option>
+                    <option>Suppliers</option>
+                    <option>Categories</option>
+                </select>
+                <input type="text" placeholder="What are you looking for..." class="w-full px-4 outline-none text-sm">
+                <button class="bg-white text-gray-500 hover:text-primary px-6 transition duration-300">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Header Icons -->
+            <div class="flex items-center space-x-6 ml-8 hidden lg:flex">
+			    <!-- video Icons -->
+		 <a href="videochannel.html" class="video-btn"> 
+            <div class="video-play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <span>Video</span>
+            <span class="video-new"> NEW </span>  </a>
+			
+		  <!-- video Icons -->
+                <a href="#" class="text-center group flex flex-col items-center">
+                    <i class="far fa-envelope text-2xl text-gray-700 group-hover:text-primary transition duration-300"></i>
+                    <span class="text-[11px] mt-1 text-gray-500 group-hover:text-primary">Messages</span>
+                </a>
+                
+                <a href="#" class="text-center group flex flex-col items-center">
+                    <i class="far fa-file-alt text-2xl text-gray-700 group-hover:text-primary transition duration-300 relative">
+                        <span class="absolute -top-1 -right-2 bg-secondary text-white text-[10px] font-bold px-1.5 rounded-full">New</span>
+                    </i>
+                    <span class="text-[11px] mt-1 text-gray-500 group-hover:text-primary">Submit RFQ</span>
+                </a>
+
+                <a href="#" class="text-center group flex flex-col items-center relative">
+                    <i class="fas fa-clipboard-list text-2xl text-gray-700 group-hover:text-primary transition duration-300"></i>
+                    <span class="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">3</span>
+                    <span class="text-[11px] mt-1 text-gray-500 group-hover:text-primary">Order List</span>
+                </a>
+            </div>
+        </div>
+    </header>
+	<!-- navbar ends default-->
+	
+	
+<!-- ░░░ STICKY TOP NAVIGATION ░░░ -->
+<nav class="top-nav">
+  <a href="#hero" class="active">Overview</a>
+  <a href="#description">Description</a>
+  <a href="#specs">Specifications</a>
+  <a href="#catalogue">Catalogue</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#customization">Customization</a>
+  <a href="#packaging">Packaging</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#company">Company</a>
+  <a href="#factory">Factory</a>
+  <a href="#quality">Quality</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#faq">FAQ</a>
+  <a href="#assurance">Trade Assurance</a>
+  <a href="#related">Related</a>
+  <a href="#contact">Contact</a>
+  <a href="#video">Videos</a>
+  <a href="#oem">OEM/ODM</a>
+  <a href="#markets">Markets</a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — HERO PRODUCT OVERVIEW
+  ══════════════════════════════════════════ -->
+  <div id="hero" class="panel">
+    <div class="hero-grid">
+
+      <!-- Gallery -->
+      <div class="gallery-pane" style="font-family: sans-serif; max-width: 700px; margin: 0 auto;">
+  
+  <div class="main-image-box" style="position: relative; width: 100%; height: 450px; background-color: #f8f9fa; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+    
+    <div class="img-badge-row" style="position: absolute; top: 15px; left: 15px; z-index: 10; display: flex; flex-direction: column; gap: 5px;">
+      <span class="badge badge-red" style="background: #dc3545; color: white; padding: 4px 8px; font-size: 11px; font-weight: bold; border-radius: 3px; letter-spacing: 0.5px;">BESTSELLER</span>
+      <span class="badge badge-gold" style="background: #ffc107; color: #212529; padding: 4px 8px; font-size: 11px; font-weight: bold; border-radius: 3px; letter-spacing: 0.5px;">GOLD SUPPLIER</span>
+    </div>
+    
+    <div class="wishlist-btn" id="wishlistBtn" title="Add to Wishlist" style="position: absolute; top: 15px; right: 15px; z-index: 10; background: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15);">
+      <i class="fa-regular fa-heart" style="color: #333; font-size: 16px;"></i>
+    </div>
+    
+    <div class="nav-arrows" style="position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 15px; box-sizing: border-box; transform: translateY(-50%); z-index: 5; pointer-events: none;">
+      <button onclick="prevSlide()" style="pointer-events: auto; background: rgba(255,255,255,0.8); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"><i class="fa-solid fa-chevron-left"></i></button>
+      <button onclick="nextSlide()" style="pointer-events: auto; background: rgba(255,255,255,0.8); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <video id="mainVideo" controls muted style="display: block; width: 100%; height: 100%; object-fit: cover;">
+      <source src="https://res.cloudinary.com/dichbgj0z/video/upload/v1780826493/perfume_stsmhs.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+    <img id="mainImg" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700" alt="Luxury Leather Bag Main View" style="display: none; width: 100%; height: 100%; object-fit: cover;">
+  </div>
+
+  <div class="thumbs-row" style="display: flex; gap: 10px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px;">
+    <div class="thumb" onclick="setSlide(0)" style="position: relative; cursor: pointer; width: 80px; height: 80px; border-radius: 4px; overflow: hidden; flex-shrink: 0; box-sizing: border-box; border: 2px solid #007bff;">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=120" alt="View 1" style="width: 100%; height: 100%; object-fit: cover;">
+      <div id="videoIconOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
+        <i class="fa-solid fa-play" style="color: #fff; font-size: 14px;"></i>
+      </div>
+    </div>
+    <div class="thumb" onclick="setSlide(1)" style="position: relative; cursor: pointer; width: 80px; height: 80px; border-radius: 4px; overflow: hidden; flex-shrink: 0; box-sizing: border-box; border: 2px solid transparent;">
+      <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=120" alt="View 2" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="thumb" onclick="setSlide(2)" style="position: relative; cursor: pointer; width: 80px; height: 80px; border-radius: 4px; overflow: hidden; flex-shrink: 0; box-sizing: border-box; border: 2px solid transparent;">
+      <img src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=120" alt="View 3" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="thumb" onclick="setSlide(3)" style="position: relative; cursor: pointer; width: 80px; height: 80px; border-radius: 4px; overflow: hidden; flex-shrink: 0; box-sizing: border-box; border: 2px solid transparent;">
+      <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc15a7a0?w=120" alt="View 4" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="thumb" onclick="setSlide(4)" style="position: relative; cursor: pointer; width: 80px; height: 80px; border-radius: 4px; overflow: hidden; flex-shrink: 0; box-sizing: border-box; border: 2px solid transparent;">
+      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=120" alt="View 5" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+  </div>
+
+  <div class="share-row" style="display: flex; align-items: center; gap: 15px; margin-top: 20px; color: #666; font-size: 14px;">
+    <span style="font-weight: bold; margin-right: 5px;">Share:</span>
+    <i class="fa-brands fa-facebook-f" style="cursor: pointer;"></i>
+    <i class="fa-brands fa-x-twitter" style="cursor: pointer;"></i>
+    <i class="fa-brands fa-linkedin-in" style="cursor: pointer;"></i>
+    <i class="fa-brands fa-whatsapp" style="cursor: pointer;"></i>
+    <i class="fa-brands fa-pinterest-p" style="cursor: pointer;"></i>
+  </div>
+</div>
+
+<script>
+  const images = [
+    "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700", // Fallback img for index 0
+    "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=700",
+    "https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=700",
+    "https://images.unsplash.com/photo-1566150905458-1bf1fc15a7a0?w=700",
+    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700",
+  
+  ];
+
+  let currentSlide = 0;
+  const hasVideo = true; // Toggle to false if this specific product does NOT have a video available
+
+  function setSlide(index) {
+    currentSlide = index;
+    
+    const mainImg = document.getElementById('mainImg');
+    const mainVideo = document.getElementById('mainVideo');
+    const thumbs = document.querySelectorAll('.thumb');
+
+    // Update Thumbnail Borders inline
+    thumbs.forEach((thumb, i) => {
+      if (i === index) {
+        thumb.style.borderColor = "#007bff";
+      } else {
+        thumb.style.borderColor = "transparent";
+      }
+    });
+
+    // Swap Media Blocks display types
+    if (index === 0 && hasVideo) {
+      mainVideo.style.display = 'block';
+      mainImg.style.display = 'none';
+      mainVideo.play().catch(() => {});
+    } else {
+      mainVideo.style.display = 'none';
+      mainVideo.pause();
+      
+      mainImg.style.display = 'block';
+      mainImg.src = images[index];
+    }
+  }
+
+  function nextSlide() {
+    let next = currentSlide + 1;
+    if (next >= images.length) next = 0;
+    setSlide(next);
+  }
+
+  function prevSlide() {
+    let prev = currentSlide - 1;
+    if (prev < 0) prev = images.length - 1;
+    setSlide(prev);
+  }
+
+  // Handle initialization on window setup load
+  window.addEventListener('DOMContentLoaded', () => {
+    const mainVideo = document.getElementById('mainVideo');
+    const videoOverlay = document.getElementById('videoIconOverlay');
+
+    if (!hasVideo) {
+      if (mainVideo) mainVideo.remove();
+      if (videoOverlay) videoOverlay.remove();
+      setSlide(0); // If no video, slot 0 falls back directly to using the image asset index
+    } else {
+      setSlide(0); // Start view explicitly targeting video playback load state
+    }
+  });
+</script>
+
+      <!-- Info Pane -->
+      <div class="info-pane">
+        <div>
+          <span class="badge badge-green" style="margin-bottom:8px;display:inline-flex;"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> &nbsp;In Stock</span>
+          <h1 class="product-title">Luxury Designer Genuine Leather Women's Handbag — Multi-Compartment Business Tote</h1>
+        </div>
+
+        <div class="ratings-row">
+          <span class="stars">★★★★★</span>
+          <strong class="gold">4.9</strong>
+          <span class="review-count">(328 reviews)</span>
+          <span class="sold-count"><i class="fa-solid fa-bag-shopping"></i> 2,450+ sold</span>
+        </div>
+
+        <div class="price-block">
+          <div class="price-main">
+            <span class="price-currency">US $</span>
+            <span class="price-value" id="priceDisplay">15 – 50</span>
+            <span class="price-unit">/ piece</span>
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;">Price varies by quantity — see tiers below ↓</div>
+        </div>
+
+        <!-- Volume pricing tiers -->
+        <div class="price-tiers">
+          <div class="tier-col"><div class="tier-qty">1–9 pcs</div><div class="tier-price">$50.00</div></div>
+          <div class="tier-col"><div class="tier-qty">10–49 pcs</div><div class="tier-price">$38.00</div></div>
+          <div class="tier-col"><div class="tier-qty">50–99 pcs</div><div class="tier-price">$28.00</div></div>
+          <div class="tier-col"><div class="tier-qty">100–499 pcs</div><div class="tier-price">$22.00</div></div>
+          <div class="tier-col"><div class="tier-qty">500+ pcs</div><div class="tier-price">$15.00</div></div>
+        </div>
+
+        <!-- Key specs mini grid -->
+        <div class="key-specs-grid">
+          <div class="spec-cell"><div class="spec-label">Min. Order</div><div class="spec-value">1 Piece</div></div>
+          <div class="spec-cell"><div class="spec-label">Lead Time</div><div class="spec-value">3–7 Days</div></div>
+          <div class="spec-cell"><div class="spec-label">Material</div><div class="spec-value">Genuine Leather</div></div>
+          <div class="spec-cell"><div class="spec-label">Origin</div><div class="spec-value">Dongguan, China</div></div>
+          <div class="spec-cell"><div class="spec-label">Capacity</div><div class="spec-value">15L</div></div>
+          <div class="spec-cell"><div class="spec-label">Sample</div><div class="spec-value">Available</div></div>
+        </div>
+
+        <!-- Color / Size selectors -->
+        <div>
+          <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-light);margin-bottom:8px;">Color</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <div onclick="this.parentNode.querySelectorAll('.color-swatch').forEach(x=>x.classList.remove('active'));this.classList.add('active')" class="color-swatch active" style="width:28px;height:28px;border-radius:50%;background:#2c1810;border:2px solid var(--gold);cursor:pointer;transition:transform .2s;" title="Dark Brown"></div>
+            <div onclick="this.parentNode.querySelectorAll('.color-swatch').forEach(x=>x.classList.remove('active'));this.classList.add('active')" class="color-swatch" style="width:28px;height:28px;border-radius:50%;background:#c19a6b;border:2px solid transparent;cursor:pointer;transition:transform .2s;" title="Tan"></div>
+            <div onclick="this.parentNode.querySelectorAll('.color-swatch').forEach(x=>x.classList.remove('active'));this.classList.add('active')" class="color-swatch" style="width:28px;height:28px;border-radius:50%;background:#1a1a1a;border:2px solid transparent;cursor:pointer;transition:transform .2s;" title="Black"></div>
+            <div onclick="this.parentNode.querySelectorAll('.color-swatch').forEach(x=>x.classList.remove('active'));this.classList.add('active')" class="color-swatch" style="width:28px;height:28px;border-radius:50%;background:#8b1c1c;border:2px solid transparent;cursor:pointer;transition:transform .2s;" title="Burgundy"></div>
+            <div onclick="this.parentNode.querySelectorAll('.color-swatch').forEach(x=>x.classList.remove('active'));this.classList.add('active')" class="color-swatch" style="width:28px;height:28px;border-radius:50%;background:#6b7c8f;border:2px solid transparent;cursor:pointer;transition:transform .2s;" title="Navy"></div>
+          </div>
+        </div>
+
+        <div class="customization-row">
+          <i class="fa-solid fa-pen-nib"></i>
+          <div>
+            <div style="font-weight:700;font-size:0.85rem;">OEM / ODM Customization Available</div>
+            <div style="font-size:0.75rem;color:var(--text-light);">Custom logo, color, size, hardware, packaging. Min. 50 pcs for custom orders.</div>
+          </div>
+        </div>
+
+        <div class="action-grid">
+          <button class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Contact</button>
+          <button class="btn btn-red"><i class="fa-solid fa-file-invoice-dollar"></i> Request Quote</button>
+          <button class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat Now</button>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:0.78rem;color:var(--text-light);">
+          <span><i class="fa-solid fa-shield-halved gold"></i> Trade Assurance</span>
+          <span><i class="fa-solid fa-rotate-left gold"></i> 30-day returns</span>
+          <span><i class="fa-solid fa-lock gold"></i> Secure Payments</span>
+          <span><i class="fa-solid fa-award gold"></i> Verified Supplier</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — PRODUCT DESCRIPTION
+  ══════════════════════════════════════════ -->
+  <div id="description" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-align-left"></i> Product Description</h2>
+    </div>
+    <div class="section-body">
+      <div class="desc-body">
+        <h3>Overview</h3>
+        <p>The <strong>Golden Tiger Luxury Designer Tote</strong> is a premium women's handbag crafted from 100% genuine full-grain cowhide leather, finished with hand-stitched reinforcement at all stress points. Designed to bridge functionality and high fashion, this bag seamlessly transitions from business meetings to social occasions.</p>
+
+        <h3>Material & Construction</h3>
+        <p>The exterior is constructed from Grade-A full-grain cowhide leather, tanned using an eco-certified vegetable process to preserve natural grain texture and aging characteristics. The interior is lined with Italian microfiber suede for a soft, scratch-resistant surface. All metal hardware — zippers, rings, and clasps — is crafted from solid zinc alloy with a 24K gold electroplated finish, tested to 5,000+ open/close cycles.</p>
+
+        <h3>Design & Functionality</h3>
+        <p>The multi-compartment architecture features one main zipper compartment, two open side pockets, a padded laptop sleeve (up to 13"), a built-in organizer panel with 6 card slots, a coin zipper pocket, and a key hook. The adjustable shoulder strap (100–120 cm) and padded top handles offer versatile carry options for all-day comfort.</p>
+
+        <h3>Why Choose This Bag?</h3>
+        <ul>
+          <li>100% genuine full-grain cowhide leather — not bonded or split leather</li>
+          <li>Eco-certified vegetable tanning process — durable, ages beautifully</li>
+          <li>24K gold-plated zinc alloy hardware — tarnish and corrosion resistant</li>
+          <li>Hand-stitched reinforcement at all carry points — tested for 30 kg load</li>
+          <li>Anti-scratch microfiber interior lining — protects your belongings</li>
+          <li>Water-resistant nano-coating on exterior leather surface</li>
+          <li>Fits 13" laptop + A4 documents + daily essentials</li>
+        </ul>
+
+        <h3>Care Instructions</h3>
+        <p>Wipe clean with a soft, dry cloth. Use leather conditioner every 3–6 months to maintain suppleness and color. Avoid prolonged exposure to direct sunlight or extreme humidity. Store in the provided dust bag when not in use.</p>
+
+        <div class="feature-tags">
+          <span class="ftag">Genuine Leather</span>
+          <span class="ftag">Laptop Compatible</span>
+          <span class="ftag">Water Resistant</span>
+          <span class="ftag">Anti-Scratch Lining</span>
+          <span class="ftag">Gold Hardware</span>
+          <span class="ftag">Multi-Compartment</span>
+          <span class="ftag">OEM Available</span>
+          <span class="ftag">Eco-Certified Tanning</span>
+          <span class="ftag">30 kg Load Tested</span>
+          <span class="ftag">Adjustable Strap</span>
+          <span class="ftag">Card Slots</span>
+          <span class="ftag">Key Hook</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — FULL SPECIFICATIONS
+  ══════════════════════════════════════════ -->
+  <div id="specs" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-table-list"></i> Full Specifications</h2>
+      <span class="badge badge-blue">Detailed</span>
+    </div>
+    <div class="section-body" style="padding:0;">
+      <table class="spec-full-table">
+        <tr><td>Product Name</td><td>Luxury Designer Genuine Leather Women's Handbag — Business Tote</td></tr>
+        <tr><td>Model Number</td><td>GT-LB-2024-PRO</td></tr>
+        <tr><td>Material (Exterior)</td><td>Grade-A Full-Grain Cowhide Leather</td></tr>
+        <tr><td>Material (Interior)</td><td>Italian Microfiber Suede</td></tr>
+        <tr><td>Tanning Process</td><td>Eco-Certified Vegetable Tanning</td></tr>
+        <tr><td>Hardware Material</td><td>Solid Zinc Alloy, 24K Gold Electroplated</td></tr>
+        <tr><td>Zipper Brand</td><td>YKK / Equivalent Premium Brand</td></tr>
+        <tr><td>Dimensions (L×W×H)</td><td>38 × 14 × 28 cm</td></tr>
+        <tr><td>Capacity</td><td>15 Liters</td></tr>
+        <tr><td>Weight</td><td>0.95 kg (empty)</td></tr>
+        <tr><td>Max. Load Tested</td><td>30 kg</td></tr>
+        <tr><td>Laptop Compatibility</td><td>Up to 13-inch</td></tr>
+        <tr><td>Compartments</td><td>1 Main Zipper + 2 Side Open Pockets + 1 Padded Laptop Sleeve</td></tr>
+        <tr><td>Interior Pockets</td><td>6 Card Slots + 1 Coin Zipper + 1 Key Hook</td></tr>
+        <tr><td>Strap Length</td><td>Adjustable 100–120 cm</td></tr>
+        <tr><td>Handle Drop</td><td>22 cm</td></tr>
+        <tr><td>Closure Type</td><td>Top Zip + Magnetic Snap</td></tr>
+        <tr><td>Surface Treatment</td><td>Water-Resistant Nano-Coating</td></tr>
+        <tr><td>Available Colors</td><td>Dark Brown, Tan, Black, Burgundy, Navy Blue</td></tr>
+        <tr><td>Available Sizes</td><td>S (30×10×22 cm) / M (38×14×28 cm) / L (42×16×32 cm)</td></tr>
+        <tr><td>Gender</td><td>Women</td></tr>
+        <tr><td>Style</td><td>Business / Work / Daily Use / Travel</td></tr>
+        <tr><td>Age Group</td><td>Adult</td></tr>
+        <tr><td>Interior Color</td><td>Camel / Black (matches exterior)</td></tr>
+        <tr><td>Dust Bag Included</td><td>Yes — branded non-woven dust bag</td></tr>
+        <tr><td>Care Card Included</td><td>Yes — multilingual leather care instructions</td></tr>
+        <tr><td>Country of Origin</td><td>Dongguan, Guangdong, China</td></tr>
+        <tr><td>HS Code</td><td>4202.21.9000</td></tr>
+        <tr><td>Shelf Life</td><td>5+ years with proper care</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4 — PRODUCT CATALOGUE / PHOTO GALLERY
+  ══════════════════════════════════════════ -->
+  <div id="catalogue" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-images"></i> Product Catalogue & Original Photos</h2>
+      <button class="btn btn-gold" style="height:32px;font-size:0.75rem;padding:0 16px;border-radius:16px;"><i class="fa-solid fa-download"></i> Download Catalogue PDF</button>
+    </div>
+    <div class="section-body">
+      <div style="font-size:0.82rem;color:var(--text-light);margin-bottom:16px;"><i class="fa-solid fa-circle-info gold"></i> All images are original product photos taken in our studio. No stock photography or enhancement used.</div>
+      <div class="catalogue-grid">
+        <div class="cat-card">
+          <img class="cat-card-img" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400" alt="Front View">
+          <div class="cat-card-label"><i class="fa-solid fa-camera gold"></i> Front View</div>
+        </div>
+        <div class="cat-card">
+          <img class="cat-card-img" src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400" alt="Side Profile">
+          <div class="cat-card-label"><i class="fa-solid fa-camera gold"></i> Side Profile</div>
+        </div>
+        <div class="cat-card">
+          <img class="cat-card-img" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400" alt="Interior Layout">
+          <div class="cat-card-label"><i class="fa-solid fa-camera gold"></i> Interior Layout</div>
+        </div>
+        <div class="cat-card">
+          <img class="cat-card-img" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400" alt="Hardware Detail">
+          <div class="cat-card-label"><i class="fa-solid fa-camera gold"></i> Hardware Close-up</div>
+        </div>
+        <div class="cat-card">
+          <img class="cat-card-img" src="https://images.unsplash.com/photo-1566150905458-1bf1fc15a7a0?w=400" alt="Leather Texture">
+          <div class="cat-card-label"><i class="fa-solid fa-camera gold"></i> Leather Texture</div>
+        </div>
+        <div class="cat-card">
+          <img class="cat-card-img" src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=400" alt="Stitching Detail">
+          <div class="cat-card-label"><i class="fa-solid fa-camera gold"></i> Stitching Detail</div>
+        </div>
+        <div class="cat-card">
+          <img class="cat-card-img" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400" alt="Lifestyle Shot">
+          <div class="cat-card-label"><i class="fa-solid fa-camera gold"></i> Lifestyle Shot</div>
+        </div>
+        <div class="upload-btn-zone" onclick="alert('Upload your product photo here')">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <div style="font-weight:700;">Upload Custom Photo</div>
+          <div>PNG, JPG, WebP up to 10MB</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 5 — PRICING TIERS
+  ══════════════════════════════════════════ -->
+  <div id="pricing" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-tags"></i> Pricing & Volume Discounts</h2>
+    </div>
+    <div class="section-body" style="padding:0;">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Quantity (Pieces)</th>
+            <th>Unit Price (USD)</th>
+            <th>Total Estimate</th>
+            <th>You Save</th>
+            <th>Lead Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 – 9 pcs</td>
+            <td class="price-col">$50.00</td>
+            <td>$50 – $450</td>
+            <td class="saving-col">—</td>
+            <td>3–5 Days</td>
+            <td><button class="btn btn-red" style="height:30px;font-size:0.72rem;padding:0 12px;border-radius:15px;">Order</button></td>
+          </tr>
+          <tr>
+            <td>10 – 49 pcs</td>
+            <td class="price-col">$38.00</td>
+            <td>$380 – $1,862</td>
+            <td class="saving-col">24% OFF</td>
+            <td>5–7 Days</td>
+            <td><button class="btn btn-red" style="height:30px;font-size:0.72rem;padding:0 12px;border-radius:15px;">Order</button></td>
+          </tr>
+          <tr>
+            <td>50 – 99 pcs</td>
+            <td class="price-col">$28.00</td>
+            <td>$1,400 – $2,772</td>
+            <td class="saving-col">44% OFF</td>
+            <td>7–10 Days</td>
+            <td><button class="btn btn-red" style="height:30px;font-size:0.72rem;padding:0 12px;border-radius:15px;">Order</button></td>
+          </tr>
+          <tr>
+            <td>100 – 499 pcs</td>
+            <td class="price-col">$22.00</td>
+            <td>$2,200 – $10,978</td>
+            <td class="saving-col">56% OFF</td>
+            <td>10–15 Days</td>
+            <td><button class="btn btn-red" style="height:30px;font-size:0.72rem;padding:0 12px;border-radius:15px;">Order</button></td>
+          </tr>
+          <tr>
+            <td>500 – 999 pcs</td>
+            <td class="price-col">$18.00</td>
+            <td>$9,000 – $17,982</td>
+            <td class="saving-col">64% OFF</td>
+            <td>15–20 Days</td>
+            <td><button class="btn btn-red" style="height:30px;font-size:0.72rem;padding:0 12px;border-radius:15px;">Order</button></td>
+          </tr>
+          <tr>
+            <td>1,000+ pcs</td>
+            <td class="price-col">$15.00</td>
+            <td>Negotiable</td>
+            <td class="saving-col">70% OFF</td>
+            <td>20–30 Days</td>
+            <td><button class="btn btn-gold" style="height:30px;font-size:0.72rem;padding:0 12px;border-radius:15px;">Negotiate</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="padding:14px 20px;font-size:0.78rem;color:var(--text-light);background:#fafbfc;border-top:1px solid var(--border);">
+        <i class="fa-solid fa-circle-info gold"></i> Prices are FOB Shenzhen. Freight, insurance, and customs duties not included. Sample orders available at $55/pc (refundable on bulk order ≥50 pcs).
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 6 — CUSTOMIZATION OPTIONS
+  ══════════════════════════════════════════ -->
+  <div id="customization" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-pen-ruler"></i> Customization & OEM Options</h2>
+      <span class="badge badge-gold">Min. 50 pcs</span>
+    </div>
+    <div class="section-body">
+      <div class="options-grid">
+        <div class="option-card">
+          <div class="option-icon">🪡</div>
+          <div class="option-title">Custom Logo</div>
+          <div class="option-desc">Embossed, debossed, or hot-stamp foil logo on exterior leather or interior lining. Provide your vector file.</div>
+        </div>
+        <div class="option-card">
+          <div class="option-icon">🎨</div>
+          <div class="option-title">Color Selection</div>
+          <div class="option-desc">Choose from 20+ standard Pantone leather colors or provide your own swatch. Custom colors require 200 pcs minimum.</div>
+        </div>
+        <div class="option-card">
+          <div class="option-icon">📐</div>
+          <div class="option-title">Custom Size</div>
+          <div class="option-desc">Bespoke dimensions available with ±5cm adjustment from standard models. Provide your sketch or technical drawing.</div>
+        </div>
+        <div class="option-card">
+          <div class="option-icon">⚙️</div>
+          <div class="option-title">Hardware Finish</div>
+          <div class="option-desc">Gold, silver, gunmetal, rose gold, or antique bronze hardware finish. Mix and match as needed.</div>
+        </div>
+        <div class="option-card">
+          <div class="option-icon">📦</div>
+          <div class="option-title">Custom Packaging</div>
+          <div class="option-desc">Branded gift boxes, dust bags, hang tags, and care cards with your logo and color scheme.</div>
+        </div>
+        <div class="option-card">
+          <div class="option-icon">🧵</div>
+          <div class="option-title">Interior Layout</div>
+          <div class="option-desc">Custom pocket configurations, dividers, organizers, and tech accessory holders. Share your functional requirements.</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;background:#fffbeb;border:1px solid rgba(184,134,11,0.3);border-radius:10px;padding:16px 20px;font-size:0.85rem;">
+        <strong class="gold"><i class="fa-solid fa-lightbulb"></i> Customization Process:</strong>&nbsp; Share your concept → Get free design mockup (3–5 days) → Approve sample → Production begins → Delivery in 15–30 days.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 7 — PACKAGING & SHIPPING
+  ══════════════════════════════════════════ -->
+  <div id="packaging" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-box-open"></i> Packaging & Shipping</h2>
+    </div>
+    <div class="section-body">
+      <div class="pack-grid">
+        <div>
+          <div style="font-weight:700;font-size:0.88rem;margin-bottom:12px;color:var(--text-dark);">📦 Packaging Details</div>
+          <table class="pack-table">
+            <tr><td>Unit Packaging</td><td>1 bag in branded dust bag + gift box</td></tr>
+            <tr><td>Box Dimensions</td><td>42 × 18 × 32 cm</td></tr>
+            <tr><td>Unit Weight</td><td>0.95 kg (net) / 1.35 kg (gross)</td></tr>
+            <tr><td>Carton Size</td><td>52 × 46 × 68 cm</td></tr>
+            <tr><td>Units per Carton</td><td>6 pieces</td></tr>
+            <tr><td>Carton Weight</td><td>9.2 kg</td></tr>
+            <tr><td>20' Container</td><td>≈ 2,200 pcs</td></tr>
+            <tr><td>40' Container</td><td>≈ 4,800 pcs</td></tr>
+          </table>
+        </div>
+        <div>
+          <div style="font-weight:700;font-size:0.88rem;margin-bottom:12px;color:var(--text-dark);">🚢 Shipping Methods</div>
+          <div class="shipping-methods">
+            <div class="ship-row"><div class="ship-method"><i class="fa-solid fa-plane"></i> Express (DHL / FedEx / UPS)</div><div class="ship-time">3–7 days</div><div class="ship-price">By weight</div></div>
+            <div class="ship-row"><div class="ship-method"><i class="fa-solid fa-ship"></i> Sea Freight (FCL/LCL)</div><div class="ship-time">20–35 days</div><div class="ship-price">Most economical</div></div>
+            <div class="ship-row"><div class="ship-method"><i class="fa-solid fa-train"></i> Rail Freight (China–Europe)</div><div class="ship-time">15–20 days</div><div class="ship-price">Mid-range</div></div>
+            <div class="ship-row"><div class="ship-method"><i class="fa-solid fa-truck-fast"></i> Air Freight</div><div class="ship-time">5–10 days</div><div class="ship-price">Medium cost</div></div>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-light);margin-top:12px;"><i class="fa-solid fa-map-pin gold"></i> Port of Loading: Shenzhen, Guangdong, China</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 8 — CERTIFICATES
+  ══════════════════════════════════════════ -->
+  <div id="certificates" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-certificate"></i> Certifications & Compliance</h2>
+      <span class="badge badge-green"><i class="fa-solid fa-check"></i> All Verified</span>
+    </div>
+    <div class="section-body">
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-gold"><i class="fa-solid fa-medal"></i></div>
+          <div class="cert-name">ISO 9001:2015</div>
+          <div class="cert-issuer">Bureau Veritas — Quality Management</div>
+          <div class="cert-valid">Valid until Dec 2026</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-green"><i class="fa-solid fa-leaf"></i></div>
+          <div class="cert-name">REACH Compliance</div>
+          <div class="cert-issuer">SGS Intertek — EU Chemical Safety</div>
+          <div class="cert-valid">Valid until Jun 2026</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-blue"><i class="fa-solid fa-recycle"></i></div>
+          <div class="cert-name">LWG Gold Rated</div>
+          <div class="cert-issuer">Leather Working Group — Environmental</div>
+          <div class="cert-valid">Valid until Sep 2026</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-red"><i class="fa-brands fa-canadian-maple-leaf"></i></div>
+          <div class="cert-name">CPSC Compliant</div>
+          <div class="cert-issuer">US Consumer Product Safety Commission</div>
+          <div class="cert-valid">Valid until Mar 2027</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-gold"><i class="fa-solid fa-star"></i></div>
+          <div class="cert-name">Global Sources Verified</div>
+          <div class="cert-issuer">Global Sources Platform Verification</div>
+          <div class="cert-valid">Active Supplier</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-blue"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="cert-name">CE Marking</div>
+          <div class="cert-issuer">EU Conformity Assessment</div>
+          <div class="cert-valid">Valid until Jan 2027</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-green"><i class="fa-solid fa-seedling"></i></div>
+          <div class="cert-name">Oeko-Tex Standard 100</div>
+          <div class="cert-issuer">HOHENSTEIN — Textile Safety</div>
+          <div class="cert-valid">Valid until Nov 2026</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon-wrap cert-icon-red"><i class="fa-solid fa-fire-flame-curved"></i></div>
+          <div class="cert-name">BSCI Audit Passed</div>
+          <div class="cert-issuer">Business Social Compliance Initiative</div>
+          <div class="cert-valid">Passed — A Rating</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="btn btn-outline" style="height:36px;font-size:0.78rem;padding:0 16px;border-radius:18px;"><i class="fa-solid fa-download gold"></i> Download All Certificates</button>
+        <button class="btn btn-outline" style="height:36px;font-size:0.78rem;padding:0 16px;border-radius:18px;"><i class="fa-solid fa-eye gold"></i> View Test Reports</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 9 — COMPANY PROFILE
+  ══════════════════════════════════════════ -->
+  <div id="company" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-building"></i> Company Profile</h2>
+    </div>
+    <div class="section-body">
+      <div class="company-hero">
+        <div class="company-logo-big">GT</div>
+        <div class="company-name-block">
+          <h2 style="color:white; font-size:24px; font-weight:700; margin:0;">
+    Dongguan Golden Tiger Multi-Media Co., Ltd.
+</h2>
+          <div class="company-badges">
+            <span class="badge badge-gold">Gold Supplier</span>
+            <span class="badge badge-green"><i class="fa-solid fa-shield-halved"></i>&nbsp;Verified</span>
+            <span class="badge" style="background:rgba(255,255,255,0.2);color:#fff;">20+ Years</span>
+            <span class="badge" style="background:rgba(255,255,255,0.2);color:#fff;"><i class="fa-solid fa-star"></i>&nbsp;Top Manufacturer</span>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);margin-bottom:4px;">Response Rate</div>
+          <div style="font-size:2rem;font-weight:900;color:#f5e6a3;font-family:'DM Mono',monospace;">98.7%</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);">Average ≤2 hours</div>
+        </div>
+      </div>
+
+      <div class="company-stats">
+        <div class="stat-box"><div class="stat-num">20+</div><div class="stat-label">Years in Business</div></div>
+        <div class="stat-box"><div class="stat-num">850</div><div class="stat-label">Total Employees</div></div>
+        <div class="stat-box"><div class="stat-num">40K</div><div class="stat-label">m² Factory Area</div></div>
+        <div class="stat-box"><div class="stat-num">120+</div><div class="stat-label">Countries Exported</div></div>
+        <div class="stat-box"><div class="stat-num">50K</div><div class="stat-label">Monthly Capacity (pcs)</div></div>
+        <div class="stat-box"><div class="stat-num">$30M</div><div class="stat-label">Annual Export Value</div></div>
+      </div>
+
+      <div class="company-info-grid">
+        <div class="ci-cell"><div class="ci-label">Legal Name</div><div class="ci-value">Dongguan Golden Tiger Multi-Media Co., Ltd.</div></div>
+        <div class="ci-cell"><div class="ci-label">Business Type</div><div class="ci-value">Manufacturer & Exporter</div></div>
+        <div class="ci-cell"><div class="ci-label">Year Established</div><div class="ci-value">2004</div></div>
+        <div class="ci-cell"><div class="ci-label">Registered Capital</div><div class="ci-value">RMB 50 Million</div></div>
+        <div class="ci-cell"><div class="ci-label">Factory Location</div><div class="ci-value">Dongguan City, Guangdong Province, China</div></div>
+        <div class="ci-cell"><div class="ci-label">Main Products</div><div class="ci-value">Leather Bags, Business Cases, Wallets, Accessories</div></div>
+        <div class="ci-cell"><div class="ci-label">Export Markets</div><div class="ci-value">North America, Europe, Middle East, Southeast Asia, Australia</div></div>
+        <div class="ci-cell"><div class="ci-label">Quality System</div><div class="ci-value">ISO 9001:2015 Certified</div></div>
+        <div class="ci-cell"><div class="ci-label">R&D Department</div><div class="ci-value">45 designers & engineers in-house</div></div>
+        <div class="ci-cell" style="border-bottom:none;"><div class="ci-label">Languages Supported</div><div class="ci-value">English, Chinese, Arabic, French, Spanish</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 10 — FACTORY & PRODUCTION
+  ══════════════════════════════════════════ -->
+  <div id="factory" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-industry"></i> Factory & Production Capabilities</h2>
+    </div>
+    <div class="section-body">
+      <div class="factory-cols">
+        <div>
+          <div class="factory-img-grid">
+            <img class="factory-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800" alt="Factory Main Floor">
+            <img class="factory-img" src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=400" alt="Cutting Department">
+            <img class="factory-img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400" alt="Stitching Line">
+          </div>
+        </div>
+        <div>
+          <ul class="capability-list">
+            <li><i class="fa-solid fa-scissors"></i><div><strong>Leather Cutting & Clicking</strong> — CNC precision cutting machines + hand clicking for complex shapes. Zero waste leather nesting technology.</div></li>
+            <li><i class="fa-solid fa-needle"></i><div><strong>Stitching & Assembly</strong> — 200+ industrial sewing machines. Double and triple-stitch options. Lockstitch, saddle stitch, and welt stitch available.</div></li>
+            <li><i class="fa-solid fa-paint-roller"></i><div><strong>Edge Finishing</strong> — Automated edge trimming and burnishing machines. Multiple edge paint color options.</div></li>
+            <li><i class="fa-solid fa-toolbox"></i><div><strong>Hardware Setting</strong> — Semi-automatic rivet press, zipper insertion, and magnetic clasp assembly lines.</div></li>
+            <li><i class="fa-solid fa-droplet"></i><div><strong>Surface Treatment</strong> — In-house nano water-resistant coating application and leather conditioning lines.</div></li>
+            <li><i class="fa-solid fa-box"></i><div><strong>Packaging Line</strong> — Automated folding, tissue wrapping, dust bag insertion, and box assembly. Barcode labeling for all major retail systems.</div></li>
+            <li><i class="fa-solid fa-magnifying-glass"></i><div><strong>QC Department</strong> — 60-point inspection checklist per unit. Dedicated QC team of 35 inspectors.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 11 — QUALITY CONTROL
+  ══════════════════════════════════════════ -->
+  <div id="quality" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-shield-halved"></i> Quality Control Process</h2>
+      <span class="badge badge-green">60-Point Inspection</span>
+    </div>
+    <div class="section-body">
+      <div class="qc-steps">
+        <div class="qc-step">
+          <div class="qc-num">01</div>
+          <div><div class="qc-title">Incoming Material Inspection (IQC)</div><div class="qc-desc">Every leather batch and hardware shipment is tested for color consistency, thickness, tensile strength, and chemical safety before production begins. Rejected rate: less than 0.5%.</div></div>
+        </div>
+        <div class="qc-step">
+          <div class="qc-num">02</div>
+          <div><div class="qc-title">In-Process Quality Control (IPQC)</div><div class="qc-desc">QC inspectors stationed at each production stage: cutting, stitching, assembly, and edge finishing. Random sampling every 30 minutes per line.</div></div>
+        </div>
+        <div class="qc-step">
+          <div class="qc-num">03</div>
+          <div><div class="qc-title">Hardware & Zipper Testing</div><div class="qc-desc">Zippers tested to 5,000+ open/close cycles. Hardware salt spray tested for 48 hours. Magnetic clasps tested for pull force ≥ 3 kg.</div></div>
+        </div>
+        <div class="qc-step">
+          <div class="qc-num">04</div>
+          <div><div class="qc-title">Load & Stress Testing</div><div class="qc-desc">Handle and strap attachment points tested under 30 kg static load for 24 hours. Drop test from 1.2 meters onto all six sides.</div></div>
+        </div>
+        <div class="qc-step">
+          <div class="qc-num">05</div>
+          <div><div class="qc-title">Final Quality Inspection (FQI)</div><div class="qc-desc">Every finished unit undergoes a 60-point visual and functional checklist covering stitching, hardware function, symmetry, cleanliness, and dimension accuracy (±3mm tolerance).</div></div>
+        </div>
+        <div class="qc-step">
+          <div class="qc-num">06</div>
+          <div><div class="qc-title">Third-Party Inspection Available</div><div class="qc-desc">We welcome pre-shipment inspection by SGS, Bureau Veritas, TÜV, or your appointed inspector. Full cooperation and transparent access guaranteed.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 12 — REVIEWS & COMMENTS
+  ══════════════════════════════════════════ -->
+  <div id="reviews" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-star"></i> Customer Reviews</h2>
+      <span class="badge badge-gold">4.9 / 5.0 — 328 Reviews</span>
+    </div>
+    <div class="section-body">
+
+      <!-- Summary -->
+      <div class="review-summary">
+        <div class="overall-score">
+          <div class="score-big">4.9</div>
+          <div class="score-stars">★★★★★</div>
+          <div class="score-count">Based on 328 reviews</div>
+        </div>
+        <div class="rating-bars">
+          <div class="rbar-row"><div class="rbar-label">5★</div><div class="rbar-track"><div class="rbar-fill" style="width:88%"></div></div><div class="rbar-count">289</div></div>
+          <div class="rbar-row"><div class="rbar-label">4★</div><div class="rbar-track"><div class="rbar-fill" style="width:8%;background:#a3c4f3"></div></div><div class="rbar-count">26</div></div>
+          <div class="rbar-row"><div class="rbar-label">3★</div><div class="rbar-track"><div class="rbar-fill" style="width:2%;background:#bdbdbd"></div></div><div class="rbar-count">7</div></div>
+          <div class="rbar-row"><div class="rbar-label">2★</div><div class="rbar-track"><div class="rbar-fill" style="width:1%;background:#bdbdbd"></div></div><div class="rbar-count">4</div></div>
+          <div class="rbar-row"><div class="rbar-label">1★</div><div class="rbar-track"><div class="rbar-fill" style="width:0.5%;background:#ef9a9a"></div></div><div class="rbar-count">2</div></div>
+        </div>
+      </div>
+
+      <!-- Review Cards -->
+      <div class="reviews-list">
+        <div class="review-card">
+          <div class="reviewer-row">
+            <div class="reviewer-info"><div class="avatar av1">SA</div><div><div class="reviewer-name">Sarah A.</div><div class="reviewer-country">🇺🇸 United States &nbsp;·&nbsp; Verified Buyer</div></div></div>
+            <div class="review-date">March 12, 2025</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Absolutely stunning quality. The leather is buttery soft yet incredibly sturdy. I ordered 200 pieces with custom logo embossing and they arrived perfectly on time. The gold hardware is solid — not cheap-feeling at all. My boutique customers have been raving about them. Will definitely reorder.</div>
+          <div class="review-product-info"><span class="badge badge-gray">200 pcs · Dark Brown</span><span class="badge badge-green">OEM Order</span><span class="badge badge-blue">Custom Logo</span></div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer-row">
+            <div class="reviewer-info"><div class="avatar av2">MR</div><div><div class="reviewer-name">Mohammed R.</div><div class="reviewer-country">🇦🇪 UAE &nbsp;·&nbsp; Verified Buyer</div></div></div>
+            <div class="review-date">February 3, 2025</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Very professional supplier. Communication was excellent throughout the process. Samples arrived in 5 days and matched the specifications exactly. Production for 500 pieces completed in 18 days. Shipping to Dubai was efficient via DHL. Quality control documentation was comprehensive. Highly recommend.</div>
+          <div class="review-product-info"><span class="badge badge-gray">500 pcs · Black</span><span class="badge badge-green">Bulk Order</span></div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer-row">
+            <div class="reviewer-info"><div class="avatar av3">EK</div><div><div class="reviewer-name">Emma K.</div><div class="reviewer-country">🇬🇧 United Kingdom &nbsp;·&nbsp; Verified Buyer</div></div></div>
+            <div class="review-date">January 20, 2025</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">The interior microfiber lining is particularly impressive — it feels genuinely premium. The stitching is perfectly even throughout. I can see these lasting years. Ordered mixed colors and the consistency across all units was remarkable. The dust bags included are also well-made. 10/10 transaction.</div>
+          <div class="review-product-info"><span class="badge badge-gray">50 pcs · Mixed Colors</span></div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer-row">
+            <div class="reviewer-info"><div class="avatar av4">LP</div><div><div class="reviewer-name">Lucas P.</div><div class="reviewer-country">🇧🇷 Brazil &nbsp;·&nbsp; Verified Buyer</div></div></div>
+            <div class="review-date">December 8, 2024</div>
+          </div>
+          <div class="review-stars">★★★★☆</div>
+          <div class="review-text">Great quality overall. The leather grain texture is consistent and the hardware is solid. Minor issue with 2 units having slightly uneven stitching on the side seams — the supplier replaced them immediately at no charge. That kind of after-sales support is what separates great suppliers from average ones.</div>
+          <div class="review-product-info"><span class="badge badge-gray">100 pcs · Tan</span></div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer-row">
+            <div class="reviewer-info"><div class="avatar av5">AK</div><div><div class="reviewer-name">Aisha K.</div><div class="reviewer-country">🇸🇬 Singapore &nbsp;·&nbsp; Verified Buyer</div></div></div>
+            <div class="review-date">November 15, 2024</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Fourth order with this supplier. Consistent quality, reliable delivery, and outstanding communication. The custom packaging they created for our brand is absolutely beautiful. I trust them completely with my brand's reputation. Highest recommendation.</div>
+          <div class="review-product-info"><span class="badge badge-gray">300 pcs · Burgundy</span><span class="badge badge-green">Repeat Buyer</span><span class="badge badge-blue">Custom Pack</span></div>
+        </div>
+      </div>
+
+      <!-- Comment / Leave a Review -->
+      <div class="comment-form">
+        <h3><i class="fa-solid fa-pen-to-square gold"></i> Leave a Review</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name *</label><input type="text" placeholder="Enter your name"></div>
+          <div class="form-group"><label>Country *</label><input type="text" placeholder="e.g. United States"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email Address *</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>Order Quantity</label><input type="text" placeholder="e.g. 100 pcs"></div>
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Your Rating *</label>
+          <div class="star-select" id="starSelect">
+            <i class="fa-solid fa-star" data-val="1"></i>
+            <i class="fa-solid fa-star" data-val="2"></i>
+            <i class="fa-solid fa-star" data-val="3"></i>
+            <i class="fa-solid fa-star" data-val="4"></i>
+            <i class="fa-solid fa-star" data-val="5"></i>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Your Review *</label>
+          <textarea placeholder="Share your experience with this product and supplier..."></textarea>
+        </div>
+        <button class="btn btn-gold" style="width:100%;height:44px;font-size:0.85rem;border-radius:8px;">
+          <i class="fa-solid fa-paper-plane"></i> Submit Review
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 13 — FAQ
+  ══════════════════════════════════════════ -->
+  <div id="faq" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</h2>
+    </div>
+    <div class="section-body">
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Can I order a sample before placing a bulk order? <i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a">Yes, we offer single samples at $55/piece including DHL shipping. The sample fee is fully refundable when you place a bulk order of 50+ pieces. Sample delivery takes 5–7 business days. Custom logo samples (with your branding) require an additional $30 setup fee and 7–10 days lead time.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What is the minimum order quantity (MOQ) for OEM/custom logo orders? <i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a">Standard embossed or hot-stamp logo requires a minimum of 50 pieces per color per style. Custom color combinations require 200 pieces minimum. Full bespoke new style development requires 500 pieces minimum. Small MOQ exceptions may be available for returning buyers — please discuss with our sales team.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How do I verify the leather is genuine and not PU or bonded leather? <i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a">We provide LWG (Leather Working Group) certification and third-party lab test reports confirming genuine full-grain cowhide origin. You can also request a flame test on sample swatches — genuine leather chars while PU melts. Our leather hides are sourced exclusively from certified tanneries in Henan and Zhejiang provinces with full traceability documentation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What payment methods are accepted? <i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a">We accept T/T (wire transfer), L/C (letter of credit) for orders over $10,000, Western Union, MoneyGram, and Trade Assurance through platform escrow. Standard terms are 30% deposit upfront and 70% balance before shipment. For long-term customers, Net 30 terms may be available after the third order.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Can you match a specific Pantone color for the leather? <i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a">Yes, we can color-match to any Pantone code or provide a physical swatch for matching. Color matching requires a minimum order of 200 pieces and adds 5–7 days to the production timeline. We send 3 test swatches for approval before full production. Note: a slight ±5% variance in leather dye is natural and expected.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What happens if I receive defective products? <i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a">We guarantee a defect rate below 0.3%. If you receive defective units, send us photos and a defect report within 14 days of delivery. We will replace defective units free of charge in your next shipment or issue a credit note. For large orders, we recommend engaging an independent pre-shipment inspector (SGS, BV, etc.) at your cost for additional assurance.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Do you offer drop-shipping services? <i class="fa-solid fa-plus"></i></div>
+          <div class="faq-a">Yes, we offer blind drop-shipping for established buyers. Your branded packaging, invoices, and return labels can be used. There is no minimum quantity for drop-ship orders, but the unit price applies at the 1–9 pieces tier. A setup fee of $200 applies for initial drop-ship arrangement to cover packaging customization.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 14 — TRADE ASSURANCE
+  ══════════════════════════════════════════ -->
+  <div id="assurance" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-handshake"></i> Trade Assurance & Buyer Protection</h2>
+    </div>
+    <div class="section-body">
+      <div class="assurance-grid">
+        <div class="assurance-card"><div class="assurance-icon ai-gold"><i class="fa-solid fa-shield-halved"></i></div><div class="assurance-title">Secure Payments</div><div class="assurance-text">All payments processed through bank-level encryption. Escrow service holds funds until you confirm receipt.</div></div>
+        <div class="assurance-card"><div class="assurance-icon ai-blue"><i class="fa-solid fa-truck-fast"></i></div><div class="assurance-title">On-Time Delivery</div><div class="assurance-text">Late delivery compensation up to 5% of order value. 96.8% on-time delivery rate across last 500 orders.</div></div>
+        <div class="assurance-card"><div class="assurance-icon ai-green"><i class="fa-solid fa-circle-check"></i></div><div class="assurance-title">Product Conformity</div><div class="assurance-text">Product must match approved samples and specs. Pre-shipment photos and video inspection provided.</div></div>
+        <div class="assurance-card"><div class="assurance-icon ai-red"><i class="fa-solid fa-rotate-left"></i></div><div class="assurance-title">30-Day Refund Policy</div><div class="assurance-text">Full refund or replacement for defective units reported within 30 days of delivery.</div></div>
+        <div class="assurance-card"><div class="assurance-icon ai-purple"><i class="fa-solid fa-user-shield"></i></div><div class="assurance-title">IP Protection</div><div class="assurance-text">NDA available before sharing design files. Exclusive rights for your designs within agreed region and period.</div></div>
+        <div class="assurance-card"><div class="assurance-icon ai-teal"><i class="fa-solid fa-headset"></i></div><div class="assurance-title">After-Sales Support</div><div class="assurance-text">Dedicated account manager assigned to every buyer. Response within 2 hours during business hours.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 15 — RELATED PRODUCTS
+  ══════════════════════════════════════════ -->
+  <div id="related" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-layer-group"></i> Related Products</h2>
+      <a href="#" style="font-size:0.8rem;font-weight:700;color:var(--gold);text-decoration:none;">View All <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="section-body">
+      <div class="related-grid">
+        <div class="rel-card"><img class="rel-img" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=300" alt="Crossbody Bag"><div class="rel-info"><div class="rel-name">Leather Crossbody Mini Bag</div><div class="rel-price">$12–$32</div></div></div>
+        <div class="rel-card"><img class="rel-img" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300" alt="Backpack"><div class="rel-info"><div class="rel-name">Business Leather Backpack</div><div class="rel-price">$20–$55</div></div></div>
+        <div class="rel-card"><img class="rel-img" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=300" alt="Clutch"><div class="rel-info"><div class="rel-name">Evening Clutch Wallet</div><div class="rel-price">$8–$22</div></div></div>
+        <div class="rel-card"><img class="rel-img" src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=300" alt="Travel Bag"><div class="rel-info"><div class="rel-name">Leather Weekend Duffel</div><div class="rel-price">$35–$80</div></div></div>
+        <div class="rel-card"><img class="rel-img" src="https://images.unsplash.com/photo-1566150905458-1bf1fc15a7a0?w=300" alt="Card Holder"><div class="rel-info"><div class="rel-name">Slim Card Holder Wallet</div><div class="rel-price">$5–$18</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 16 — CONTACT / INQUIRY
+  ══════════════════════════════════════════ -->
+  <div id="contact" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-paper-plane"></i> Contact Supplier / Send Inquiry</h2>
+    </div>
+    <div class="section-body">
+      <div class="contact-grid">
+        <div class="contact-form-body">
+          <div class="form-row">
+            <div class="form-group"><label>Full Name *</label><input type="text" placeholder="Your full name"></div>
+            <div class="form-group"><label>Company Name</label><input type="text" placeholder="Your company"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email *</label><input type="email" placeholder="your@email.com"></div>
+            <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+1 234 567 8900"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Country *</label><input type="text" placeholder="Your country"></div>
+            <div class="form-group"><label>Order Quantity</label><input type="text" placeholder="e.g. 100 pcs"></div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option>Product Inquiry</option>
+              <option>Request for Quotation (RFQ)</option>
+              <option>Sample Request</option>
+              <option>OEM/Custom Order</option>
+              <option>Certificate Request</option>
+              <option>After-Sales Support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea style="min-height:120px;" placeholder="Describe your requirements in detail: quantity, color, customization, delivery requirements, etc."></textarea>
+          </div>
+          <button class="btn btn-red" style="height:46px;border-radius:8px;font-size:0.88rem;"><i class="fa-solid fa-paper-plane"></i> Send Inquiry</button>
+        </div>
+        <div class="contact-info-card">
+          <div style="font-weight:800;font-size:0.95rem;margin-bottom:8px;color:var(--text-dark);">Direct Contact</div>
+          <div class="contact-method"><i class="fa-solid fa-envelope ci-gold"></i><div><div class="contact-method-label">Email</div><div class="contact-method-value">sales@goldentiger.cn</div></div></div>
+          <div class="contact-method"><i class="fa-brands fa-whatsapp ci-green"></i><div><div class="contact-method-label">WhatsApp</div><div class="contact-method-value">+86 138 0000 1234</div></div></div>
+          <div class="contact-method"><i class="fa-brands fa-weixin ci-green"></i><div><div class="contact-method-label">WeChat</div><div class="contact-method-value">GoldenTiger_Sales</div></div></div>
+          <div class="contact-method"><i class="fa-solid fa-phone ci-blue"></i><div><div class="contact-method-label">Phone (CN)</div><div class="contact-method-value">+86 769-8888-9999</div></div></div>
+          <div class="contact-method"><i class="fa-solid fa-clock ci-gold"></i><div><div class="contact-method-label">Business Hours</div><div class="contact-method-value">Mon–Sat, 9AM–6PM CST</div></div></div>
+          <div class="divider"></div>
+          <div style="font-size:0.75rem;color:var(--text-light);line-height:1.6;">Average response time: <strong class="gold">Under 2 hours</strong>. For urgent inquiries, WhatsApp is recommended.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 17 — VIDEO SHOWCASE
+  ══════════════════════════════════════════ -->
+  <div id="video" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-video"></i> Product & Factory Videos</h2>
+    </div>
+    <div class="section-body">
+      <div class="video-grid">
+        <div class="video-card">
+          <img class="video-thumb" src="https://streamable.com/6xtmko" alt="Product Overview Video">
+          <div class="video-play-overlay">
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+            <div class="video-title">360° Product Overview</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <img class="video-thumb" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700" alt="Factory Tour Video">
+          <div class="video-play-overlay">
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+            <div class="video-title">Factory Tour — Production Line</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <img class="video-thumb" src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=700" alt="Quality Control Video">
+          <div class="video-play-overlay">
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+            <div class="video-title">Quality Control Inspection Process</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <img class="video-thumb" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700" alt="Customization Process">
+          <div class="video-play-overlay">
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+            <div class="video-title">OEM Customization Process</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 18 — OEM/ODM SERVICES
+  ══════════════════════════════════════════ -->
+  <div id="oem" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-pen-ruler"></i> OEM / ODM Service Flow</h2>
+      <span class="badge badge-gold">Brand Your Own</span>
+    </div>
+    <div class="section-body">
+      <div class="oem-grid">
+        <div class="oem-steps-list">
+          <div class="oem-step"><div class="oem-step-icon"><i class="fa-solid fa-comments"></i></div><div><div class="oem-step-title">1. Share Your Requirements</div><div class="oem-step-desc">Send us your idea, sketch, reference photo, or detailed brief. Include quantity, target price, timeline, and branding elements.</div></div></div>
+          <div class="oem-step"><div class="oem-step-icon"><i class="fa-solid fa-drafting-compass"></i></div><div><div class="oem-step-title">2. Design & Quotation</div><div class="oem-step-desc">Our design team creates 2D sketches and 3D renders within 3–5 days. Detailed cost quotation provided simultaneously.</div></div></div>
+          <div class="oem-step"><div class="oem-step-icon"><i class="fa-solid fa-box"></i></div><div><div class="oem-step-title">3. Sample Production</div><div class="oem-step-desc">Physical samples produced in 10–15 days. We ship via DHL for your review and approval. Revisions included up to 2 rounds.</div></div></div>
+          <div class="oem-step"><div class="oem-step-icon"><i class="fa-solid fa-check-double"></i></div><div><div class="oem-step-title">4. Sample Approval</div><div class="oem-step-desc">You review and approve the sample. Sign off on materials, dimensions, colors, hardware, and branding.</div></div></div>
+          <div class="oem-step"><div class="oem-step-icon"><i class="fa-solid fa-industry"></i></div><div><div class="oem-step-title">5. Mass Production</div><div class="oem-step-desc">30% deposit triggers production. Regular photo and video updates throughout. IPQC at every stage.</div></div></div>
+          <div class="oem-step"><div class="oem-step-icon"><i class="fa-solid fa-ship"></i></div><div><div class="oem-step-title">6. QC Inspection & Delivery</div><div class="oem-step-desc">Final inspection before shipping. Pre-shipment video shared for your records. Balance payment before dispatch.</div></div></div>
+        </div>
+        <div>
+          <div style="font-weight:800;font-size:1rem;margin-bottom:16px;color:var(--text-dark);">Why Choose Our OEM Service?</div>
+          <ul class="capability-list">
+            <li><i class="fa-solid fa-award"></i><div>20+ years of OEM experience for global brands including luxury, mid-market, and private label.</div></li>
+            <li><i class="fa-solid fa-users"></i><div>45-strong in-house design team — CAD, 3D modeling, pattern making, and prototyping.</div></li>
+            <li><i class="fa-solid fa-lock"></i><div>Strict NDA policy — your designs are never shared or replicated without written permission.</div></li>
+            <li><i class="fa-solid fa-layer-group"></i><div>Full vertical integration — leather sourcing, cutting, stitching, finishing, packaging, and logistics under one roof.</div></li>
+            <li><i class="fa-solid fa-clock"></i><div>Fastest OEM timeline in industry — sample in 10 days, production in 15–30 days depending on quantity.</div></li>
+            <li><i class="fa-solid fa-globe"></i><div>Compliance for all major markets — US, EU, AU, Middle East — including labeling and documentation.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION 19 — MARKET REGIONS
+  ══════════════════════════════════════════ -->
+  <div id="markets" class="panel">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-earth-americas"></i> Export Markets & Distribution</h2>
+    </div>
+    <div class="section-body">
+      <div style="font-size:0.85rem;color:var(--text-mid);margin-bottom:16px;">Our products are exported to 120+ countries. Below are our primary market regions by export volume:</div>
+      <div class="market-grid">
+        <div class="market-card"><div class="market-flag">🇺🇸</div><div><div class="market-region">North America</div><div class="market-share">28% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:85%"></div></div></div></div>
+        <div class="market-card"><div class="market-flag">🇪🇺</div><div><div class="market-region">Europe</div><div class="market-share">24% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:72%"></div></div></div></div>
+        <div class="market-card"><div class="market-flag">🇦🇪</div><div><div class="market-region">Middle East</div><div class="market-share">18% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:55%"></div></div></div></div>
+        <div class="market-card"><div class="market-flag">🌏</div><div><div class="market-region">Southeast Asia</div><div class="market-share">12% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:36%"></div></div></div></div>
+        <div class="market-card"><div class="market-flag">🇦🇺</div><div><div class="market-region">Australia / NZ</div><div class="market-share">8% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:24%"></div></div></div></div>
+        <div class="market-card"><div class="market-flag">🌍</div><div><div class="market-region">Africa</div><div class="market-share">5% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:15%"></div></div></div></div>
+        <div class="market-card"><div class="market-flag">🇧🇷</div><div><div class="market-region">South America</div><div class="market-share">3% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:9%"></div></div></div></div>
+        <div class="market-card"><div class="market-flag">🌎</div><div><div class="market-region">Other Regions</div><div class="market-share">2% of export volume</div><div class="market-bar"><div class="market-bar-fill" style="width:6%"></div></div></div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .page-wrap -->
+
+<!-- ░░░ STICKY BOTTOM CTA BAR ░░░ -->
+<div class="sticky-cta">
+  <div class="cta-product-mini">
+    <img class="cta-mini-img" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=100" alt="">
+    <div>
+      <div class="cta-mini-title">Luxury Leather Women's Tote — GT-LB-2024-PRO</div>
+      <div class="cta-mini-price">US $15.00 – $50.00 / pc</div>
+    </div>
+  </div>
+  <div class="cta-btns">
+    <button class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Inquire</button>
+    <button class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat</button>
+    <button class="btn btn-red"><i class="fa-solid fa-file-invoice-dollar"></i> Request Quote</button>
+  </div>
+</div>
+
+<script>
+// ─── GALLERY CAROUSEL ───
+const slides = [
+  'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700',
+  'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=700',
+  'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700',
+  'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700',
+  'https://images.unsplash.com/photo-1566150905458-1bf1fc15a7a0?w=700',
+  'https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=700'
+];
+let currentSlide = 0;
+
+function setSlide(i) {
+  currentSlide = i;
+  document.getElementById('mainImg').src = slides[i];
+  document.querySelectorAll('.thumb').forEach((t, idx) => {
+    t.classList.toggle('active', idx === i);
+  });
+}
+function nextSlide() { setSlide((currentSlide + 1) % slides.length); }
+function prevSlide() { setSlide((currentSlide - 1 + slides.length) % slides.length); }
+
+// Auto-play
+setInterval(nextSlide, 4000);
+
+// ─── WISHLIST ───
+document.getElementById('wishlistBtn').addEventListener('click', function() {
+  const icon = this.querySelector('i');
+  if (icon.classList.contains('fa-regular')) {
+    icon.classList.replace('fa-regular', 'fa-solid');
+    this.style.background = '#fff3e0';
+    this.style.borderColor = '#e65100';
+    this.style.color = '#e65100';
+  } else {
+    icon.classList.replace('fa-solid', 'fa-regular');
+    this.style.background = '#fff';
+    this.style.borderColor = 'var(--gold)';
+    this.style.color = 'var(--gold)';
+  }
+});
+
+// ─── FAQ ACCORDION ───
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ─── STAR RATING ───
+document.querySelectorAll('#starSelect i').forEach(star => {
+  star.addEventListener('click', function() {
+    const val = parseInt(this.dataset.val);
+    document.querySelectorAll('#starSelect i').forEach((s, i) => {
+      s.classList.toggle('lit', i < val);
+    });
+  });
+  star.addEventListener('mouseenter', function() {
+    const val = parseInt(this.dataset.val);
+    document.querySelectorAll('#starSelect i').forEach((s, i) => {
+      s.style.color = i < val ? '#f59e0b' : '#ddd';
+    });
+  });
+  star.addEventListener('mouseleave', function() {
+    document.querySelectorAll('#starSelect i').forEach(s => {
+      s.style.color = s.classList.contains('lit') ? '#f59e0b' : '#ddd';
+    });
+  });
+});
+
+// ─── ACTIVE NAV ON SCROLL ───
+const navLinks = document.querySelectorAll('.top-nav a');
+const sections = document.querySelectorAll('[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ─── COLOR SWATCH ACTIVE STYLE ───
+document.querySelectorAll('.color-swatch').forEach(sw => {
+  sw.addEventListener('click', function() {
+    document.querySelectorAll('.color-swatch').forEach(s => {
+      s.style.border = '2px solid transparent';
+      s.style.transform = 'scale(1)';
+    });
+    this.style.border = '2px solid var(--gold)';
+    this.style.transform = 'scale(1.15)';
+  });
+});
+</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-- footer start default-->
+    <footer class="bg-white border-t border-gray-200 mt-16 pt-10">
+        <!-- Newsletter Bar -->
+        <div class="bg-[#2b5d8c] text-white py-8">
+            <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="far fa-envelope-open text-4xl mr-4 opacity-80"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">SUBSCRIBE TO B2B NEWSLETTER</h4>
+                        <p class="text-sm text-blue-200">Get the latest info on global trends, trade shows and bulk offers.</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 flex">
+                    <input type="email" placeholder="Your E-mail Address" class="w-full px-4 py-3 text-sm text-gray-700 outline-none">
+                    <button class="bg-[#333] hover:bg-black text-white px-6 py-3 text-sm font-bold uppercase transition flex items-center space-x-2">
+                        <span>Subscribe</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Footer Links -->
+        <div class="bg-bgGray py-16">
+            <div class="container mx-auto px-4 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                
+                <!-- Brand Info -->
+                <div>
+                    <a href="#" class="text-3xl font-extrabold tracking-tighter flex items-center mb-6">
+                        <span class="text-primary mr-1"><i class="fas fa-globe-americas"></i></span>
+                        <span class="text-primaryDark">B2B</span><span class="text-textDark font-semibold text-xl ml-1 mt-1">World Market</span>
+                    </a>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Your premier gateway for global wholesale trade. Connect with verified suppliers, secure transactions, and scale your business effortlessly.</p>
+                    <div class="mb-4 text-sm text-gray-500">
+                        <p>Got Questions? Call us 24/7 B2B Support</p>
+                        <p class="text-2xl font-bold text-textDark mt-1">1-800-570-7777</p>
+                    </div>
+                    <div class="flex space-x-2 mt-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#1da1f2] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-twitter text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#bd081c] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-pinterest-p text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#0077b5] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#ff0000] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-youtube text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">About Platform</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">About B2B World Market</a></li>
+                        <li><a href="#" class="hover-primary">Careers</a></li>
+                        <li><a href="#" class="hover-primary">Contact Us</a></li>
+                        <li><a href="#" class="hover-primary">News & Blog</a></li>
+                        <li><a href="#" class="hover-primary">Trade Shows</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">For Suppliers</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">Become a Supplier</a></li>
+                        <li><a href="#" class="hover-primary">Supplier Memberships</a></li>
+                        <li><a href="#" class="hover-primary">Training Center</a></li>
+                        <li><a href="#" class="hover-primary">Logistics Services</a></li>
+                        <li><a href="#" class="hover-primary">Payment & Escrow</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 3 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">For Buyers</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">Sourcing Guide</a></li>
+                        <li><a href="#" class="hover-primary">Post an RFQ</a></li>
+                        <li><a href="#" class="hover-primary">Trade Assurance Protection</a></li>
+                        <li><a href="#" class="hover-primary">Track Order</a></li>
+                        <li><a href="#" class="hover-primary">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Categories Tags Bottom -->
+            <div class="container mx-auto px-4 max-w-7xl mt-12 border-t border-gray-200 pt-8 hidden md:block">
+                <div class="flex text-sm text-gray-500 mb-2">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Consumer Electric:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">TV Television</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Air Condition</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Refrigerator</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Washing Machine</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Audio Speaker</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Security Camera</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+                <div class="flex text-sm text-gray-500 mb-2">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Clothing & Apparel:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">Men T-shirt</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Dresses</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Men's Sneaker</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Leather Backpack</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+                <div class="flex text-sm text-gray-500">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Machinery:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">Packaging Machines</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Laser Cutters</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">CNC Routers</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Textile Machinery</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="bg-bgGray pb-8">
+            <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between text-xs text-gray-400">
+                <p>Copyright © 2026 B2B World Market. All Rights Reserved.</p>
+                <div class="flex items-center space-x-2 mt-4 md:mt-0">
+                    <span>We're using safe payment for</span>
+                    <!-- Simulated Payment Badges -->
+                    <div class="flex space-x-1">
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">VISA</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">MC</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">TT</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">L/C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            // In a full implementation, this would open a side drawer
+            // For this single file demo, we just show an alert or toggle a class
+            alert('Mobile menu navigation would open here.');
+        });
+    </script>
+</body>
+</html>
