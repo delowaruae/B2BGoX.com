@@ -3,642 +3,670 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secured Trading Service Order</title>
+    <title>B2BCoX.com | Secured Trading Portal</title>
     <style>
-        /* Base Fluid Background Layout & Theme Reset */
+        /* ========================================================= */
+        /* B2BCoX THEME PLATFORM RESET & LIGHT BODY LOGIC            */
+        /* ========================================================= */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
         }
 
         body {
-            background-color: #0093e9;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.6) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(118, 75, 162, 0.5) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(0, 212, 255, 0.6) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(40, 199, 111, 0.4) 0px, transparent 50%),
-                linear-gradient(135deg, #00b4db 0%, #0083b0 50%, #005c8a 100%);
-            background-attachment: fixed;
-            background-size: cover;
-            color: #333333;
+            background-color: #f8fafc; /* Crisp, clean, off-white workspace background */
+            color: #1e293b;            /* High contrast dark text for clarity */
             padding-bottom: 80px;
         }
 
-        /* Top Header Navigation Overlay */
+        /* ========================================================= */
+        /* BRAND IDENTITY TOP BAR (B2BCoX PREMIUM LIGHT)             */
+        /* ========================================================= */
         .order-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 18px 0;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
             padding: 0 25px;
         }
 
-        /* ========================================================= */
-        /* GRADIENT HEADINGS STYLING MAP                            */
-        /* ========================================================= */
-        .header-container h1 {
-            font-size: 22px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #005c8a 0%, #dd2476 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
+        .brand-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .form-card h2 {
+        .brand-logo-group .logo-box {
+            background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+            color: #ffffff;
+            font-weight: 900;
             font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 22px;
-            border-bottom: 2px solid #e1e9f3;
-            padding-bottom: 12px;
-            
-            /* Gradient Fill Effect */
-            background: linear-gradient(135deg, #1e3c72 0%, #dd2476 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: table; /* Dynamic width adjustment for underline layout alignment */
+            padding: 6px 14px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
         }
 
-        /* Fluid Main Layout Engine Grid */
+        .brand-logo-group h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+        }
+
+        .portal-badge {
+            font-size: 12px;
+            background: rgba(2, 132, 199, 0.08);
+            border: 1px solid rgba(2, 132, 199, 0.2);
+            color: #0284c7;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* ========================================================= */
+        /* MAIN GRID STRUCTURAL MECHANICS                           */
+        /* ========================================================= */
         .page-container {
             max-width: 1250px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 360px;
-            gap: 28px;
+            grid-template-columns: 1fr 380px;
+            gap: 32px;
             padding: 0 25px;
         }
 
-        /* Dynamic Main Interactive Forms Wrapper */
+        /* ========================================================= */
+        /* B2BCoX CLEAN WHITE CARDS & FORM STYLING                  */
+        /* ========================================================= */
         .form-card {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(8px);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 15, 50, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            /* Premium soft cloud shadowing */
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
             position: relative;
-            overflow: hidden;
         }
 
-        .card-bg-deco-1 {
-            background-image: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,252,255,0.95) 100%);
-        }
-        
-        .card-bg-deco-2 {
-            background-image: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(243,249,246,0.95) 100%);
+        /* Left border layout accent signature unique to B2BCoX */
+        .form-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #0284c7;
+            border-radius: 12px 0 0 12px;
         }
 
-        /* Input Controls Layout Mechanics */
+        .form-card h2 {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0f172a;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Dynamic Field Layouts */
         .form-group {
-            margin-bottom: 18px;
-            position: relative;
+            margin-bottom: 24px;
         }
 
         .form-group.row {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 22px;
         }
 
         .form-group.row label {
-            width: 160px;
-            min-width: 160px;
-            padding-top: 10px;
+            width: 180px;
+            min-width: 180px;
+            padding-top: 12px;
+            color: #475569;
         }
 
-        .required::before {
-            content: "* ";
-            color: #e53e3e;
-            font-weight: bold;
+        .required::after {
+            content: " *";
+            color: #e11d48;
         }
 
         label {
             display: block;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             margin-bottom: 8px;
-            color: #2d3748;
+            color: #475569;
         }
 
         input[type="text"],
         input[type="email"],
         textarea {
             width: 100%;
-            max-width: 420px;
-            padding: 10px 14px;
-            border: 1px solid #cbd5e0;
+            max-width: 460px;
+            padding: 12px 16px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
             border-radius: 6px;
             font-size: 14px;
+            color: #0f172a;
             outline: none;
-            background: #ffffff;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease-in-out;
         }
 
         input:focus, textarea:focus {
-            border-color: #0083b0;
-            box-shadow: 0 0 0 3px rgba(0, 131, 176, 0.2);
+            border-color: #0284c7;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
         }
 
         textarea {
             max-width: 100%;
-            height: 110px;
+            height: 120px;
             resize: none;
         }
 
         .help-text {
             display: block;
             font-size: 12px;
-            color: #627285;
+            color: #64748b;
             margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        /* Actions & Navigation Controls */
+        .btn-link {
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            color: #0284c7;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-link:hover {
+            background: rgba(2, 132, 199, 0.04);
+            border-color: #0284c7;
         }
 
         .learn-more, .chat-link {
-            font-size: 13px;
-            color: #007bb5;
+            font-size: 12px;
+            color: #0284c7;
             cursor: pointer;
-            margin-left: 8px;
             font-weight: 600;
+            border: 1px solid #e2e8f0;
+            padding: 5px 12px;
+            border-radius: 4px;
+            background: #f8fafc;
         }
 
-        /* Utility Structure Grid Units */
+        .chat-link:hover, .learn-more:hover {
+            background: #f1f5f9;
+        }
+
         .grid-2-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
         }
 
-        .grid-3-col {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+        /* ========================================================= */
+        /* CLEAN SPECIFICATION ROW TABLES                           */
+        /* ========================================================= */
+        .seller-bar {
+            background: #f8fafc;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             font-size: 14px;
-        }
-
-        .label-muted {
-            color: #5a6a85;
-        }
-
-        /* Products Order Data Table */
-        .seller-info {
-            font-size: 14px;
-            margin-bottom: 16px;
-            color: #1a202c;
+            border: 1px solid #e2e8f0;
         }
 
         .product-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 8px;
             margin-top: 12px;
         }
 
         .product-table th {
-            background-color: #f1f5f9;
             text-align: left;
-            padding: 14px;
-            font-size: 13px;
-            color: #4a5568;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #64748b;
             font-weight: 700;
-            border-bottom: 2px solid #e2e8f0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .product-table td {
-            padding: 18px 14px;
-            border-bottom: 1px solid #edf2f7;
+            padding: 20px 16px;
+            background: #f8fafc;
             font-size: 14px;
-            vertical-align: top;
-            background: #ffffff;
+            vertical-align: middle;
+            color: #334155;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        .product-detail {
+        .product-table tr td:first-child { border-radius: 6px 0 0 6px; border-left: 1px solid #e2e8f0; }
+        .product-table tr td:last-child { border-radius: 0 6px 6px 0; border-right: 1px solid #e2e8f0; }
+
+        .product-identity {
             display: flex;
-            gap: 14px;
+            gap: 16px;
+            align-items: center;
         }
 
-        .product-placeholder-img {
-            width: 64px;
-            height: 64px;
-            background-image: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+        .product-avatar {
+            width: 52px;
+            height: 52px;
+            background: #e2e8f0;
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            font-size: 22px;
         }
 
         .product-title {
             font-weight: 600;
-            color: #1a202c;
-            line-height: 1.4;
+            color: #0f172a;
         }
 
+        /* Custom Quantity Counter Elements */
         .quantity-picker {
             display: inline-flex;
-            border: 1px solid #cbd5e0;
+            border: 1px solid #cbd5e1;
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            background: #ffffff;
         }
 
         .quantity-picker button {
-            background: #f8fafc;
+            background: #f1f5f9;
             border: none;
             width: 34px;
             height: 34px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: bold;
-            color: #4a5568;
+            color: #475569;
             transition: background 0.2s;
         }
 
         .quantity-picker button:hover {
             background: #e2e8f0;
+            color: #0f172a;
         }
 
         .quantity-picker input {
-            width: 48px;
+            width: 50px;
+            background: #ffffff;
             border: none;
-            border-left: 1px solid #cbd5e0;
-            border-right: 1px solid #cbd5e0;
             text-align: center;
             font-size: 14px;
-            outline: none;
+            color: #0f172a;
             font-weight: 600;
         }
 
         .quantity-picker input::-webkit-inner-spin-button { display: none; }
 
         .text-right { text-align: right; }
-        .bold-text { font-weight: 700; color: #1a202c; }
+        .bold-text { font-weight: 700; color: #0f172a; }
 
         .total-row {
             text-align: right;
-            margin-top: 24px;
+            margin-top: 28px;
             font-size: 14px;
-            font-weight: 700;
-            color: #4a5568;
+            color: #475569;
         }
 
         .total-price {
-            font-size: 20px;
-            color: #0c2340;
-            margin-left: 10px;
+            font-size: 22px;
+            color: #0284c7;
+            margin-left: 12px;
             font-weight: 800;
         }
 
-        /* Optional Service Rows Structure */
-        .service-box {
+        /* Horizontal Utility Data Strips */
+        .meta-summary-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .meta-summary-strip div {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 16px 20px;
+            border-radius: 8px;
+        }
+
+        /* Value Added Blocks */
+        .addon-service-container {
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            padding: 18px;
+            padding: 24px;
             display: grid;
-            grid-template-columns: 1.5fr 1.5fr auto;
+            grid-template-columns: 1fr 1fr auto;
             gap: 24px;
             align-items: center;
-            background-color: #ffffff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            background: #f8fafc;
         }
 
-        .service-main h3 {
+        .addon-title h3 {
             font-size: 15px;
             font-weight: 700;
-            color: #1a202c;
+            color: #0f172a;
         }
 
-        .highlight-text {
-            color: #dd6b20;
+        .cost-highlight {
+            color: #d97706;
             font-weight: 700;
-        }
-
-        /* Action triggers */
-        .btn-link {
-            background: none;
-            border: none;
-            color: #007bb5;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-            padding: 0;
-            text-decoration: underline;
         }
 
         .btn-secondary {
             background: #ffffff;
-            border: 1.5px solid #cbd5e0;
-            padding: 9px 18px;
+            border: 1px solid #cbd5e1;
+            padding: 10px 18px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 13px;
             font-weight: 600;
-            color: #4a5568;
+            color: #475569;
             transition: all 0.2s;
         }
 
         .btn-secondary:hover {
             background: #f8fafc;
-            border-color: #a0aec0;
+            border-color: #94a3b8;
         }
 
-        /* Character metadata indicators */
-        .char-count {
+        /* Character Limit Trackers */
+        .char-counter {
             position: absolute;
-            right: 12px;
-            bottom: 12px;
+            right: 16px;
+            bottom: 16px;
             font-size: 11px;
-            color: #a0aec0;
-            font-weight: 500;
+            color: #94a3b8;
         }
 
-        .attachment-text {
+        .attachments-legend {
             font-size: 13px;
-            color: #5a6a85;
-            margin-top: 12px;
+            color: #475569;
+            margin-top: 16px;
         }
 
-        .info-icon {
-            color: #cbd5e0;
+        .info-tip {
+            color: #94a3b8;
             cursor: help;
             font-size: 13px;
-            margin-left: 3px;
+            margin-left: 4px;
         }
 
         /* ========================================================= */
-        /* RIGHT SIDEBAR SYSTEM & FLOATING BEHAVIORS         */
+        /* RIGHT CHECKOUT SIDEBAR INFRASTRUCTURE                     */
         /* ========================================================= */
         .sidebar {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
-        /* SUMMARY BLOCK (WARM DEEP GRADIENT) */
-        .sticky-submit-block {
+        .sticky-checkout-block {
             position: sticky;
-            top: 25px;
-            background: linear-gradient(135deg, #ff6b4a 0%, #dd2476 100%);
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 12px 35px rgba(221, 36, 118, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            top: 30px;
+            background: #0f172a; /* Deep Slate styling preserved for premium structural focus contrast */
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+            border: 1px solid #1e293b;
             color: #ffffff;
-            z-index: 100;
+            z-index: 99;
         }
 
-        .summary-header {
+        .summary-title-wrap {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
-        .summary-header h2 {
+        .summary-title-wrap h2 {
             font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .guarantee-tag {
-            font-size: 11px;
-            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: 700;
             color: #ffffff;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-weight: 600;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        .summary-note {
+        .platform-secure-tag {
+            font-size: 11px;
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .summary-status-text {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.9);
+            color: #94a3b8;
             line-height: 1.5;
             margin-bottom: 24px;
         }
 
-        .total-summary-row {
+        .summary-aggregate-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
             font-size: 16px;
             font-weight: 700;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 16px;
+            border-top: 1px solid #334155;
+            padding-top: 18px;
         }
 
-        .negotiable-text {
+        .val-negotiable {
             color: #ffffff;
-            font-size: 24px;
-            font-weight: 900;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        .terms-label {
+        .legal-check-label {
             display: flex;
             gap: 10px;
             align-items: flex-start;
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.85);
+            color: #94a3b8;
             line-height: 1.5;
             margin-bottom: 24px;
             cursor: pointer;
         }
 
-        .terms-label input {
+        .legal-check-label input {
             margin-top: 3px;
-            accent-color: #dd2476;
+            accent-color: #0284c7;
         }
 
-        .terms-label a {
-            color: #ffffff;
-            text-decoration: underline;
-            font-weight: 600;
-        }
-
-        .btn-primary {
-            background-color: #ffffff;
-            color: #dd2476;
-            border: none;
-            padding: 14px;
-            width: 100%;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 800;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: all 0.25s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            background-color: #fff0f5;
-        }
-
-        /* SCROLLABLE COLORFUL INFO CARDS WRAPPER */
-        .info-cards-container {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .info-card-blue {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #ffffff;
-        }
-        .info-card-blue p { color: #e2e8f0; }
-
-        .info-card-green {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: #ffffff;
-        }
-        .info-card-green p { color: #f0fdf4; }
-
-        .info-card-purple {
-            background: linear-gradient(135deg, #6441a5 0%, #2a0845 100%);
-            color: #ffffff;
-        }
-        .info-card-purple p { color: #f3e8ff; }
-
-        .info-card {
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 6px 20px rgba(0, 15, 50, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: transform 0.3s ease;
+        .legal-check-label a {
+            color: #38bdf8;
+            text-decoration: none;
         }
         
-        .info-card:hover {
-            transform: scale(1.02);
+        .legal-check-label a:hover {
+            text-decoration: underline;
         }
 
-        .info-card h3 {
-            font-size: 14px;
+        .btn-primary-action {
+            background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 15px;
             font-weight: 700;
-            margin-bottom: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary-action:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        /* Side Meta Information Cards */
+        .trust-cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .trust-info-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .trust-info-card h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
             gap: 8px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
-        .info-card p {
+        .trust-info-card p {
             font-size: 12px;
+            color: #64748b;
             line-height: 1.5;
         }
 
-        .card-icon {
-            font-size: 16px;
+        .card-bullet-icon {
+            color: #0284c7;
+            font-size: 14px;
         }
 
-        .protection-note {
-            font-size: 12px;
-            color: #ffffff;
-            background-color: rgba(0, 30, 80, 0.35);
-            backdrop-filter: blur(4px);
-            padding: 14px;
-            border-radius: 8px;
-            line-height: 1.5;
-            border: 1px dashed rgba(255,255,255,0.3);
+        .bottom-disclaimer {
+            font-size: 11px;
+            color: #94a3b8;
             text-align: center;
-            font-weight: 500;
+            line-height: 1.4;
+            padding: 0 10px;
         }
     </style>
 </head>
 <body>
 
+    <!-- BRAND PLATFORM HEADER -->
     <header class="order-header">
         <div class="header-container">
-            <span class="shield-icon">🛡️</span>
-            <h1>Secured Trading Service Order</h1>
+            <div class="brand-logo-group">
+                <div class="logo-box">B2BCoX</div>
+                <h1>Secured Trading Desk</h1>
+            </div>
+            <div class="portal-badge">B2B Verified Order Engine</div>
         </div>
     </header>
 
     <div class="page-container">
         
+        <!-- MAIN BLOCK FORM OBJECTS -->
         <main class="main-content">
             
-            <section class="form-card card-bg-deco-1">
-                <h2>Buyer Info.</h2>
+            <!-- BUYER MANAGEMENT UNIT -->
+            <section class="form-card">
+                <h2>Buyer Profile Link</h2>
                 <div class="form-group row">
-                    <label class="required">Email:</label>
+                    <label class="required">Account Email:</label>
                     <div style="width: 100%;">
-                        <input type="email" placeholder="Please enter">
-                        <small class="help-text">Reply notifications will be sent to this email!</small>
+                        <input type="email" placeholder="name@company.com">
+                        <small class="help-text">Transaction notifications and status dispatch updates route here.</small>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="required">Shipping Address:</label>
-                    <button class="btn-link">+ Add Address</button>
+                    <label class="required">Delivery Terminal Address:</label>
+                    <button class="btn-link">+ Assign Delivery Point</button>
                 </div>
                 <div class="form-group row">
-                    <label class="required">Billing Address:</label>
-                    <button class="btn-link">+ Add Address</button>
+                    <label class="required">Corporate Billing File:</label>
+                    <button class="btn-link">+ Link Corporate Address</button>
                 </div>
             </section>
 
+            <!-- CORPORATE FISCAL COMPLIANCE UNIT -->
             <section class="form-card">
-                <h2>Tax Info. <span class="learn-more">Learn More</span></h2>
+                <h2>Taxation & Corporate Verification <span class="learn-more">Compliance Docs</span></h2>
                 <div class="grid-2-col">
                     <div class="form-group">
-                        <label>VAT/Tax ID:</label>
-                        <input type="text" placeholder="Please enter">
+                        <label>VAT / Registration ID Number:</label>
+                        <input type="text" placeholder="Enter taxation reference">
                     </div>
                     <div class="form-group">
-                        <label>Company Name:</label>
-                        <input type="text" placeholder="Please enter">
-                        <small class="help-text">Please tell us your company name so that we can better understand your business.</small>
+                        <label>Legal Corporate Entity Name:</label>
+                        <input type="text" placeholder="As registered locally">
+                        <small class="help-text">Ensures correct commercial clearance invoices are generated.</small>
                     </div>
                 </div>
             </section>
 
+            <!-- PRODUCT MATRIX ENGINE -->
             <section class="form-card">
-                <h2>Product Info.</h2>
-                <p class="seller-info">Seller: <strong>Beijing Jiuwei Technology Co., Ltd.</strong> <span class="chat-link">💬 Chat with Supplier</span></p>
+                <h2>Itemized Product Manifest</h2>
+                <div class="seller-bar">
+                    <span>Fulfillment Entity: <strong>Beijing Jiuwei Technology Co., Ltd.</strong></span>
+                    <span class="chat-link">✉️ Open B2B Messenger</span>
+                </div>
                 
                 <table class="product-table">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Products</th>
-                            <th>Unit Price(USD)</th>
+                            <th style="width: 50px;">Item</th>
+                            <th>Commercial Product Description</th>
+                            <th>Unit Value (USD)</th>
                             <th>Quantity</th>
-                            <th class="text-right">Total Amount(USD)</th>
+                            <th class="text-right">Net Value (USD)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td>01</td>
                             <td>
-                                <div class="product-detail">
-                                    <div class="product-placeholder-img">📦</div>
+                                <div class="product-identity">
+                                    <div class="product-avatar">📦</div>
                                     <div>
                                         <p class="product-title">Storage Pallet Rack Heavy Duty Storage...</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>380.00 / Set <span class="info-icon">❓</span></td>
+                            <td>380.00 / Set <span class="info-tip">ⓘ</span></td>
                             <td>
                                 <div class="quantity-picker">
                                     <button type="button">−</button>
@@ -652,97 +680,100 @@
                 </table>
 
                 <div class="total-row">
-                    <span>Total Price of Products:</span>
+                    <span>Subtotal Product Manifest Value:</span>
                     <span class="total-price">USD 3,800.00</span>
                 </div>
             </section>
 
-            <section class="form-card grid-3-col card-bg-deco-1">
+            <!-- DISPATCH SYSTEM VARIABLES OVERVIEW -->
+            <section class="meta-summary-strip form-card" style="padding: 24px;">
                 <div>
-                    <span class="label-muted">Shipping Method:</span> <strong style="color: #0c2340;">Negotiable</strong>
+                    <span style="color: #64748b; display:block; font-size:12px; margin-bottom:4px;">Logistics Protocol:</span>
+                    <strong style="color: #0f172a; font-size: 15px;">Negotiable via Agent</strong>
                 </div>
                 <div>
-                    <span class="label-muted">Shipping Cost:</span> <strong style="color: #0c2340;">Negotiable</strong>
+                    <span style="color: #64748b; display:block; font-size:12px; margin-bottom:4px;">Fulfillment Cost:</span>
+                    <strong style="color: #0f172a; font-size: 15px;">Pending Verification</strong>
                 </div>
                 <div>
-                    <span class="label-muted">Insurance:</span> <strong style="color: #0c2340;">Negotiable</strong>
+                    <span style="color: #64748b; display:block; font-size:12px; margin-bottom:4px;">Freight Insurance Cover:</span>
+                    <strong style="color: #0f172a; font-size: 15px;">To Be Documented</strong>
                 </div>
             </section>
 
-            <section class="form-card card-bg-deco-2">
-                <h2>Value-Added Services (Optional)</h2>
-                <div class="service-box">
-                    <div class="service-main">
-                        <h3>Quality Inspection by <span style="font-size: 13px;">🛡️</span></h3>
-                        <p class="help-text">It helps check for product conformity and reduce risk of quality issues.</p>
-                    </div>
-                    <div class="service-pricing">
-                        <p class="label-muted">Reference price: <span class="highlight-text">USD 258.00+</span></p>
-                        <p class="help-text">Additional charges may apply for Customized services. We will contact you for payment validation.</p>
-                    </div>
-                    <div class="service-action">
-                        <button class="btn-secondary">+ Add Service</button>
-                    </div>
-                </div>
-            </section>
-
+            <!-- ADDON ENTERPRISE UTILITY MODULE -->
             <section class="form-card">
-                <h2>Remark</h2>
-                <div class="form-group">
-                    <textarea maxlength="1000" placeholder="You can leave additional notes here (optional)"></textarea>
-                    <span class="char-count">0/1000</span>
+                <h2>Pre-Dispatch Verification Options</h2>
+                <div class="addon-service-container">
+                    <div class="addon-title">
+                        <h3>Third-Party Asset Audit & Inspection</h3>
+                        <p class="help-text">Independent validation of structural attributes prior to port loading.</p>
+                    </div>
+                    <div>
+                        <p style="color: #475569; font-size: 13px;">Baserate Evaluation: <span class="cost-highlight">USD 258.00+</span></p>
+                        <p class="help-text">Variable layout metrics depend on unit quantities. Invoiced explicitly on approval.</p>
+                    </div>
+                    <div>
+                        <button class="btn-secondary">Provision Service</button>
+                    </div>
                 </div>
-                <div class="attachment-text">Attachment 0/5 <span class="info-icon">❓</span></div>
+            </section>
+
+            <!-- CUSTOM FIELD NOTES AND REMARKS METADATA -->
+            <section class="form-card">
+                <h2>Consignment Directives & Remarks</h2>
+                <div class="form-group" style="position: relative;">
+                    <textarea maxlength="1000" placeholder="Provide precise specifications, special shipping notes, or customs declarations details if required..."></textarea>
+                    <span class="char-counter">0 / 1000</span>
+                </div>
+                <div class="attachments-legend">Supplemental Documentation Files (0/5) <span class="info-tip">ⓘ</span></div>
             </section>
 
         </main>
 
+        <!-- CHECKOUT SIDEBAR INFRASTRUCTURE -->
         <aside class="sidebar">
             
-            <div class="sticky-submit-block">
-                <div class="summary-header">
-                    <h2>Summary</h2>
-                    <span class="guarantee-tag">Payment Guarantee</span>
+            <div class="sticky-checkout-block">
+                <div class="summary-title-wrap">
+                    <h2>Manifest Wrap</h2>
+                    <span class="platform-secure-tag">B2BCoX Protected</span>
                 </div>
-                <p class="summary-note">This order needs to be confirmed by the supplier to continue to pay.</p>
+                <p class="summary-status-text">Consignment processes require supplier validation before clearing payment gateways.</p>
                 
-                <div class="total-summary-row">
-                    <span>Total</span>
-                    <span class="negotiable-text">Negotiable</span>
+                <div class="summary-aggregate-row">
+                    <span>Total Valuation</span>
+                    <span class="val-negotiable">Negotiable</span>
                 </div>
 
-                <label class="terms-label">
+                <label class="legal-check-label">
                     <input type="checkbox">
-                    <span>I have read and agreed to the <a href="#">Terms and Conditions</a>, <a href="#">Privacy Policy</a> and <a href="#">Return & Refund Rules</a>.</span>
+                    <span>I approve and bind this request in accordance with the B2BCoX <a href="#">Terms of Brokerage</a>, <a href="#">Data Policies</a>, and <a href="#">Escrow Rules</a>.</span>
                 </label>
 
-                <button class="btn-primary" type="submit">Submit Order</button>
+                <button class="btn-primary-action" type="submit">Transmit Intent to Supplier</button>
             </div>
 
-            <div class="info-cards-container">
+            <!-- SECURITY ASSURANCE METADATA MATRIX -->
+            <div class="trust-cards-stack">
                 
-                <div class="info-card info-card-blue">
-                    <h3><span class="card-icon">🔒</span> Funds Security</h3>
-                    <p>Encrypted, platform-protected payments with refund support for eligible order issues.</p>
+                <div class="trust-info-card">
+                    <h3><span class="card-bullet-icon">◆</span> Escrow Layer Protection</h3>
+                    <p>Capital is held securely in platform transit vaults and only distributed upon verified tracking checkpoints.</p>
                 </div>
 
-                <div class="info-card info-card-green">
-                    <h3><span class="card-icon">👑</span> Audited Suppliers</h3>
-                    <p>Online-trading suppliers are reviewed to meet platform trust and compliance standards.</p>
+                <div class="trust-info-card">
+                    <h3><span class="card-bullet-icon">◆</span> Supplier Vetting Standards</h3>
+                    <p>All transacting commercial entities are authenticated to ensure licensing and supply chain safety.</p>
                 </div>
 
-                <div class="info-card info-card-blue">
-                    <h3><span class="card-icon">🚚</span> Platform Logistics</h3>
-                    <p>Platform-supported logistics (where available) for clearer tracking and smoother delivery.</p>
-                </div>
-
-                <div class="info-card info-card-purple">
-                    <h3><span class="card-icon">⚡</span> Inspection & After-Sales</h3>
-                    <p>Optional inspection and platform-assisted after-sales and dispute handling networks.</p>
+                <div class="trust-info-card">
+                    <h3><span class="card-bullet-icon">◆</span> Unified Logistics Engine</h3>
+                    <p>Trace integrated freight status straight from your global B2BCoX control panel dashboard.</p>
                 </div>
                 
-                <div class="protection-note">
-                    Only orders placed and paid through Secured Trading Service are eligible for protection and related transactional workflows.
+                <div class="bottom-disclaimer">
+                    Only trading contracts initialized and completed directly via the core B2BCoX.com gateway infrastructure qualify for transactional assurance frameworks.
                 </div>
             </div>
 
