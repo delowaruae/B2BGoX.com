@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secured Trading Service Order</title>
+    <style>
+        /* Base Fluid Background Layout & Theme Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0093e9;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.6) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(118, 75, 162, 0.5) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 212, 255, 0.6) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(40, 199, 111, 0.4) 0px, transparent 50%),
+                linear-gradient(135deg, #00b4db 0%, #0083b0 50%, #005c8a 100%);
+            background-attachment: fixed;
+            background-size: cover;
+            color: #333333;
+            padding-bottom: 80px;
+        }
+
+        /* Top Header Navigation Overlay */
+        .order-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 18px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 25px;
+        }
+
+        /* ========================================================= */
+        /* GRADIENT HEADINGS STYLING MAP                            */
+        /* ========================================================= */
+        .header-container h1 {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #005c8a 0%, #dd2476 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .form-card h2 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 22px;
+            border-bottom: 2px solid #e1e9f3;
+            padding-bottom: 12px;
+            
+            /* Gradient Fill Effect */
+            background: linear-gradient(135deg, #1e3c72 0%, #dd2476 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: table; /* Dynamic width adjustment for underline layout alignment */
+        }
+
+        /* Fluid Main Layout Engine Grid */
+        .page-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 28px;
+            padding: 0 25px;
+        }
+
+        /* Dynamic Main Interactive Forms Wrapper */
+        .form-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 15, 50, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-bg-deco-1 {
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,252,255,0.95) 100%);
+        }
+        
+        .card-bg-deco-2 {
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(243,249,246,0.95) 100%);
+        }
+
+        /* Input Controls Layout Mechanics */
+        .form-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .form-group.row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 22px;
+        }
+
+        .form-group.row label {
+            width: 160px;
+            min-width: 160px;
+            padding-top: 10px;
+        }
+
+        .required::before {
+            content: "* ";
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            max-width: 420px;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #0083b0;
+            box-shadow: 0 0 0 3px rgba(0, 131, 176, 0.2);
+        }
+
+        textarea {
+            max-width: 100%;
+            height: 110px;
+            resize: none;
+        }
+
+        .help-text {
+            display: block;
+            font-size: 12px;
+            color: #627285;
+            margin-top: 6px;
+        }
+
+        .learn-more, .chat-link {
+            font-size: 13px;
+            color: #007bb5;
+            cursor: pointer;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        /* Utility Structure Grid Units */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .label-muted {
+            color: #5a6a85;
+        }
+
+        /* Products Order Data Table */
+        .seller-info {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: #1a202c;
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        .product-table th {
+            background-color: #f1f5f9;
+            text-align: left;
+            padding: 14px;
+            font-size: 13px;
+            color: #4a5568;
+            font-weight: 700;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .product-table td {
+            padding: 18px 14px;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 14px;
+            vertical-align: top;
+            background: #ffffff;
+        }
+
+        .product-detail {
+            display: flex;
+            gap: 14px;
+        }
+
+        .product-placeholder-img {
+            width: 64px;
+            height: 64px;
+            background-image: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .product-title {
+            font-weight: 600;
+            color: #1a202c;
+            line-height: 1.4;
+        }
+
+        .quantity-picker {
+            display: inline-flex;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .quantity-picker button {
+            background: #f8fafc;
+            border: none;
+            width: 34px;
+            height: 34px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #4a5568;
+            transition: background 0.2s;
+        }
+
+        .quantity-picker button:hover {
+            background: #e2e8f0;
+        }
+
+        .quantity-picker input {
+            width: 48px;
+            border: none;
+            border-left: 1px solid #cbd5e0;
+            border-right: 1px solid #cbd5e0;
+            text-align: center;
+            font-size: 14px;
+            outline: none;
+            font-weight: 600;
+        }
+
+        .quantity-picker input::-webkit-inner-spin-button { display: none; }
+
+        .text-right { text-align: right; }
+        .bold-text { font-weight: 700; color: #1a202c; }
+
+        .total-row {
+            text-align: right;
+            margin-top: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #4a5568;
+        }
+
+        .total-price {
+            font-size: 20px;
+            color: #0c2340;
+            margin-left: 10px;
+            font-weight: 800;
+        }
+
+        /* Optional Service Rows Structure */
+        .service-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px;
+            display: grid;
+            grid-template-columns: 1.5fr 1.5fr auto;
+            gap: 24px;
+            align-items: center;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .service-main h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .highlight-text {
+            color: #dd6b20;
+            font-weight: 700;
+        }
+
+        /* Action triggers */
+        .btn-link {
+            background: none;
+            border: none;
+            color: #007bb5;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            text-decoration: underline;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            border: 1.5px solid #cbd5e0;
+            padding: 9px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a5568;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #a0aec0;
+        }
+
+        /* Character metadata indicators */
+        .char-count {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            font-size: 11px;
+            color: #a0aec0;
+            font-weight: 500;
+        }
+
+        .attachment-text {
+            font-size: 13px;
+            color: #5a6a85;
+            margin-top: 12px;
+        }
+
+        .info-icon {
+            color: #cbd5e0;
+            cursor: help;
+            font-size: 13px;
+            margin-left: 3px;
+        }
+
+        /* ========================================================= */
+        /* RIGHT SIDEBAR SYSTEM & FLOATING BEHAVIORS         */
+        /* ========================================================= */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* SUMMARY BLOCK (WARM DEEP GRADIENT) */
+        .sticky-submit-block {
+            position: sticky;
+            top: 25px;
+            background: linear-gradient(135deg, #ff6b4a 0%, #dd2476 100%);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 12px 35px rgba(221, 36, 118, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            z-index: 100;
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .summary-header h2 {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .guarantee-tag {
+            font-size: 11px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .summary-note {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .total-summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 16px;
+            font-weight: 700;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 16px;
+        }
+
+        .negotiable-text {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .terms-label {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            cursor: pointer;
+        }
+
+        .terms-label input {
+            margin-top: 3px;
+            accent-color: #dd2476;
+        }
+
+        .terms-label a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #ffffff;
+            color: #dd2476;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.25s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            background-color: #fff0f5;
+        }
+
+        /* SCROLLABLE COLORFUL INFO CARDS WRAPPER */
+        .info-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .info-card-blue {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+        }
+        .info-card-blue p { color: #e2e8f0; }
+
+        .info-card-green {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: #ffffff;
+        }
+        .info-card-green p { color: #f0fdf4; }
+
+        .info-card-purple {
+            background: linear-gradient(135deg, #6441a5 0%, #2a0845 100%);
+            color: #ffffff;
+        }
+        .info-card-purple p { color: #f3e8ff; }
+
+        .info-card {
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 20px rgba(0, 15, 50, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: scale(1.02);
+        }
+
+        .info-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .info-card p {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .card-icon {
+            font-size: 16px;
+        }
+
+        .protection-note {
+            font-size: 12px;
+            color: #ffffff;
+            background-color: rgba(0, 30, 80, 0.35);
+            backdrop-filter: blur(4px);
+            padding: 14px;
+            border-radius: 8px;
+            line-height: 1.5;
+            border: 1px dashed rgba(255,255,255,0.3);
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="order-header">
+        <div class="header-container">
+            <span class="shield-icon">🛡️</span>
+            <h1>Secured Trading Service Order</h1>
+        </div>
+    </header>
+
+    <div class="page-container">
+        
+        <main class="main-content">
+            
+            <section class="form-card card-bg-deco-1">
+                <h2>Buyer Info.</h2>
+                <div class="form-group row">
+                    <label class="required">Email:</label>
+                    <div style="width: 100%;">
+                        <input type="email" placeholder="Please enter">
+                        <small class="help-text">Reply notifications will be sent to this email!</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="required">Shipping Address:</label>
+                    <button class="btn-link">+ Add Address</button>
+                </div>
+                <div class="form-group row">
+                    <label class="required">Billing Address:</label>
+                    <button class="btn-link">+ Add Address</button>
+                </div>
+            </section>
+
+            <section class="form-card">
+                <h2>Tax Info. <span class="learn-more">Learn More</span></h2>
+                <div class="grid-2-col">
+                    <div class="form-group">
+                        <label>VAT/Tax ID:</label>
+                        <input type="text" placeholder="Please enter">
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name:</label>
+                        <input type="text" placeholder="Please enter">
+                        <small class="help-text">Please tell us your company name so that we can better understand your business.</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-card">
+                <h2>Product Info.</h2>
+                <p class="seller-info">Seller: <strong>Beijing Jiuwei Technology Co., Ltd.</strong> <span class="chat-link">💬 Chat with Supplier</span></p>
+                
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Products</th>
+                            <th>Unit Price(USD)</th>
+                            <th>Quantity</th>
+                            <th class="text-right">Total Amount(USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <div class="product-detail">
+                                    <div class="product-placeholder-img">📦</div>
+                                    <div>
+                                        <p class="product-title">Storage Pallet Rack Heavy Duty Storage...</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>380.00 / Set <span class="info-icon">❓</span></td>
+                            <td>
+                                <div class="quantity-picker">
+                                    <button type="button">−</button>
+                                    <input type="number" value="10" min="1">
+                                    <button type="button">+</button>
+                                </div>
+                            </td>
+                            <td class="text-right bold-text">3,800.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="total-row">
+                    <span>Total Price of Products:</span>
+                    <span class="total-price">USD 3,800.00</span>
+                </div>
+            </section>
+
+            <section class="form-card grid-3-col card-bg-deco-1">
+                <div>
+                    <span class="label-muted">Shipping Method:</span> <strong style="color: #0c2340;">Negotiable</strong>
+                </div>
+                <div>
+                    <span class="label-muted">Shipping Cost:</span> <strong style="color: #0c2340;">Negotiable</strong>
+                </div>
+                <div>
+                    <span class="label-muted">Insurance:</span> <strong style="color: #0c2340;">Negotiable</strong>
+                </div>
+            </section>
+
+            <section class="form-card card-bg-deco-2">
+                <h2>Value-Added Services (Optional)</h2>
+                <div class="service-box">
+                    <div class="service-main">
+                        <h3>Quality Inspection by <span style="font-size: 13px;">🛡️</span></h3>
+                        <p class="help-text">It helps check for product conformity and reduce risk of quality issues.</p>
+                    </div>
+                    <div class="service-pricing">
+                        <p class="label-muted">Reference price: <span class="highlight-text">USD 258.00+</span></p>
+                        <p class="help-text">Additional charges may apply for Customized services. We will contact you for payment validation.</p>
+                    </div>
+                    <div class="service-action">
+                        <button class="btn-secondary">+ Add Service</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-card">
+                <h2>Remark</h2>
+                <div class="form-group">
+                    <textarea maxlength="1000" placeholder="You can leave additional notes here (optional)"></textarea>
+                    <span class="char-count">0/1000</span>
+                </div>
+                <div class="attachment-text">Attachment 0/5 <span class="info-icon">❓</span></div>
+            </section>
+
+        </main>
+
+        <aside class="sidebar">
+            
+            <div class="sticky-submit-block">
+                <div class="summary-header">
+                    <h2>Summary</h2>
+                    <span class="guarantee-tag">Payment Guarantee</span>
+                </div>
+                <p class="summary-note">This order needs to be confirmed by the supplier to continue to pay.</p>
+                
+                <div class="total-summary-row">
+                    <span>Total</span>
+                    <span class="negotiable-text">Negotiable</span>
+                </div>
+
+                <label class="terms-label">
+                    <input type="checkbox">
+                    <span>I have read and agreed to the <a href="#">Terms and Conditions</a>, <a href="#">Privacy Policy</a> and <a href="#">Return & Refund Rules</a>.</span>
+                </label>
+
+                <button class="btn-primary" type="submit">Submit Order</button>
+            </div>
+
+            <div class="info-cards-container">
+                
+                <div class="info-card info-card-blue">
+                    <h3><span class="card-icon">🔒</span> Funds Security</h3>
+                    <p>Encrypted, platform-protected payments with refund support for eligible order issues.</p>
+                </div>
+
+                <div class="info-card info-card-green">
+                    <h3><span class="card-icon">👑</span> Audited Suppliers</h3>
+                    <p>Online-trading suppliers are reviewed to meet platform trust and compliance standards.</p>
+                </div>
+
+                <div class="info-card info-card-blue">
+                    <h3><span class="card-icon">🚚</span> Platform Logistics</h3>
+                    <p>Platform-supported logistics (where available) for clearer tracking and smoother delivery.</p>
+                </div>
+
+                <div class="info-card info-card-purple">
+                    <h3><span class="card-icon">⚡</span> Inspection & After-Sales</h3>
+                    <p>Optional inspection and platform-assisted after-sales and dispute handling networks.</p>
+                </div>
+                
+                <div class="protection-note">
+                    Only orders placed and paid through Secured Trading Service are eligible for protection and related transactional workflows.
+                </div>
+            </div>
+
+        </aside>
+    </div>
+
+</body>
+</html>

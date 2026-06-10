@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B World Market - Global Wholesale Trade</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cloudflare.com">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1d4ed8', // Deep Blue
+                        primaryDark: '#1e3a8a',
+                        secondary: '#f97316', // Orange highlight (like Wolmart)
+                        textDark: '#333333',
+                        textLight: '#666666',
+                        borderGray: '#e5e7eb',
+                        bgGray: '#f8f9fa'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #333; overflow-x: hidden; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+        /* B2B Specific Styles */
+        .tier-price { font-size: 0.8rem; line-height: 1.2; }
+        .tier-price strong { font-size: 1.1rem; color: #333; }
+        .hover-primary:hover { color: #1d4ed8; transition: color 0.3s; }
+        .header-dropdown-shadow { box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    
+	
+	/* VIDEO icon */
+
+.video-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(to right,#ff0000,#ff2b2b);
+    color:#fff;
+    text-decoration:none;
+    padding:7px 14px;
+    border-radius:30px;
+    box-shadow:0 3px 10px rgba(255,0,0,.25);}
+
+
+.video-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    transition:.8s;}
+
+
+
+.video-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 20px 40px rgba(214,0,0,.25);}
+
+.video-play-icon{
+    width:26px;
+    height:26px;
+    background:#fff;
+    color:red;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+	transition:.3s;}
+
+.video-new{
+    background:#fff;
+    color:red;
+    font-size:9px;
+    padding:2px 5px;
+    border-radius:20px;
+    font-weight:bold;
+	animation:pulse 1.5s infinite;}
+	
+	/* VIDEO icon ends*/
+	
+	
+	</style>
+</head>
+<body class="bg-white">
+
+    <div class="bg-gray-100 text-xs text-textLight py-2 border-b border-gray-200 hidden md:block">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-7xl">
+            <div class="flex items-center space-x-4">
+                <span>Welcome to B2B GoX - Global Sourcing Made Easy!</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
+                    <span>USD</span> <i class="fas fa-chevron-down text-[10px]"></i>
+                </div>
+                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
+                    <img src="https://flagcdn.com/w20/us.png" alt="ENG" class="h-3 w-4">
+                    <span>ENG</span> <i class="fas fa-chevron-down text-[10px]"></i>
+                </div>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover-primary">Become a Supplier</a>
+                <a href="#" class="hover-primary">Help Center</a>
+                <a href="#" class="hover-primary">My Account</a>
+				
+              
+			   <div class="relative group py-1">
+                    <a href="#" class="hover-primary font-semibold text-textDark flex items-center">
+                        <i class="far fa-user mr-1"></i> Sign In / Register
+                    </a>
+					
+		
+
+					
+                    
+         <div class="dropdown-card absolute right-0 top-full mt-1 w-[250px] bg-white border border-red-200 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-sm">
+                        
+                        <div class="absolute -top-1.5 right-4 w-3 h-3 bg-white border-t border-l border-red-200 transform rotate-45"></div>
+
+                        <div class="p-4 border-b border-gray-100 ">
+                            <a href="signin.html" class="block w-full bg-primary text-white text-base font-semibold py-2 rounded-full text-center hover:bg-primaryDark transition mb-3">Sign in</a>
+                            
+                            <div class="p-4 py-2 flex justify-center items-center space-x-4 mb-4">
+    <a href="https://accounts.google.com" target="_blank" class="transform hover:scale-110 transition duration-200" title="Sign in with Google">
+        <img src="https://cdnjs.cloudflare.com/ajax/libs/logos/1.0.0/google-icon.svg" alt="Google" class="w-6 h-6">
+		
+    </a>
+    <a href="https://www.facebook.com/login" target="_blank" class="transform hover:scale-110 transition duration-200" title="Sign in with Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" class="w-6 h-6 rounded-full">
+    </a>
+    <a href="https://x.com/i/flow/login" target="_blank" class="w-8 h-8 rounded-full bg-[#f6ab2e] flex items-center justify-center text-white text-xl font-bold transform hover:scale-110 transition duration-200" title="Sign in with X">X</a>
+    <a href="https://www.linkedin.com/login" target="_blank" class="w-8 h-8 rounded-full bg-[#3077b5] flex items-center justify-center text-white text-lg font-bold transform hover:scale-110 transition duration-200" title="Sign in with LinkedIn">in</a>
+</div>
+
+                <p class="text-xs text-textLight text-center mb-3">By clicking Sign in the <a href="#" class="text-textLight underline">Privacy Policy</a> .</p>
+                            
+                            <div class="relative flex py-2 items-center">
+                                <div class="flex-grow border-t border-gray-200"></div>
+                                <span class="flex-shrink mx-3 text-xs text-textLight">OR</span>
+                                <div class="flex-grow border-t border-gray-200"></div>
+                            </div>              
+ <a href="register.html" class="block w-full text-white text-sm font-semibold py-3 bg-secondary rounded-full text-center hover:bg-primaryLight transition">
+    Register for free
+</a>
+                        </div>
+
+                        <ul class="py-2 text-textDark text-[15px] font-medium">
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">Buyer Center</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Inquires</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My RFQ</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Messages</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Orders</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Cart</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+			  
+			  
+            </div>
+        </div>
+    </div>
+
+    <header class="py-1 border-b border-gray-200 sticky top-0 bg-white z-40">
+        <div class="container mx-auto px-1 flex flex-wrap justify-between items-center max-w-7xl">
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl mr-4" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+			<!--logo-->
+         <div class="flex items-center flex-shrink-0 mr-1">
+    <a href="/">
+        <img
+            src="https://i.ibb.co/xvhHV92/b2bx.png"
+            alt="B2B World Market"
+            class="h-16 lg:h-20 w-auto object-contain">
+    </a>
+</div>
+
+            <!-- Search Bar (B2B optimized) -->
+            <div class="flex-grow hidden md:flex max-w-3xl border-2 border-primary rounded-full overflow-hidden h-12">
+                <select class="bg-gray-50 text-sm px-1 border-r border-gray-200 outline-none text-gray-600 font-medium cursor-pointer w-40 flex-shrink-0">
+                    <option>Products</option>
+                    <option>Suppliers</option>
+                    <option>Categories</option>
+                </select>
+                <input type="text" placeholder="What are you looking for..." class="w-full px-4 outline-none text-sm">
+                <button class="bg-white text-gray-500 hover:text-primary px-4 transition duration-300">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Header Icons -->
+            <div class="flex items-center space-x-2 ml-8 hidden lg:flex">
+			    <!-- video Icons -->
+		 <a href="videoall.html" class="video-btn"> 
+            <div class="video-play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <span>Video</span>
+			<img src="https://i.ibb.co/PGKdzNQR/x.png" alt="X" style="height:28px; width: auto; object-fit:cover;">
+            <span class="video-new"> NEW </span>  </a>
+			
+		  <!-- video Icons -->
+            
+                
+                <a href="#" class="text-center group flex flex-col items-center">
+                    <i class="far fa-envelope text-2xl text-gray-700 group-hover:text-primary transition duration-300"></i>
+                    <span class="text-[10px] mt-1 text-gray-500 group-hover:text-primary">Messages</span>
+                </a>
+                
+                <a href="#" class="text-center group flex flex-col items-center">
+                    <i class="far fa-file-alt text-2xl text-gray-700 group-hover:text-primary transition duration-300 relative">
+                        <span class="absolute -top-1 -right-2 bg-secondary text-white text-[10px] font-bold px-1 rounded-full">New</span>
+                    </i>
+                    <span class="text-[10px] mt-1 text-gray-500 group-hover:text-primary">Submit RFQ</span>
+                </a>
+
+                <a href="#" class="text-center group flex flex-col items-center relative">
+                    <i class="fas fa-clipboard-list text-2xl text-gray-700 group-hover:text-primary transition duration-300"></i>
+                    <span class="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">3</span>
+                    <span class="text-[10px] mt-1 text-gray-500 group-hover:text-primary">Order List</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+  <main class="container mx-auto px-0 max-w-7xl pt-4">
+    <div class="flex flex-col lg:flex-row gap-6 items-start">
+        
+        <div class="hidden lg:block w-1/4 flex-shrink-0 sticky top-4 z-30">
+            <div class="border border-borderGray rounded-lg shadow-sm bg-white overflow-hidden">
+                <div class="bg-gray-50 py-2 px-2 font-bold text-textDark border-b border-borderGray flex items-center justify-between">
+                    <span><i class="fas fa-list-ul mr-2 text-primary"></i>CATEGORIES</span>
+                    <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                </div>
+                <ul class="py-2 text-sm text-gray-600 font-medium">
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-tshirt w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Apparel & Accessories</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-industry w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Machinery & Industrial</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-microchip w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Consumer Electronics</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-seedling w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Agriculture & Food</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-tools w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Hardware & Tools</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-box w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Packaging & Printing</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-car w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Vehicles & Accessories</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-3 border-b border-gray-100 hover:bg-gray-50 hover:text-primary cursor-pointer flex justify-between items-center group">
+                        <span><i class="fas fa-couch w-5 text-gray-400 group-hover:text-primary text-center mr-2"></i> Home, Lights & Construction</span>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                    </li>
+                    <li class="px-5 py-2 text-primary text-xs font-bold hover:underline cursor-pointer">
+                        VIEW ALL CATEGORIES <i class="fas fa-chevron-right text-[8px] ml-1"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-3/4 flex flex-col">
+            
+            <nav class="flex items-center justify-between mb-4 border-b lg:border-primary pb-2 lg:pb-0">
+                <ul class="flex space-x-6 text-sm font-bold text-textDark items-center overflow-x-auto whitespace-nowrap">
+                    <li class="text-primary border-b-2 border-primary pb-1 cursor-pointer">Home</li>
+                    <li class="hover:text-primary cursor-pointer flex items-center">Sourcing <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i></li>
+                    <li class="hover:text-primary cursor-pointer flex items-center">Suppliers <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i></li>
+                    <li class="hover:text-primary cursor-pointer flex items-center">Trade Shows <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i></li>
+                    <li class="hover:text-primary cursor-pointer">Buyer Central</li>
+                    <li class="hover:text-primary cursor-pointer">Logistics</li>
+                </ul>
+<div class="hidden xl:flex items-center space-x-4 text-sm font-bold">
+    <span class="hover-primary cursor-pointer">
+        <i class="fas fa-mobile-screen-button text-primary mr-1"></i> Mobile App
+    </span>
+</div>
+            </nav>
+
+
+            
+<div id="hero-carousel" class="group relative rounded-lg overflow-hidden min-h-[400px] flex flex-col bg-gray-100 p-6">
+                
+<div class="videochannel space-y-6 w-full mt-auto">	
+  <div>
+    <h2 class="text-xl font-bold text-gray-800 mb-3">Lighting Products</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="lighting-container"></div>
+  </div>
+
+  <div>
+    <h2 class="text-xl font-bold text-gray-800 mb-3">Perfume Products</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="perfume-container"></div>
+  </div>
+
+  <script>
+  const lightingProducts = [
+    {city:"Beijing",name:"Custom Staircase Chandelier",video:"https://res.cloudinary.com/dichbgj0z/video/upload/v1780826493/perfume_stsmhs.mp4",images:["https://images.unsplash.com/photo-1560185127-6ed189bf02f4","https://images.unsplash.com/photo-1616627985323-10bdbd97e4d3"],price:"336.53–523.48",moq:"1 piece",country:"CN",company:"Polarux Lighting"},
+    {city:"Guangzhou",name:"Modern LED Ceiling Light",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/elephants.mp4",images:["https://images.unsplash.com/photo-1505691723518-36a5ac3be353","https://images.unsplash.com/photo-1582719478145-58d4d798d3e1"],price:"72.50–99.00",moq:"2 pieces",country:"CN",company:"Lumina Decor"},
+    {city:"Shanghai",name:"Crystal Pendant Light",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/sea_turtle.mp4",images:["https://images.unsplash.com/photo-1600585154340-be6161a56a0c","https://images.unsplash.com/photo-1519710164239-da123dc03ef4"],price:"128.00–180.00",moq:"5 pieces",country:"CN",company:"BrightHaus"},
+    {city:"Zhongshan",name:"LED Wall Lamp",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/finish_line.mp4",images:["https://images.unsplash.com/photo-1582719478173-d66dbe3eaa07","https://images.unsplash.com/photo-1519710164239-da123dc03ef4"],price:"45.00–58.00",moq:"10 pieces",country:"CN",company:"LumaWorld"},
+    {city:"Shenzhen",name:"Smart Door Light",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/dog.mp4",images:["https://images.unsplash.com/photo-1505691723518-36a5ac3be353","https://images.unsplash.com/photo-1600585154340-be6161a56a0c"],price:"60.00–90.00",moq:"5 pieces",country:"CN",company:"TechLight"},
+    {city:"Foshan",name:"Decorative Room Lamp",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/elephants.mp4",images:["https://images.unsplash.com/photo-1524758631624-e2822e304c36","https://images.unsplash.com/photo-1600585154340-be6161a56a0c"],price:"55.00–70.00",moq:"3 pieces",country:"CN",company:"Casa Lighting"},
+    {city:"Hangzhou",name:"Art Deco Ceiling Lamp",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/sea_turtle.mp4",images:["https://images.unsplash.com/photo-1505691938895-1758d7feb511","https://images.unsplash.com/photo-1533841805422-7b7b7fde6b6d"],price:"78.00–95.00",moq:"2 pieces",country:"CN",company:"Elite Lights"},
+    {city:"Suzhou",name:"Modern Chandelier",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/finish_line.mp4",images:["https://images.unsplash.com/photo-1616627985323-10bdbd97e4d3","https://images.unsplash.com/photo-1600585154340-be6161a56a0c"],price:"299.00–350.00",moq:"1 piece",country:"CN",company:"Nova Illumination"},
+    {city:"Nanjing",name:"Luxury Crystal Light",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/dog.mp4",images:["https://images.unsplash.com/photo-1524758631624-e2822e304c36","https://images.unsplash.com/photo-1600585154340-be6161a56a0c"],price:"450.00–520.00",moq:"1 piece",country:"CN",company:"ShineBright"},
+    {city:"Xiamen",name:"LED Spotlight",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/elephants.mp4",images:["https://images.unsplash.com/photo-1519710164239-da123dc03ef4","https://images.unsplash.com/photo-1505691723518-36a5ac3be353"],price:"22.00–35.00",moq:"20 pieces",country:"CN",company:"LightEase"},
+    {city:"Dongguan",name:"Recessed LED Downlight",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/sea_turtle.mp4",images:["https://images.unsplash.com/photo-1600585154340-be6161a56a0c","https://images.unsplash.com/photo-1582719478145-58d4d798d3e1"],price:"15.00–28.00",moq:"50 pieces",country:"CN",company:"FocusBeam"},
+    {city:"Tianjin",name:"Vintage Pendant Lamp",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/finish_line.mp4",images:["https://images.unsplash.com/photo-1533841805422-7b7b7fde6b6d","https://images.unsplash.com/photo-1505691938895-1758d7feb511"],price:"120.00–180.00",moq:"2 pieces",country:"CN",company:"GoldenRay"}
+  ];
+
+  const perfumeProducts = [
+    {city:"Dubai",name:"Oud Rose Perfume",video:"https://res.cloudinary.com/dichbgj0z/video/upload/v1780826493/perfume_stsmhs.mp4",images:["https://images.unsplash.com/photo-1616222078033-3efc79f3e53b","https://images.unsplash.com/photo-1620641788421-7a1c444f6a18"],price:"45.00–60.00",moq:"10 bottles",country:"AE",company:"Arabian Scents"},
+    {city:"Paris",name:"Velvet Bloom",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/elephants.mp4",images:["https://images.unsplash.com/photo-1619941829579-58d4e19c52a5","https://images.unsplash.com/photo-1619941829921-58d4e19c52a5"],price:"75.00–95.00",moq:"5 bottles",country:"FR",company:"Maison Lumière"},
+    {city:"London",name:"Royal Mist",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/sea_turtle.mp4",images:["https://images.unsplash.com/photo-1616270641654-72dfdc87222d","https://images.unsplash.com/photo-1616270622265-1c4c56bcbfa3"],price:"68.00–85.00",moq:"8 bottles",country:"UK",company:"Brit Aroma"},
+    {city:"Istanbul",name:"Amber Essence",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/finish_line.mp4",images:["https://images.unsplash.com/photo-1619941829579-58d4e19c52a5","https://images.unsplash.com/photo-1619941829921-58d4e19c52a5"],price:"58.00–79.00",moq:"6 bottles",country:"TR",company:"Sultan Perfumes"},
+    {city:"Riyadh",name:"Musk Al Oud",video:"https://res.cloudinary.com/dichbgj0z/video/upload/v1780826493/perfume_stsmhs.mp4",images:["https://images.unsplash.com/photo-1616222078033-3efc79f3e53b","https://images.unsplash.com/photo-1620641788421-7a1c444f6a18"],price:"50.00–70.00",moq:"10 bottles",country:"SA",company:"Oud Arabia"},
+    {city:"New York",name:"Diamond Kiss",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/elephants.mp4",images:["https://images.unsplash.com/photo-1616270641654-72dfdc87222d","https://images.unsplash.com/photo-1616270622265-1c4c56bcbfa3"],price:"95.00–120.00",moq:"5 bottles",country:"US",company:"Urban Fragrance"},
+    {city:"Berlin",name:"Crystal Noir",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/sea_turtle.mp4",images:["https://images.unsplash.com/photo-1619941829579-58d4e19c52a5","https://images.unsplash.com/photo-1619941829921-58d4e19c52a5"],price:"88.00–110.00",moq:"4 bottles",country:"DE",company:"Noir Essence"},
+    {city:"Tokyo",name:"Sakura Mist",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/finish_line.mp4",images:["https://images.unsplash.com/photo-1616222078033-3efc79f3e53b","https://images.unsplash.com/photo-1620641788421-7a1c444f6a18"],price:"70.00–90.00",moq:"6 bottles",country:"JP",company:"Blossom Scents"},
+    {city:"Rome",name:"Bella Flora",video:"https://res.cloudinary.com/dichbgj0z/video/upload/v1780826493/perfume_stsmhs.mp4",images:["https://images.unsplash.com/photo-1616270622265-1c4c56bcbfa3","https://images.unsplash.com/photo-1616270641654-72dfdc87222d"],price:"82.00–105.00",moq:"7 bottles",country:"IT",company:"La Vita Profumo"},
+    {city:"Doha",name:"Golden Oud",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/elephants.mp4",images:["https://images.unsplash.com/photo-1620641788421-7a1c444f6a18","https://images.unsplash.com/photo-1616222078033-3efc79f3e53b"],price:"55.00–75.00",moq:"5 bottles",country:"QA",company:"Desert Essence"},
+    {city:"Madrid",name:"Aqua Belle",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/sea_turtle.mp4",images:["https://images.unsplash.com/photo-1616270641654-72dfdc87222d","https://images.unsplash.com/photo-1616270622265-1c4c56bcbfa3"],price:"60.00–80.00",moq:"8 bottles",country:"ES",company:"Flora Perfumes"},
+    {city:"Cairo",name:"Mystic Oud",video:"https://res.cloudinary.com/demo/video/upload/q_auto,f_mp4/finish_line.mp4",images:["https://images.unsplash.com/photo-1616222078033-3efc79f3e53b","https://images.unsplash.com/photo-1620641788421-7a1c444f6a18"],price:"48.00–66.00",moq:"10 bottles",country:"EG",company:"Nefertari Scents"}
+  ];
+
+  function createCard(prod){
+    const card = document.createElement('a');
+    card.className = 'card border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white block';
+    card.href = 'product.html';
+
+    const hasVideo = prod.video && prod.video.trim() !== "";
+    // FIXED: added loop, muted, and playsinline properties so video elements initialize properly
+    const videoHTML = hasVideo ? `<video src="${prod.video}" loop muted playsinline class="active w-full h-48 object-cover block"></video>` : '';
+    
+    const watermarkHTML = hasVideo ? `
+      <div class="video-badge absolute inset-0 m-auto bg-black/50 hover:bg-black/70 transition-colors rounded-full text-white w-12 h-12 flex items-center justify-center pointer-events-none shadow-lg">
+        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current translate-x-0.5"><path d="M8 5v14l11-7z"/></svg>
+      </div>` : '';
+    
+    const imagesHTML = prod.images.map((imgUrl, idx) => {
+      // FIXED: Forces 'hidden' on images if a video exists so elements don't stack blindly
+      const activeClass = (!hasVideo && idx === 0) ? 'class="active w-full h-48 object-cover block"' : 'class="hidden w-full h-48 object-cover"';
+      return `<img src="${imgUrl}?w=600&q=80&auto=format" ${activeClass}>`;
+    }).join('');
+
+    const totalSlides = (hasVideo ? 1 : 0) + prod.images.length;
+    const dotsHTML = Array.from({length: totalSlides}, (_, idx) => `
+      <div class="dot w-2 h-2 rounded-full bg-gray-400 ${idx === 0 ? 'active !bg-primary' : ''}"></div>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="media relative h-48 bg-gray-100 overflow-hidden">
+        <div class="city absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded z-10">${prod.city}</div>
+        ${videoHTML}
+        ${imagesHTML}
+        ${watermarkHTML}
+        <button class="arrow left absolute left-1 top-1/2 -translate-y-1/2 bg-white/70 rounded-full w-6 h-6 flex items-center justify-center text-sm shadow z-10">‹</button>
+        <button class="arrow right absolute right-1 top-1/2 -translate-y-1/2 bg-white/70 rounded-full w-6 h-6 flex items-center justify-center text-sm shadow z-10">›</button>
+        <div class="dots absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-10">
+          ${dotsHTML}
+        </div>
+      </div>
+      <div class="card-body p-3 flex flex-col justify-between">
+        <div class="title font-semibold text-gray-800 text-sm line-clamp-2 min-h-[40px]">${prod.name}</div>
+        <div class="price text-primary font-bold mt-1 text-base">AED ${prod.price}</div>
+        <div class="moq text-xs text-gray-500 mt-0.5">Min. order: ${prod.moq}</div>
+        <div class="supplier text-xs text-gray-400 mt-2 truncate">🌐${prod.country} — ${prod.company}</div>
+        <button class="contact-btn mt-3 w-full border border-primary text-primary hover:bg-primary hover:text-white transition-colors text-xs font-medium py-1.5 rounded">Contact Supplier</button>
+      </div>
+    `;
+
+    const mediaEls = [...card.querySelectorAll('video,img')];
+    const dots = [...card.querySelectorAll('.dot')];
+    const leftBtn = card.querySelector('.arrow.left');
+    const rightBtn = card.querySelector('.arrow.right');
+    const badgeEl = card.querySelector('.video-badge');
+    let index = 0;
+
+    function showMedia(i){
+      mediaEls.forEach((m, idx) => {
+          if(idx === i) {
+              m.classList.remove('hidden');
+              m.classList.add('active', 'block'); 
+          } else {
+              m.classList.add('hidden');
+              m.classList.remove('active', 'block'); 
+          }
+      });
+      dots.forEach((d, idx)=> {
+          if(idx === i) {
+              d.classList.add('bg-primary', '!bg-primary');
+          } else {
+              d.classList.remove('bg-primary', '!bg-primary');
+          }
+      });
+      
+      if(mediaEls[i] && mediaEls[i].tagName === 'VIDEO'){
+        mediaEls[i].play().catch(()=>{});
+        if(badgeEl) badgeEl.style.display = 'flex'; 
+      } else {
+        const firstVid = card.querySelector('video');
+        if(firstVid) firstVid.pause();
+        if(badgeEl) badgeEl.style.display = 'none'; 
+      }
+      index = i;
+    }
+
+    if(hasVideo) {
+      showMedia(0);
+    }
+
+    rightBtn.onclick = (e) => { e.preventDefault(); index = (index + 1) % mediaEls.length; showMedia(index); }
+    leftBtn.onclick = (e) => { e.preventDefault(); index = (index - 1 + mediaEls.length) % mediaEls.length; showMedia(index); }
+    dots.forEach((d, i) => d.onclick = (e) => { e.preventDefault(); showMedia(i); });
+
+    return card;
+  }
+
+  lightingProducts.forEach(p => document.getElementById('lighting-container').appendChild(createCard(p)));
+  perfumeProducts.forEach(p => document.getElementById('perfume-container').appendChild(createCard(p)));
+  </script>
+</div>		
+                </div>
+          </div>
+    </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+   
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+    <footer class="bg-white border-t border-gray-200 mt-16 pt-10">
+        <!-- Newsletter Bar -->
+        <div class="bg-[#2b5d8c] text-white py-8">
+            <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="far fa-envelope-open text-4xl mr-4 opacity-80"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">SUBSCRIBE TO B2B NEWSLETTER</h4>
+                        <p class="text-sm text-blue-200">Get the latest info on global trends, trade shows and bulk offers.</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 flex">
+                    <input type="email" placeholder="Your E-mail Address" class="w-full px-4 py-3 text-sm text-gray-700 outline-none">
+                    <button class="bg-[#333] hover:bg-black text-white px-6 py-3 text-sm font-bold uppercase transition flex items-center space-x-2">
+                        <span>Subscribe</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Footer Links -->
+        <div class="bg-bgGray py-16">
+            <div class="container mx-auto px-4 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                
+                <!-- Brand Info -->
+                <div>
+                    <a href="#" class="text-3xl font-extrabold tracking-tighter flex items-center mb-6">
+                        <span class="text-primary mr-1"><i class="fas fa-globe-americas"></i></span>
+                        <span class="text-primaryDark">B2B</span><span class="text-textDark font-semibold text-xl ml-1 mt-1">World Market</span>
+                    </a>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Your premier gateway for global wholesale trade. Connect with verified suppliers, secure transactions, and scale your business effortlessly.</p>
+                    <div class="mb-4 text-sm text-gray-500">
+                        <p>Got Questions? Call us 24/7 B2B Support</p>
+                        <p class="text-2xl font-bold text-textDark mt-1">1-800-570-7777</p>
+                    </div>
+                    <div class="flex space-x-2 mt-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#1da1f2] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-twitter text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#bd081c] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-pinterest-p text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#0077b5] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#ff0000] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-youtube text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">About Platform</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">About B2B World Market</a></li>
+                        <li><a href="#" class="hover-primary">Careers</a></li>
+                        <li><a href="#" class="hover-primary">Contact Us</a></li>
+                        <li><a href="#" class="hover-primary">News & Blog</a></li>
+                        <li><a href="#" class="hover-primary">Trade Shows</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">For Suppliers</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">Become a Supplier</a></li>
+                        <li><a href="#" class="hover-primary">Supplier Memberships</a></li>
+                        <li><a href="#" class="hover-primary">Training Center</a></li>
+                        <li><a href="#" class="hover-primary">Logistics Services</a></li>
+                        <li><a href="#" class="hover-primary">Payment & Escrow</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 3 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">For Buyers</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">Sourcing Guide</a></li>
+                        <li><a href="#" class="hover-primary">Post an RFQ</a></li>
+                        <li><a href="#" class="hover-primary">Trade Assurance Protection</a></li>
+                        <li><a href="#" class="hover-primary">Track Order</a></li>
+                        <li><a href="#" class="hover-primary">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Categories Tags Bottom -->
+            <div class="container mx-auto px-4 max-w-7xl mt-12 border-t border-gray-200 pt-8 hidden md:block">
+                <div class="flex text-sm text-gray-500 mb-2">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Consumer Electric:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">TV Television</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Air Condition</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Refrigerator</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Washing Machine</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Audio Speaker</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Security Camera</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+                <div class="flex text-sm text-gray-500 mb-2">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Clothing & Apparel:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">Men T-shirt</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Dresses</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Men's Sneaker</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Leather Backpack</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+                <div class="flex text-sm text-gray-500">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Machinery:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">Packaging Machines</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Laser Cutters</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">CNC Routers</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Textile Machinery</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="bg-bgGray pb-8">
+            <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between text-xs text-gray-400">
+                <p>Copyright © 2026 B2B World Market. All Rights Reserved.</p>
+                <div class="flex items-center space-x-2 mt-4 md:mt-0">
+                    <span>We're using safe payment for</span>
+                    <!-- Simulated Payment Badges -->
+                    <div class="flex space-x-1">
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">VISA</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">MC</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">TT</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">L/C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            // In a full implementation, this would open a side drawer
+            // For this single file demo, we just show an alert or toggle a class
+            alert('Mobile menu navigation would open here.');
+        });
+    </script>
+</body>
+</html>

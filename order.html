@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2BGoX - Secured Trading Service</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#f4f7fc;
+padding:30px;
+color:#1f2937;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+}
+
+.page-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.page-title{
+font-size:34px;
+font-weight:800;
+}
+
+.secure-badge{
+background:#16a34a;
+color:#fff;
+padding:12px 22px;
+border-radius:50px;
+font-size:14px;
+font-weight:700;
+}
+
+.order-card{
+background:#fff;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 15px 50px rgba(0,0,0,.08);
+}
+
+.order-top{
+background:linear-gradient(135deg,#0f172a,#2563eb);
+padding:30px;
+color:#fff;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.order-number{
+font-size:30px;
+font-weight:800;
+}
+
+.order-date{
+opacity:.9;
+margin-top:8px;
+}
+
+.order-status{
+padding:10px 20px;
+background:#22c55e;
+border-radius:50px;
+font-weight:700;
+}
+
+.section{
+padding:30px;
+}
+
+.timeline{
+display:flex;
+justify-content:space-between;
+position:relative;
+margin:40px 0;
+}
+
+.timeline::before{
+content:'';
+position:absolute;
+top:20px;
+left:5%;
+width:90%;
+height:5px;
+background:#dbeafe;
+z-index:1;
+}
+
+.step{
+position:relative;
+z-index:2;
+text-align:center;
+width:20%;
+}
+
+.circle{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#cbd5e1;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+font-weight:bold;
+}
+
+.completed .circle{
+background:#16a34a;
+}
+
+.active .circle{
+background:#2563eb;
+}
+
+.step p{
+margin-top:10px;
+font-size:14px;
+font-weight:600;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:20px;
+}
+
+.card{
+background:#f8fafc;
+border:1px solid #e5e7eb;
+border-radius:18px;
+padding:25px;
+}
+
+.card-title{
+font-size:20px;
+font-weight:700;
+margin-bottom:15px;
+color:#111827;
+}
+
+.card p{
+margin-bottom:10px;
+line-height:1.7;
+}
+
+.product-box{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:20px;
+overflow:hidden;
+margin-top:30px;
+}
+
+.product-header{
+background:#eff6ff;
+padding:20px;
+font-size:20px;
+font-weight:700;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#f8fafc;
+padding:18px;
+text-align:left;
+font-size:15px;
+}
+
+td{
+padding:18px;
+border-top:1px solid #e5e7eb;
+}
+
+.product-image{
+width:90px;
+height:90px;
+border-radius:12px;
+object-fit:cover;
+}
+
+.bottom-grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+margin-top:30px;
+}
+
+.summary-card{
+background:#fff;
+border:1px solid #e5e7eb;
+border-radius:20px;
+padding:25px;
+}
+
+.summary-row{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid #e5e7eb;
+}
+
+.summary-total{
+display:flex;
+justify-content:space-between;
+padding-top:20px;
+font-size:30px;
+font-weight:800;
+color:#dc2626;
+}
+
+.action-buttons{
+margin-top:25px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 22px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:700;
+transition:.3s;
+}
+
+.btn-primary{
+background:#2563eb;
+color:white;
+}
+
+.btn-primary:hover{
+background:#1d4ed8;
+}
+
+.btn-success{
+background:#16a34a;
+color:white;
+}
+
+.btn-success:hover{
+background:#15803d;
+}
+
+.btn-light{
+background:#f1f5f9;
+}
+
+.btn-light:hover{
+background:#e2e8f0;
+}
+
+@media(max-width:900px){
+
+.info-grid,
+.bottom-grid{
+grid-template-columns:1fr;
+}
+
+.timeline{
+overflow-x:auto;
+gap:25px;
+}
+
+.step{
+min-width:120px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="page-header">
+
+<h1 class="page-title">
+Secured Trading Service Order
+</h1>
+
+<div class="secure-badge">
+🛡 Trade Protected
+</div>
+
+</div>
+
+<div class="order-card">
+
+<div class="order-top">
+
+<div>
+<div class="order-number">
+#B2BGOX-458965
+</div>
+
+<div class="order-date">
+Order Date: 15 June 2026
+</div>
+</div>
+
+<div class="order-status">
+Payment Received
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="timeline">
+
+<div class="step completed">
+<div class="circle"><i class="fa fa-check"></i></div>
+<p>Order Created</p>
+</div>
+
+<div class="step completed">
+<div class="circle"><i class="fa fa-check"></i></div>
+<p>Payment Completed</p>
+</div>
+
+<div class="step active">
+<div class="circle">3</div>
+<p>Production</p>
+</div>
+
+<div class="step">
+<div class="circle">4</div>
+<p>Shipment</p>
+</div>
+
+<div class="step">
+<div class="circle">5</div>
+<p>Delivered</p>
+</div>
+
+</div>
+
+<div class="info-grid">
+
+<div class="card">
+
+<div class="card-title">
+Buyer Information
+</div>
+
+<form action="submit-order.php" method="POST" enctype="multipart/form-data">
+
+  <!-- Buyer Information -->
+  <fieldset style="border:1px solid #d1d5db;padding:20px;border-radius:12px;margin-bottom:20px;">
+    <legend style="font-weight:bold;padding:0 10px;">
+      Buyer Information
+    </legend>
+
+    <label>Company Name *</label><br>
+    <input type="text" name="company_name" required
+    style="width:100%;padding:12px;margin-top:5px;margin-bottom:15px;">
+
+    <label>Contact Person *</label><br>
+    <input type="text" name="contact_person" required
+    style="width:100%;padding:12px;margin-top:5px;margin-bottom:15px;">
+
+    <label>Email *</label><br>
+    <input type="email" name="email" required
+    style="width:100%;padding:12px;margin-top:5px;">
+  </fieldset>
+
+  <!-- Product Information -->
+  <fieldset style="border:1px solid #d1d5db;padding:20px;border-radius:12px;margin-bottom:20px;">
+    <legend style="font-weight:bold;padding:0 10px;">
+      Product Information
+    </legend>
+
+    <label>Product Name *</label><br>
+    <input type="text" name="product_name" required
+    style="width:100%;padding:12px;margin-top:5px;margin-bottom:15px;">
+
+    <label>Quantity *</label><br>
+    <input type="number" name="quantity" required
+    style="width:100%;padding:12px;margin-top:5px;margin-bottom:15px;">
+
+    <label>Unit</label><br>
+    <select name="unit"
+    style="width:100%;padding:12px;margin-top:5px;">
+      <option>Pieces</option>
+      <option>Sets</option>
+      <option>Cartons</option>
+      <option>Containers</option>
+    </select>
+  </fieldset>
+
+  <!-- Shipping Information -->
+  <fieldset style="border:1px solid #d1d5db;padding:20px;border-radius:12px;margin-bottom:20px;">
+    <legend style="font-weight:bold;padding:0 10px;">
+      Shipping Information
+    </legend>
+
+    <label>Destination Country *</label><br>
+    <input type="text" name="country" required
+    style="width:100%;padding:12px;margin-top:5px;margin-bottom:15px;">
+
+    <label>Delivery Port</label><br>
+    <input type="text" name="port"
+    style="width:100%;padding:12px;margin-top:5px;">
+  </fieldset>
+
+  <!-- Upload Files -->
+  <fieldset style="border:1px solid #d1d5db;padding:20px;border-radius:12px;margin-bottom:20px;">
+    <legend style="font-weight:bold;padding:0 10px;">
+      Attachments
+    </legend>
+
+    <input type="file" name="documents[]" multiple>
+  </fieldset>
+
+  <!-- Requirements -->
+  <fieldset style="border:1px solid #d1d5db;padding:20px;border-radius:12px;margin-bottom:20px;">
+    <legend style="font-weight:bold;padding:0 10px;">
+      Detailed Requirements
+    </legend>
+
+    <textarea name="requirements" rows="6"
+    style="width:100%;padding:12px;"></textarea>
+  </fieldset>
+
+  <button type="submit"
+  style="background:#2563eb;color:white;border:none;padding:15px 30px;border-radius:10px;font-weight:bold;cursor:pointer;">
+    Submit Order
+  </button>
+
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

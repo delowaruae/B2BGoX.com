@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B World Market - Global Wholesale Trade</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1d4ed8', // Deep Blue
+                        primaryDark: '#1e3a8a',
+                        secondary: '#f97316', // Orange highlight (like Wolmart)
+                        textDark: '#333333',
+                        textLight: '#666666',
+                        borderGray: '#e5e7eb',
+                        bgGray: '#f8f9fa'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #333; overflow-x: hidden; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+        /* B2B Specific Styles */
+        .tier-price { font-size: 0.8rem; line-height: 1.2; }
+        .tier-price strong { font-size: 1.1rem; color: #333; }
+        .hover-primary:hover { color: #1d4ed8; transition: color 0.3s; }
+        .header-dropdown-shadow { box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    
+	
+	/* VIDEO icon */
+
+.video-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(to right,#ff0000,#ff2b2b);
+    color:#fff;
+    text-decoration:none;
+    padding:7px 14px;
+    border-radius:30px;
+    box-shadow:0 3px 10px rgba(255,0,0,.25);
+}
+
+
+.video-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    transition:.8s;
+}
+
+
+
+
+.video-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 20px 40px rgba(214,0,0,.25);
+}
+
+.video-play-icon{
+    width:26px;
+    height:26px;
+    background:#fff;
+    color:red;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+	transition:.3s;
+}
+
+.video-new{
+    background:#fff;
+    color:red;
+    font-size:9px;
+    padding:2px 5px;
+    border-radius:20px;
+    font-weight:bold;
+	animation:pulse 1.5s infinite;
+}	/* VIDEO icon ends*/
+	
+
+
+h2 {
+  margin: 20px 0 10px;
+  font-weight: 700;
+  font-size: 22px;
+  color: #111827;
+}
+
+/* Container Grid System */
+.container {
+  display: grid;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Desktop View: Exactly 4 columns */
+@media (min-width: 769px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile Screen View: Exactly 2 columns */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.media {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  background: #000;
+}
+.media video, .media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.media .active { opacity: 1; z-index: 2; }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.arrow.left { left: 6px; }
+.arrow.right { right: 6px; }
+
+.dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 5;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+.dot.active { background: #fff; }
+
+/* Circular Centered Play Watermark */
+.video-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(150, 150, 150, 0.7); /* Translucent gray circle */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.video-badge svg {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+  margin-left: 3px; /* Optically centers the triangle paths */
+}
+
+.city {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 5;
+}
+.card-body { padding: 8px 6px; }
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f2167;
+  margin-bottom: 2px;
+}
+.price {
+  font-size: 13px;
+  font-weight: 700;
+  color: #c40000;
+}
+.moq {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+.supplier {
+  font-size: 12px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+.contact-btn {
+  display: block;
+  width: 100%;
+  padding: 6px 0;
+  text-align: center;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .3s;
+}
+.contact-btn:hover { background: #e5e7eb; }	
+	
+	
+
+	
+	</style>
+</head>
+<body class="bg-white">
+
+    <div class="bg-gray-100 text-xs text-textLight py-2 border-b border-gray-200 hidden md:block">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-7xl">
+            <div class="flex items-center space-x-4">
+                <span>Welcome to B2B GoX - Global Sourcing Made Easy!</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
+                    <span>USD</span> <i class="fas fa-chevron-down text-[10px]"></i>
+                </div>
+                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
+                    <img src="https://flagcdn.com/w20/us.png" alt="ENG" class="h-3 w-4">
+                    <span>ENG</span> <i class="fas fa-chevron-down text-[10px]"></i>
+                </div>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="hover-primary">Become a Supplier</a>
+                <a href="#" class="hover-primary">Help Center</a>
+                <a href="#" class="hover-primary">My Account</a>
+				
+              
+			   <div class="relative group py-1">
+                    <a href="#" class="hover-primary font-semibold text-textDark flex items-center">
+                        <i class="far fa-user mr-1"></i> Sign In / Register
+                    </a>
+
+                    <div class="dropdown-card absolute right-0 top-full mt-1 w-[250px] bg-white border border-red-200 shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-sm">
+                        
+                        <div class="absolute -top-1.5 right-4 w-3 h-3 bg-white border-t border-l border-red-200 transform rotate-45"></div>
+
+                        <div class="p-4 border-b border-gray-100 ">
+                            <a href="#" class="block w-full bg-primary text-white text-base font-semibold py-2 rounded-full text-center hover:bg-primaryDark transition mb-3">Sign in</a>
+                            
+                            <div class="p-4 py-2 flex justify-center items-center space-x-4 mb-4">
+    <a href="https://accounts.google.com" target="_blank" class="transform hover:scale-110 transition duration-200" title="Sign in with Google">
+        <img src="https://cdnjs.cloudflare.com/ajax/libs/logos/1.0.0/google-icon.svg" alt="Google" class="w-6 h-6">
+		
+    </a>
+    <a href="https://www.facebook.com/login" target="_blank" class="transform hover:scale-110 transition duration-200" title="Sign in with Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" class="w-6 h-6 rounded-full">
+    </a>
+    <a href="https://x.com/i/flow/login" target="_blank" class="w-8 h-8 rounded-full bg-[#f6ab2e] flex items-center justify-center text-white text-xl font-bold transform hover:scale-110 transition duration-200" title="Sign in with X">X</a>
+    <a href="https://www.linkedin.com/login" target="_blank" class="w-8 h-8 rounded-full bg-[#3077b5] flex items-center justify-center text-white text-lg font-bold transform hover:scale-110 transition duration-200" title="Sign in with LinkedIn">in</a>
+</div>
+
+                <p class="text-xs text-textLight text-center mb-3">By clicking Sign in the <a href="#" class="text-textLight underline">Privacy Policy</a> .</p>
+                            
+                            <div class="relative flex py-2 items-center">
+                                <div class="flex-grow border-t border-gray-200"></div>
+                                <span class="flex-shrink mx-3 text-xs text-textLight">OR</span>
+                                <div class="flex-grow border-t border-gray-200"></div>
+                            </div>              
+ <a href="login2.html" class="block w-full text-white text-sm font-semibold py-3 bg-secondary rounded-full text-center hover:bg-primaryLight transition">
+    Register for free
+</a>
+                        </div>
+
+                        <ul class="py-2 text-textDark text-[15px] font-medium">
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">Buyer Center</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Inquires</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My RFQ</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Messages</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Orders</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Cart</a></li>
+                            <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+			  
+			  
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 bg-white z-40">
+        <div class="container mx-auto px-1 flex flex-wrap justify-between items-center max-w-7xl">
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl mr-4" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+			<!--logo-->
+         <div class="flex items-center flex-shrink-0 mr-1">
+    <a href="/">
+        <img
+            src="https://i.ibb.co/xvhHV92/b2bx.png"
+            alt="B2B World Market"
+            class="h-16 lg:h-20 w-auto object-contain">
+    </a>
+</div>
+
+            <!-- Search Bar (B2B optimized) -->
+            <div class="flex-grow hidden md:flex max-w-3xl border-2 border-primary rounded-full overflow-hidden h-12">
+                <select class="bg-gray-50 text-sm px-4 border-r border-gray-200 outline-none text-gray-600 font-medium cursor-pointer w-40 flex-shrink-0">
+                    <option>Products</option>
+                    <option>Suppliers</option>
+                    <option>Categories</option>
+                </select>
+                <input type="text" placeholder="What are you looking for..." class="w-full px-4 outline-none text-sm">
+                <button class="bg-white text-gray-500 hover:text-primary px-6 transition duration-300">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Header Icons -->
+            <div class="flex items-center space-x-6 ml-8 hidden lg:flex">
+			    <!-- video Icons -->
+		 <a href="videochannel.html" class="video-btn"> 
+            <div class="video-play-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <span>Video</span>
+            <span class="video-new"> NEW </span>  </a>
+			
+		  <!-- video Icons -->
+            
+                
+                <a href="#" class="text-center group flex flex-col items-center">
+                    <i class="far fa-envelope text-2xl text-gray-700 group-hover:text-primary transition duration-300"></i>
+                    <span class="text-[11px] mt-1 text-gray-500 group-hover:text-primary">Messages</span>
+                </a>
+                
+                <a href="#" class="text-center group flex flex-col items-center">
+                    <i class="far fa-file-alt text-2xl text-gray-700 group-hover:text-primary transition duration-300 relative">
+                        <span class="absolute -top-1 -right-2 bg-secondary text-white text-[10px] font-bold px-1.5 rounded-full">New</span>
+                    </i>
+                    <span class="text-[11px] mt-1 text-gray-500 group-hover:text-primary">Submit RFQ</span>
+                </a>
+
+                <a href="#" class="text-center group flex flex-col items-center relative">
+                    <i class="fas fa-clipboard-list text-2xl text-gray-700 group-hover:text-primary transition duration-300"></i>
+                    <span class="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">3</span>
+                    <span class="text-[11px] mt-1 text-gray-500 group-hover:text-primary">Order List</span>
+                </a>
+            </div>
+        </div>
+    </header>
+	
+	
+
+	
+	
+	
+
+<div style="width: 100%; height: 100vh; background:[#F0F8FF]; display: flex; justify-content: center; align-items: center; position: relative; padding: 20px; box-sizing: border-box;">
+  <div style=" position: absolute; inset: 0; background: [#B0E0E6]; z-index: 1;"></div>
+
+  <div style="margin:40px; position: relative; z-index: 2; width: 100%; max-width: 980px; background: #ffffff; border-radius: 4px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); display: flex; box-sizing: border-box;">
+    <button style="position: absolute; top: 15px; right: -30px; background: none; border: none; color: #ffffff; font-size: 24px; font-weight: bold; cursor: pointer; z-index: 10; line-height: 1;" aria-label="Close dialog">×</button>
+
+    <div style="width: 50%; background: #ffffff; padding: 40px 45px 35px 45px; border-radius: 4px 0 0 4px; box-sizing: border-box;">
+      <h2 style="font-size: 24px; font-weight: 400; color: #222222; margin: 0 0 8px 0;">Welcome to B2BGoX.com</h2>
+      <div style="font-size: 13px; color: #666666; margin-bottom: 30px;">No account? <a href="#" style="color: #2b61f3; text-decoration: none; font-weight: 600;">Free registration ➔</a></div>
+
+      <div style="display: flex; gap: 30px; margin-bottom: 22px;">
+        <span style="font-size: 14px; font-weight: 700; color: #000000; padding-bottom: 4px; cursor: pointer; position: relative;">
+          Password login
+          <span style="content: ''; position: absolute; bottom: -2px; left: 0; width: 32px; height: 3px; background-color: #d11a2a;"></span>
+        </span>
+        <span style="font-size: 14px; font-weight: 700; color: #8c8c8c; padding-bottom: 4px; cursor: pointer; position: relative;">Login with mobile</span>
+      </div>
+
+      <form onsubmit="event.preventDefault();">
+        <div style="margin-bottom: 14px;">
+          <input type="email" style="width: 100%; height: 42px; border: 1px solid #e3e3e3; border-radius: 2px; padding: 0 12px; font-size: 13px; color: #333333; outline: none; box-sizing: border-box;" placeholder="Please enter your login email address." required>
+        </div>
+        
+        <div style="margin-bottom: 14px;">
+          <input type="password" style="width: 100%; height: 42px; border: 1px solid #e3e3e3; border-radius: 2px; padding: 0 12px; font-size: 13px; color: #333333; outline: none; box-sizing: border-box;" placeholder="Please enter your login password." required>
+        </div>
+
+        <div style="margin-bottom: 14px; display: flex; gap: 12px;">
+          <input type="text" style="width: 100%; height: 42px; border: 1px solid #e3e3e3; border-radius: 2px; padding: 0 12px; font-size: 13px; color: #333333; outline: none; box-sizing: border-box;" placeholder="Please enter the verification code" required>
+          <div style="width: 105px; height: 42px; border: 1px solid #000000; background: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 18px; letter-spacing: 2px; color: #911e37; position: relative; overflow: hidden; user-select: none; box-sizing: border-box;">
+            <span style="position: absolute; color: rgba(145, 30, 55, 0.25); font-size: 14px; letter-spacing: 0px; pointer-events: none;">╳╳╳╳╳╳╳</span>
+            8B6A
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 12px; margin: 18px 0 25px 0;">
+          <label style="display: flex; align-items: flex-start; gap: 6px; color: #999999; cursor: pointer; max-width: 180px; line-height: 1.3;">
+            <input type="checkbox" style="margin-top: 2px; accent-color: #2db85c;" checked>
+            <span>Next time, log in without password.</span>
+          </label>
+          <a href="#" style="color: #999999; text-decoration: none; max-width: 100px; text-align: right; line-height: 1.3;">forget the password?</a>
+        </div>
+
+        <button type="submit" style="width: 100%; height: 45px; background-color: #e60012; color: #ffffff; border: none; border-radius: 20px; font-size: 15px; font-weight: 600; cursor: pointer; margin-bottom: 16px; box-sizing: border-box;">Log in</button>
+
+        <div style="display: flex; align-items: flex-start; gap: 6px; font-size: 11px; color: #333333; margin-bottom: 16px; line-height: 1.3;">
+          <input type="checkbox" style="margin-top: 2px; accent-color: #000000;" id="terms-agree" checked required>
+          <label for="terms-agree">I agree to the <a href="#" style="color: #1a56db; text-decoration: none;">User Agreement</a> and the <a href="#" style="color: #1a56db; text-decoration: none;">Privacy Policy</a>.</label>
+        </div>
+
+        <button type="button" style="width: 100%; height: 40px; background-color: #008000; color: #ffffff; border: none; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: 25px; box-sizing: border-box;">Verify Email</button>
+      </form>
+
+      <div style="text-align: center; position: relative; margin-bottom: 15px;">
+        <span style="font-size: 12px; color: #666666; background: #ffffff; padding: 0 15px; position: relative; z-index: 2;">Or sign in with</span>
+        <div style="content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: #eeeeee; z-index: 1;"></div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 18px;">
+        <svg style="width: 32px; height: 32px; cursor: pointer;" viewBox="0 0 32 32">
+          <circle cx="16" cy="16" r="16" fill="#f5f5f5"/>
+          <path d="M22.5 16.3c0-.4 0-.7-.1-1.1H16v2.1h3.6c-.2.9-.7 1.6-1.4 2.1v1.7h2.3c1.4-1.3 2-3.2 2-5.4z" fill="#4285F4"/>
+          <path d="M16 23c1.9 0 3.5-.6 4.6-1.7l-2.3-1.7c-.6.4-1.4.7-2.3.7-1.8 0-3.3-1.2-3.8-2.8H9.8v1.8C11 21.6 13.3 23 16 23z" fill="#34A853"/>
+          <path d="M12.2 17.5c-.1-.3-.2-.7-.2-1.1s.1-.8.2-1.1V13.5H9.8c-.5 1-.8 2.1-.8 3.5s.3 2.5.8 3.5l2.4-1.8z" fill="#FBBC05"/>
+          <path d="M16 11.2c1 0 2 .4 2.7 1l2-2C19.5 9.1 17.9 8.5 16 8.5c-2.7 0-5 1.4-6.2 3.6l2.4 1.9c.5-1.7 2-2.8 3.8-2.8z" fill="#EA4335"/>
+        </svg>
+
+        <svg style="width: 32px; height: 32px; cursor: pointer;" viewBox="0 0 32 32" fill="#1877F2">
+          <circle cx="16" cy="16" r="16"/>
+          <path d="M20 16h-2.5v7h-3v-7h-1.8v-2.5h1.8v-1.6c0-2.5 1.1-3.9 3.8-3.9h2.3v2.5h-1.4c-1.2 0-1.2.4-1.2 1.2v1.8H20L19.7 16z" fill="#ffffff"/>
+        </svg>
+
+        <svg style="width: 32px; height: 32px; cursor: pointer;" viewBox="0 0 32 32" fill="#0077B5">
+          <circle cx="16" cy="16" r="16"/>
+          <path d="M11.3 21h-2.7v-8.5h2.7V21zm-1.4-9.7c-.9 0-1.5-.6-1.5-1.4 0-.8.6-1.4 1.5-1.4.9 0 1.4.6 1.4 1.4 0 .8-.5 1.4-1.4 1.4zm11.5 9.7h-2.7v-4.4c0-1.1 0-2.5-1.5-2.5-1.5 0-1.7 1.2-1.7 2.4V21H12.8v-8.5h2.6v1.2h.1c.4-.7 1.2-1.4 2.5-1.4 2.7 0 3.2 1.8 3.2 4.1V21z" fill="#ffffff"/>
+        </svg>
+
+        <svg style="width: 32px; height: 32px; cursor: pointer;" viewBox="0 0 32 32">
+          <circle cx="16" cy="16" r="16" fill="#000000"/>
+          <path d="M19.3 10h1.7l-3.6 4.1 4.3 5.7h-3.4l-2.6-3.5-3 3.5H11l3.8-4.4-4.1-5.4h3.5l2.4 3.1L19.3 10zm-.6 8.8h.9L13.2 11h-1l6.5 7.8z" fill="#ffffff"/>
+        </svg>
+      </div>
+    </div>
+
+    <div style="width: 50%; background: url('https://i.ibb.co/qGvcvZc/istockphoto-1567487790-612x612.jpg'); background-size: cover; background-position: center; border-radius: 0 4px 4px 0; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; overflow: hidden; box-sizing: border-box;">
+      
+<div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;">
+    <!-- Logo Image -->
+    <div style="">
+        <img src="https://i.ibb.co/xvhHV92/b2bx.png"   alt="Logo" style="max-width:280px;width:100%;height:auto;object-fit:contain;">
+    </div>
+
+    <!-- Tagline -->
+    <p style="font-size:16px;color:#6b7280;font-weight:500;margin-top:8px;">Global Business and Digital Connectivity</p>
+</div>
+
+    </div>
+
+  </div>
+</div>	
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+
+    <footer class="bg-white border-t border-gray-200 mt-10 pt-10">
+        <!-- Newsletter Bar -->
+
+
+        <!-- Main Footer Links -->
+        <div class="bg-bgGray py-16">
+            <div class="container mx-auto px-4 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                
+                <!-- Brand Info -->
+                <div>
+                    <a href="#" class="text-3xl font-extrabold tracking-tighter flex items-center mb-6">
+                        <span class="text-primary mr-1"><i class="fas fa-globe-americas"></i></span>
+                        <span class="text-primaryDark">B2B</span><span class="text-textDark font-semibold text-xl ml-1 mt-1">GoX</span>
+                    </a>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Your premier gateway for global wholesale trade. Connect with verified suppliers, secure transactions, and scale your business effortlessly.</p>
+                    <div class="mb-4 text-sm text-gray-500">
+                        <p>Got Questions? Call us 24/7 B2B Support</p>
+                        <p class="text-2xl font-bold text-textDark mt-1">1-800-570-7777</p>
+                    </div>
+                    <div class="flex space-x-2 mt-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#1da1f2] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-twitter text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#bd081c] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-pinterest-p text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#0077b5] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-[#ff0000] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-youtube text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">About Platform</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">About B2B World Market</a></li>
+                        <li><a href="#" class="hover-primary">Careers</a></li>
+                        <li><a href="#" class="hover-primary">Contact Us</a></li>
+                        <li><a href="#" class="hover-primary">News & Blog</a></li>
+                        <li><a href="#" class="hover-primary">Trade Shows</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">For Suppliers</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">Become a Supplier</a></li>
+                        <li><a href="#" class="hover-primary">Supplier Memberships</a></li>
+                        <li><a href="#" class="hover-primary">Training Center</a></li>
+                        <li><a href="#" class="hover-primary">Logistics Services</a></li>
+                        <li><a href="#" class="hover-primary">Payment & Escrow</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 3 -->
+                <div>
+                    <h4 class="font-bold text-textDark mb-6 uppercase text-sm">For Buyers</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li><a href="#" class="hover-primary">Sourcing Guide</a></li>
+                        <li><a href="#" class="hover-primary">Post an RFQ</a></li>
+                        <li><a href="#" class="hover-primary">Trade Assurance Protection</a></li>
+                        <li><a href="#" class="hover-primary">Track Order</a></li>
+                        <li><a href="#" class="hover-primary">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Categories Tags Bottom -->
+            <div class="container mx-auto px-4 max-w-7xl mt-12 border-t border-gray-200 pt-8 hidden md:block">
+                <div class="flex text-sm text-gray-500 mb-2">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Consumer Electric:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">TV Television</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Air Condition</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Refrigerator</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Washing Machine</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Audio Speaker</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Security Camera</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+                <div class="flex text-sm text-gray-500 mb-2">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Clothing & Apparel:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">Men T-shirt</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Dresses</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Men's Sneaker</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Leather Backpack</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+                <div class="flex text-sm text-gray-500">
+                    <span class="font-bold text-textDark w-40 flex-shrink-0">Machinery:</span>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
+                        <a href="#" class="hover-primary">Packaging Machines</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Laser Cutters</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">CNC Routers</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary">Textile Machinery</a> <span class="text-gray-300">|</span> <a href="#" class="hover-primary text-primary">View all</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="bg-bgGray pb-8">
+            <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between text-xs text-gray-400">
+                <p>Copyright © 2026 B2B World Market. All Rights Reserved.</p>
+                <div class="flex items-center space-x-2 mt-4 md:mt-0">
+                    <span>We're using safe payment for</span>
+                    <!-- Simulated Payment Badges -->
+                    <div class="flex space-x-1">
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">VISA</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">MC</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">TT</div>
+                        <div class="w-8 h-5 bg-gray-200 rounded flex items-center justify-center text-[8px] text-gray-500 font-bold">L/C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            // In a full implementation, this would open a side drawer
+            // For this single file demo, we just show an alert or toggle a class
+            alert('Mobile menu navigation would open here.');
+        });
+    </script>
+</body>
+</html>

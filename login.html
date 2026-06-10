@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B GoX - Welcome to Supplier.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brandBlue: '#0052cc',
+                        brandTextDark: '#0b1a30',
+                        brandRed: '#e50012',
+                        formBorder: '#dcdfe6',
+                        socialBg: '#f5f7fa'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Recreating the soft, high-tech gradient background from login b2bgox.jpg */
+            background: radial-gradient(circle at 80% 20%, #e0eaff 0%, #f0f4ff 40%, #ffffff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Abstract structural background shapes mimicking the image's background context */
+        .bg-glow-sphere {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: radial-gradient(circle, rgba(160,200,255,0.8) 0%, rgba(160,200,255,0) 70%);
+            border-radius: 50%;
+            top: 42%;
+            left: 5%;
+            filter: blur(1px);
+        }
+
+        /* Custom scrollbar matching standard professional browser look */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center py-10 px-4 relative">
+
+    <!-- Ambient background visual decorative sphere element -->
+    <div class="bg-glow-sphere"></div>
+
+    <!-- Main Container matching layout of login b2bgox.jpg -->
+    <div class="container mx-auto max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+        
+        <!-- LEFT COLUMN: Marketing Content & Hero Graphic -->
+        <div class="w-full lg:w-1/2 flex flex-col order-2 lg:order-1 pt-6 lg:pt-0">
+            <!-- Non-breaking Chinese Character Header -->
+            <h2 class="text-4xl md:text-5xl font-extrabold text-brandBlue tracking-wide mb-3">B2BGoX</h2>
+            
+            <!-- Catchy Marketing Bold Statement -->
+            <h1 class="text-3xl md:text-4xl lg:text-[42px] font-extrabold text-brandTextDark leading-tight mb-8">
+                Globally'<br class="hidden md:inline"> Supplier and Buyer
+            </h1>
+            
+            <!-- Bullet Point Value Propositions -->
+            <div class="space-y-4 mb-10 max-w-xl">
+                <div class="flex items-start gap-3">
+                    <span class="text-brandTextDark mt-1 flex-shrink-0">
+                        <i class="fa-regular fa-circle-check text-xl"></i>
+                    </span>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">
+                        Targeting a massive global buyer base and uncovering global business opportunities
+                    </p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-brandTextDark mt-1 flex-shrink-0">
+                        <i class="fa-regular fa-circle-check text-xl"></i>
+                    </span>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">
+                        Enjoy preferential resources within the site
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to Action Solid Button -->
+            <div class="mb-12 lg:mb-6">
+                <a href="#" class="inline-block bg-[#008000] text-white font-bold text-center text-lg px-8 py-3.5 rounded-full shadow-lg shadow-red-200 hover:bg-red-700 transition duration-300">
+                    check the details
+                </a>
+            </div>
+
+            <!-- Stylized Global Pedestal Rendering Graphic Alternative -->
+            <div class="w-full flex justify-center lg:justify-start lg:pl-16 mt-4">
+                <div class="relative w-72 h-72 md:w-80 md:h-80 flex items-center justify-center">
+                    <!-- Pedestal Bases -->
+                    <div class="absolute bottom-0 w-64 h-10 bg-gradient-to-r from-blue-200 to-blue-400 rounded-full opacity-40 shadow-inner"></div>
+                    <div class="absolute bottom-2 w-56 h-12 bg-gradient-to-r from-blue-300 to-blue-500 rounded-full shadow-md flex items-center justify-center border-t border-white/40">
+                        <div class="w-48 h-8 bg-blue-400/30 rounded-full blur-xs"></div>
+                    </div>
+                    <!-- Translucent Hologram Globe Frame -->
+                    <div class="absolute bottom-8 w-48 h-48 rounded-full border-2 border-blue-400/60 bg-gradient-to-tr from-blue-500/20 to-cyan-300/40 shadow-2xl flex items-center justify-center backdrop-blur-xs animate-pulse">
+                        <div class="w-full h-full absolute rounded-full border-t-2 border-b-2 border-white/50 rotate-45 scale-105"></div>
+                        <div class="w-full h-full absolute rounded-full border-r-2 border-l-2 border-white/30 -rotate-45 scale-105"></div>
+                        <!-- Axis core pin -->
+                        <div class="absolute -top-2 w-2 h-2 bg-pink-400 rounded-full shadow-md"></div>
+                        <div class="absolute -bottom-2 w-2 h-2 bg-yellow-400 rounded-full shadow-md"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Registration Dynamic Form Card -->
+        <div class="w-full lg:w-[520px] bg-white rounded-xl shadow-xl border border-gray-100 p-6 md:p-8 order-1 lg:order-2">
+            
+            <!-- Card Header Section -->
+            <div class="text-center mb-5">
+                <h3 class="text-xl md:text-2xl font-semibold text-gray-800">Welcome to B2BGoX.com</h3>
+                <div class="text-xs md:text-sm text-gray-500 mt-1 flex items-center justify-center gap-1">
+                    Already Have an account? 
+                    <a href="#" class="text-blue-600 font-medium hover:underline inline-flex items-center gap-0.5">
+                        Sign In <i class="fa-solid fa-circle-right text-[11px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Buyer / Supplier Toggle Radio Setup -->
+            <div class="flex items-center justify-center gap-6 mb-5 text-sm font-medium text-gray-700">
+                <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" name="userRole" value="buyer" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                    <span class="group-hover:text-blue-600 transition-colors">Buyer</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" name="userRole" value="supplier" checked class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                    <span class="group-hover:text-blue-600 transition-colors">Supplier</span>
+                </label>
+            </div>
+
+            <!-- Grid Input Fields Form Matrix -->
+            <form class="space-y-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" placeholder="Full Name*" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                    <input type="text" placeholder="Company Name" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" placeholder="Selling Products*" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                    <input type="text" placeholder="Phone / Mobile *" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="email" placeholder="Email *" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                    <input type="text" placeholder="Job Title" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="url" placeholder="Company Website" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                    <input type="text" placeholder="Area Code*" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" placeholder="Full Name*" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                    <input type="text" placeholder="Company Name" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                </div>
+
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="password" placeholder="Create a Password *" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                    <input type="password" placeholder="Confirm Password" class="w-full px-3 py-2.5 text-sm border border-formBorder rounded focus:outline-none focus:border-blue-500 placeholder-gray-400">
+                </div>
+
+                <!-- Terms and Privacy Policy Disclaimer Text -->
+                <p class="text-[11px] text-gray-500 italic leading-normal pt-1">
+                    * By joining, I agree to terms of use, <a href="#" class="text-blue-600 underline">Privacy Policy</a>, <a href="#" class="text-blue-600 underline">IPR</a> and agree to receive emails related to our services.
+                </p>
+
+                <!-- Form Submit Action Button -->
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-[#222222] hover:bg-black text-white font-medium py-3 rounded text-base transition-colors duration-200">
+                        Get Started
+                    </button>
+                </div>
+            </form>
+
+            <!-- Social Media Sign Up Divider Section -->
+            <div class="relative flex py-4 items-center">
+                <div class="flex-grow border-t border-gray-200"></div>
+                <span class="flex-shrink mx-4 text-xs text-gray-500 font-medium">Or Sign Up With</span>
+                <div class="flex-grow border-t border-gray-200"></div>
+            </div>
+
+            <!-- Social OAuth Links Row Group -->
+            <div class="grid grid-cols-4 gap-3">
+                <a href="#" class="flex items-center justify-center py-2.5 rounded bg-socialBg hover:bg-gray-200 transition-colors" title="Sign Up with Facebook">
+                    <i class="fa-brands fa-facebook-f text-blue-600 text-lg"></i>
+                </a>
+                <a href="#" class="flex items-center justify-center py-2.5 rounded bg-socialBg hover:bg-gray-200 transition-colors" title="Sign Up with Google">
+                    <i class="fa-brands fa-google text-red-500 text-lg"></i>
+                </a>
+                <a href="#" class="flex items-center justify-center py-2.5 rounded bg-socialBg hover:bg-gray-200 transition-colors" title="Sign Up with LinkedIn">
+                    <i class="fa-brands fa-linkedin-in text-blue-700 text-lg"></i>
+                </a>
+                <a href="#" class="flex items-center justify-center py-2.5 rounded bg-socialBg hover:bg-gray-200 transition-colors" title="Sign Up with X / Twitter">
+                    <i class="fa-brands fa-x-twitter text-black text-lg"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
