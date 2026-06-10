@@ -297,10 +297,81 @@
                         <li class="hover:text-primary cursor-pointer">Buyer Central</li>
                         <li class="hover:text-primary cursor-pointer">Logistics</li>
                     </ul>
-                    <div class="hidden xl:flex items-center space-x-4 text-sm font-bold">
-    <span class="hover-primary cursor-pointer">
-        <i class="fas fa-mobile-screen-button text-primary mr-1"></i> Mobile App
-    </span>
+                    <div class="hidden xl:flex items-center space-x-4 text-sm font-bold" style="display: flex; align-items: center; font-family: sans-serif; font-size: 14px; font-weight: bold;">
+    
+    <div class="mobile-app-dropdown-wrapper" style="position: relative; display: inline-block; padding: 10px 0;">
+        
+        <span class="hover-primary cursor-pointer" style="color: #1e293b; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: color 0.2s ease;">
+            <i class="fas fa-mobile-screen-button text-primary" style="color: #0284c7;"></i> 
+            Mobile App
+            <i class="fas fa-chevron-down dropdown-arrow" style="font-size: 11px; color: #64748b; margin-left: 2px; transition: transform 0.2s ease;"></i>
+        </span>
+
+        <div class="dropdown-content" style="
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #ffffff;
+            min-width: 540px;
+            padding: 24px 28px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        ">
+            
+            <div style="flex: 1; text-align: left;">
+                <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">Download App</h3>
+                <p style="font-size: 13px; font-weight: 400; color: #64748b; line-height: 1.5; margin-bottom: 16px; max-width: 180px;">
+                    Better Online and Trade Show Sourcing Experiences. Scan the QR code to download.
+                </p>
+                <a href="#" style="font-size: 13px; font-weight: 600; color: #0284c7; text-decoration: underline;">Learn More</a>
+            </div>
+
+            <div style="display: flex; gap: 20px;">
+                
+                <div style="text-align: center; width: 120px;">
+                    <div style="border: 1px solid #e2e8f0; padding: 6px; border-radius: 6px; background: #ffffff;">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&data=https://b2bcox.com/app" alt="iOS & Android" style="width: 100%; height: auto; display: block;" />
+                    </div>
+                    <span style="display: block; font-size: 11px; font-weight: 500; color: #64748b; margin-top: 8px; line-height: 1.3;">iOS & Android</span>
+                </div>
+
+                <div style="text-align: center; width: 120px;">
+                    <div style="border: 1px solid #e2e8f0; padding: 6px; border-radius: 6px; background: #ffffff;">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&data=https://b2bcox.com/app-china" alt="iOS & Android Mainland China" style="width: 100%; height: auto; display: block;" />
+                    </div>
+                    <span style="display: block; font-size: 11px; font-weight: 500; color: #64748b; margin-top: 8px; line-height: 1.3;">iOS & Android<br><span style="color: #94a3b8;">(Mainland China)</span></span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .mobile-app-dropdown-wrapper:hover .dropdown-content {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+        .mobile-app-dropdown-wrapper:hover .hover-primary {
+            color: #0284c7 !important;
+        }
+        .mobile-app-dropdown-wrapper:hover .dropdown-arrow {
+            transform: rotate(180deg);
+            color: #0284c7 !important;
+        }
+    </style>
+
 </div>
                 </nav>
 
@@ -602,7 +673,7 @@
                     <div class="font-bold text-textDark mb-1">$5.00 - $8.00</div>
                     <div class="text-xs text-gray-500">MOQ: 50 Pieces</div>
 					<a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -625,7 +696,7 @@
                     <div class="font-bold text-textDark mb-1">$12.50</div>
                     <div class="text-xs text-gray-500">MOQ: 100 Pieces</div>
 					<a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -646,7 +717,7 @@
                     <div class="font-bold text-textDark mb-1">$0.80 <span class="text-xs text-gray-400 line-through font-normal ml-1">$0.95</span></div>
                     <div class="text-xs text-gray-500">MOQ: 500 Pieces</div> 
 					<a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -666,7 +737,7 @@
                     <div class="font-bold text-textDark mb-1">$3.55 - $5.99</div>
                     <div class="text-xs text-gray-500">MOQ: 200 Sets</div>
 					<a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -680,7 +751,7 @@
   src="https://i.ibb.co/23W7mcr9/Vz-Uqgr8pfb-Ncf-Xrpze-VBPE.jpg"
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"> </div><div class="text-center px-2"><a href="product.html" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Luxury Hotel Bedding Set</a><div class="font-bold text-textDark mb-1">$32.00 - $35.00</div><div class="text-xs text-gray-500">MOQ: 50 Sets</div> <a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
@@ -688,7 +759,7 @@
   src="https://i.ibb.co/23W7mcr9/Vz-Uqgr8pfb-Ncf-Xrpze-VBPE.jpg"
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"></div><div class="text-center px-2"><a href="product.html" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Bluetooth Party Speaker OEM</a><div class="font-bold text-textDark mb-1">$45.00</div><div class="text-xs text-gray-500">MOQ: 100 Units</div> <a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
@@ -696,7 +767,7 @@
   src="https://i.ibb.co/23W7mcr9/Vz-Uqgr8pfb-Ncf-Xrpze-VBPE.jpg"
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"> </div><div class="text-center px-2"><a href="product.html" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Waterproof Hiking Backpack</a><div class="font-bold text-textDark mb-1">$12.90</div><div class="text-xs text-gray-500">MOQ: 300 Pieces</div> <a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
@@ -704,7 +775,7 @@
   src="https://i.ibb.co/23W7mcr9/Vz-Uqgr8pfb-Ncf-Xrpze-VBPE.jpg"
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"> </div><div class="text-center px-2"><a href="product.html" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Professional Salon Hair Dye Bulk</a><div class="font-bold text-textDark mb-1">$1.84 / tube</div><div class="text-xs text-gray-500">MOQ: 1000 Tubes</div> <a href="supplier-order.html"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
@@ -767,7 +838,7 @@
 <div class="text-xs text-gray-500 mb-3">   MOQ: 50 Pieces</div>
 
 <a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -791,7 +862,7 @@
                     <div class="font-bold text-textDark mb-1">$12.50</div>
                     <div class="text-xs text-gray-500">MOQ: 100 Pieces</div>
 					<a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -812,7 +883,7 @@
                     <div class="font-bold text-textDark mb-1">$0.80 <span class="text-xs text-gray-400 line-through font-normal ml-1">$0.95</span></div>
                     <div class="text-xs text-gray-500">MOQ: 500 Pieces</div>
 					<a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -832,7 +903,7 @@
                     <div class="font-bold text-textDark mb-1">$3.55 - $5.99</div>
                     <div class="text-xs text-gray-500">MOQ: 200 Sets</div>
 					<a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a>
@@ -845,7 +916,7 @@
   src="https://i.ibb.co/23W7mcr9/Vz-Uqgr8pfb-Ncf-Xrpze-VBPE.jpg"
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"> </div><div class="text-center px-2"><a href="#" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Luxury Hotel Bedding Set</a><div class="font-bold text-textDark mb-1">$32.00 - $35.00</div><div class="text-xs text-gray-500">MOQ: 50 Sets</div> <a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
@@ -853,7 +924,7 @@
   src="https://i.ibb.co/23W7mcr9/Vz-Uqgr8pfb-Ncf-Xrpze-VBPE.jpg"
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"></div><div class="text-center px-2"><a href="#" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Bluetooth Party Speaker OEM</a><div class="font-bold text-textDark mb-1">$45.00</div><div class="text-xs text-gray-500">MOQ: 100 Units</div> <a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
@@ -862,7 +933,7 @@
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"> </div><div class="text-center px-2"><a href="#" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Waterproof Hiking Backpack</a><div class="font-bold text-textDark mb-1">$12.90</div>
   <div class="text-xs text-gray-500">MOQ: 300 Pieces</div> <a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
@@ -870,7 +941,7 @@
   src="https://i.ibb.co/23W7mcr9/Vz-Uqgr8pfb-Ncf-Xrpze-VBPE.jpg"
   class="w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition duration-500"
   alt="Product"> </div><div class="text-center px-2"><a href="#" class="text-sm text-textDark font-medium hover-primary line-clamp-1 mb-1">Professional Salon Hair Dye Bulk</a><div class="font-bold text-textDark mb-1">$1.84 / tube</div><div class="text-xs text-gray-500">MOQ: 1000 Tubes</div> <a href="#"
-   class="inline-flex items-center justify-center w-full bg-red-600 text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
+   class="inline-flex items-center justify-center w-full bg-[#396a93] text-white text-sm font-semibold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300 shadow-sm hover:shadow-lg transform hover:-translate-y-0.5">
     <i class="fas fa-comments mr-2"></i>
     Contact Supplier
 </a> </div></div>
