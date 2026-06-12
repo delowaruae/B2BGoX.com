@@ -33,7 +33,7 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; color: #333; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; color: #333; overflow-x: hidden; background-color: #f5f7fa; }
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
@@ -94,7 +94,7 @@
 	
 	</style>
 </head>
-<body class="bg-white">
+<body class="bg-[#fcfdff]"> 
 
     <div class="bg-gray-100 text-xs text-textLight py-2 border-b border-gray-200 hidden md:block">
         <div class="container mx-auto px-4 flex justify-between items-center max-w-7xl">
@@ -181,8 +181,8 @@
          <div class="flex items-center flex-shrink-0 mr-1">
     <a href="/">
         <img
-            src="https://i.ibb.co/xvhHV92/b2bx.png"
-            alt="B2B World Market"
+            src="https://i.ibb.co/5WrVC3q3/logoo.png"
+            alt="B2B GoX"
             class="h-16 lg:h-20 w-auto object-contain">
     </a>
 </div>
@@ -206,7 +206,7 @@
             <div class="video-play-icon">
                 <i class="fa-solid fa-play"></i>
             </div>
-            <span></span>
+            <span>Video</span>
 			<img src="https://i.ibb.co/rK2M1mCr/x.png" alt="X" style="height:28px; width: auto; object-fit: contain;">
             </a>
 			
@@ -288,16 +288,154 @@
             <div class="w-full lg:w-3/4 flex flex-col">
                 
                 <!-- Horizontal Nav -->
-                <nav class="flex items-center justify-between mb-4 border-b lg:border-primary pb-2 lg:pb-0">
-                    <ul class="flex space-x-6 text-sm font-bold text-textDark items-center overflow-x-auto whitespace-nowrap">
+                <nav class="flex items-center justify-between mb-1 border-b lg:border-primary pb-2 lg:pb-0">
+                 <ul class="flex space-x-6 text-sm font-bold text-textDark items-center whitespace-nowrap" style="overflow:visible;">
                         <li class="text-primary border-b-2 border-primary pb-1 cursor-pointer">Home</li>
-                        <li class="hover:text-primary cursor-pointer flex items-center">Sourcing <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i></li>
+                        <li class="hover:text-primary cursor-pointer flex items-center">Sourcing <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i> </li>
                         <li class="hover:text-primary cursor-pointer flex items-center">Suppliers <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i></li>
                     
-                        <li class="hover:text-primary cursor-pointer">Buyer Central</li>
+					
+					 <li style="position:relative;list-style:none;"
+    onmouseenter="this.querySelector('.buyer-dropdown').style.display='block'"
+    onmouseleave="this.querySelector('.buyer-dropdown').style.display='none'">
+
+    <a href="buyer-central.html"
+       style="cursor:pointer;display:flex;align-items:center;text-decoration:none;color:#333;font-weight:600;">
+        Buyer
+        <i class="fas fa-chevron-down" style="font-size:10px;margin-left:5px;color:#999;"></i>
+    </a>
+
+    <div class="buyer-dropdown" style="
+        display:none;
+        position:absolute;
+        top:100%;
+        left:-120px;
+        width:550px;
+        background:#fff;
+        border:1px solid #e5e7eb;
+        box-shadow:0 8px 25px rgba(0,0,0,0.1);
+        padding:20px;
+        z-index:9999;
+        border-radius:4px;">
+
+        <div style="display:flex;justify-content:space-between;gap:30px;">
+
+            <!-- Service -->
+            <div>
+                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
+                    Guideline
+                </h4>
+
+                <div style="line-height:2;">
+                    <div><a href="new-user-guide.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">New User Guide</a></div>
+                    <div><a href="audited-suppliers-reports.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Audited Suppliers' Reports</a></div>
+                    <div><a href="meet-suppliers.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Meet Suppliers</a></div>
+                    <div><a href="secured-trading-service.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Secured Trading Service</a></div>
+                    <div><a href="buyer-center.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Buyer Center</a></div>
+                    <div><a href="contact-us.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Contact Us</a></div>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div>
+                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
+                    Search
+                </h4>
+
+                <div style="line-height:2;">
+                    <div><a href="product-directory.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Product Directory</a></div>
+                    <div><a href="supplier-discover.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Supplier Discover</a></div>
+                    <div><a href="post-sourcing-request.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Post Sourcing Request</a></div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
+                    Quick Links
+                </h4>
+
+                <div style="line-height:2;">
+                    <div><a href="my-favorites.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">My Favorites</a></div>
+                    <div><a href="browsing-history.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Browsing History</a></div>
+                    <div><a href="my-rfqs.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">My RFQs</a></div>
+                    <div><a href="saved-suppliers.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Saved Suppliers</a></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</li>
+					 
+					 
+
+<li style="position:relative;list-style:none;"
+    onmouseenter="this.querySelector('.buyer-dropdown').style.display='block'"
+    onmouseleave="this.querySelector('.buyer-dropdown').style.display='none'">
+
+    <a href="buyer-central.html"
+       style="cursor:pointer;display:flex;align-items:center;text-decoration:none;color:#333;font-weight:600;">
+       Supplier
+        <i class="fas fa-chevron-down" style="font-size:10px;margin-left:5px;color:#999;"></i>
+    </a>
+
+    <div class="buyer-dropdown" style="
+        display:none;
+        position:absolute;
+        top:100%;
+        left:-120px;
+        width:550px;
+        background:#fff;
+        border:1px solid #e5e7eb;
+        box-shadow:0 8px 25px rgba(0,0,0,0.1);
+        padding:20px;
+        z-index:9999;
+        border-radius:4px;">
+
+        <div style="display:flex;justify-content:space-between;gap:30px;">
+
+            <!-- Service -->
+            <div>
+                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
+                    Service
+                </h4>
+
+                <div style="line-height:2;">
+                    <div><a href="new-user-guide.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Become a Supplier</a></div>
+                    <div><a href="audited-suppliers-reports.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Verified Suppliers'</a></div>
+                    <div><a href="meet-suppliers.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Meet Suppliers</a></div>
+                    <div><a href="secured-trading-service.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'"> Gold Supplier </a></div>
+                    <
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div>
+                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
+                    Search
+                </h4>
+
+                <div style="line-height:2;">
+                    <div><a href="product-directory.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Product Directory</a></div>
+                    <div><a href="supplier-discover.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Supplier Discover</a></div>
+                    <div><a href="post-sourcing-request.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Post Sourcing Request</a></div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+
+        </div>
+
+    </div>
+
+</li>
+
+
                         <li class="hover:text-primary cursor-pointer">Logistics</li>
                     </ul>
-                    <div class="hidden xl:flex items-center space-x-4 text-sm font-bold" style="display: flex; align-items: center; font-family: sans-serif; font-size: 14px; font-weight: bold;">
+              <div class="hidden xl:flex items-center space-x-4 text-sm font-bold" style="display: flex; align-items: center; font-size: 14px; font-weight: bold;">
     
     <div class="mobile-app-dropdown-wrapper" style="position: relative; display: inline-block; padding: 10px 0;">
         
@@ -373,7 +511,8 @@
     </style>
 
 </div>
-                </nav>
+
+</nav>
 
 
 
@@ -643,14 +782,14 @@
         </div>
     </section>
 
-    <section class="container mx-auto px-4 max-w-7xl mt-16 mb-16">
+    <section class="container bg-white mx-auto px-4 max-w-7xl mt-16 mb-16">
         <div class="flex justify-between items-end mb-6 border-b border-gray-100 pb-2">
             <h2 class="text-2xl font-extrabold text-textDark">Trending Wholesale Products</h2>
             <a href="supplier-order.html" class="text-sm font-semibold text-textDark hover-primary">More Products <i class="fas fa-arrow-right ml-1"></i></a>
         </div>
 
         <!-- Product Grid (8 items) -->
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-8">
+        <div class=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-8">
             
             <!-- Standard B2B Product Card Function -->
             
