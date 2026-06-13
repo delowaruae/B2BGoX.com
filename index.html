@@ -45,52 +45,7 @@
         .hover-primary:hover { color: #1d4ed8; transition: color 0.3s; }
         .header-dropdown-shadow { box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
     
-	
-	/* VIDEO icon */
 
-.video-btn{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background:linear-gradient(to right,#ff0000,#ff2b2b);
-    color:#fff;
-    text-decoration:none;
-    padding:7px 14px;
-    border-radius:30px;
-    box-shadow:0 3px 10px rgba(255,0,0,.25);}
-
-
-.video-btn::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:100%;
-    transition:.8s;}
-
-
-
-.video-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 20px 40px rgba(214,0,0,.25);}
-
-.video-play-icon{
-    width:26px;
-    height:26px;
-    background:#fff;
-    color:red;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
-	transition:.3s;}
-
-
-	
-	/* VIDEO icon ends*/
-	
 	
 	</style>
 </head>
@@ -110,12 +65,79 @@
                     <span>ENG</span> <i class="fas fa-chevron-down text-[10px]"></i>
                 </div>
                 <span class="text-gray-300">|</span>
-                <a href="#" class="hover-primary">Become a Supplier</a>
-                <a href="#" class="hover-primary">Help Center</a>
-                <a href="#" class="hover-primary">My Account</a>
+                <a href="register.html" class="hover-primary">Become a Supplier</a>
+		
+		
+
+
+
+<div class="relative group py-1">
+    <a href="help-center.html" class="hover-primary font-semibold text-textDark flex items-center">
+        <i class="far fa-question-circle mr-1"></i> Help Center
+    </a>            
+    
+    <div class="dropdown-card fixed left-0 right-0 top-auto mx-auto mt-2 w-screen max-w-full bg-white border-b border-gray-200 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-sm" 
+         style="padding: 20px 40px;">
+        
+		
+        <div style="margin: 0 auto; display: flex; gap: 10px; justify-content: space-between; align-items: stretch;">
+            
+            <div style="flex: 1; display: flex; gap: 20px; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 0 0 200px;">
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                        <span style="font-size: 18px;">🚢</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Supplier</h3>
+                    </div>
+                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px;">
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">List your product</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential buying leads</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Supplier centre</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                    </ul>
+                </div>
+                <div style="width: 380px; height: 200px; border-radius:10px; margin-top:40px; background: #eef5f0; display: flex; align-items: center; justify-content: center; overflow: hidden; ">
+                    <div style="width:100%;height:100%;"> 
+                        <img src="https://i.ibb.co/BKqsVXjc/help2.jpg" alt="Supplier Flyer" style="width:100%; height:100%; object-fit:cover; display:block;"> 
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 1px; gap: 10px; background-color: #e5e7eb; align-self:stretch;"></div>
+
+            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 0 0 200px;">
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                        <span style="font-size: 18px;">🛒</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Buyer</h3>
+                    </div>
+                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Post buying request</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential sources</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Buyer centre</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                    </ul>
+                </div>
+                <div style="width: 380px; height: 200px; border-radius:10px; margin-top:40px; display: flex; align-items: center; justify-content: center; overflow: hidden; ">
+                    <div style="width:100%;height:100%;"> 
+                        <img src="https://i.ibb.co/cStpprd3/help.jpg" alt="Buyer Flyer" style="width:100%; height:100%; object-fit:cover; display:block;"> 
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+						
+	
+				
+                <a href="my-account.html" class="hover-primary"></a>
 				
               
-			   <div class="relative group py-1">
+ <div class="relative group py-1">
                     <a href="#" class="hover-primary font-semibold text-textDark flex items-center">
                         <i class="far fa-user mr-1"></i> Sign In / Register
                     </a>			
@@ -162,15 +184,17 @@
                             <li><a href="#" class="block px-6 py-2.5 hover:bg-gray-50 hover:text-primary">My Account</a></li>
                         </ul>
                     </div>
-                </div>
+</div>
 			  
+			
+			
 			  
             </div>
         </div>
     </div>
 
     <header class="py-2 border-b border-gray-200 sticky top-0 bg-white z-40">
-        <div class="container mx-auto px-1 flex flex-wrap justify-between items-center max-w-7xl">
+        <div class="container mx-auto px-1 flex flex-wrap justify-space-between items-center max-w-7xl">
             <!-- Mobile Menu Toggle -->
             <button class="md:hidden text-2xl mr-4" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -201,21 +225,107 @@
             </div>
             <!-- Header Icons -->
             <div class="flex items-center space-x-1 ml-4 hidden lg:flex">
-			    <!-- video Icons -->
-		 <a href="videocard.html" class="video-btn"> 
-            <div class="video-play-icon">
-                <i class="fa-solid fa-play"></i>
-            </div>
-            <span></span>
-			<img src="https://i.ibb.co/rK2M1mCr/x.png" alt="X" style="height:28px; width: auto; object-fit: contain;">
-            </a>
-		  <!-- video Icons -->
+			   
+			
+<!-- VIDEO ICON -->
+
+<a href="videocard.html"
+   style="
+   display:flex;
+   align-items:center;
+   gap:8px;
+   background:linear-gradient(to right,#ff0000,#ff2b2b);
+   color:#fff;
+   text-decoration:none;
+   padding:7px 14px;
+   border-radius:30px;
+   box-shadow:0 3px 10px rgba(255,0,0,.25);
+   transition:all .3s ease;
+   "
+   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 20px 40px rgba(214,0,0,.25)'"
+   onmouseout="this.style.transform='translateY(0px)';this.style.boxShadow='0 3px 10px rgba(255,0,0,.25)'">
+
+    <div style="
+        width:26px;
+        height:26px;
+        background:#fff;
+        color:red;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:12px;
+        transition:.3s;
+    ">
+        <i class="fa-solid fa-play"></i>
+    </div>
+
+    <img src="https://i.ibb.co/rK2M1mCr/x.png"
+         alt="X"
+         style="
+         height:28px;
+         width:auto;
+         object-fit:contain;
+         ">
+</a>
+<!-- VIDEO ICON -->
+
+	
             
                 
-<a href="#" class="text-center group flex flex-col items-center">
-                    <i class="far fa-envelope text-2xl text-gray-700 group-hover:text-primary transition duration-300"></i>
-                    <span class="text-[10px] mt-1 text-gray-500 group-hover:text-primary">Messages</span>
-                </a>
+<div style="position:relative;"
+     onmouseenter="this.querySelector('.msg-dropdown').style.display='block'"
+     onmouseleave="this.querySelector('.msg-dropdown').style.display='none'">
+
+    <a href="#" class="text-center group flex flex-col items-center" style="text-decoration:none;">
+        <i class="far fa-envelope text-2xl text-gray-700" style="font-size:24px;color:#555;"></i>
+        <span style="font-size:10px;font-weight:500px; margin-top:4px;color:#666;">SMS</span>
+    </a>
+
+    <div class="msg-dropdown" style="
+        display:none;
+        position:absolute;
+        top:100%;
+        right:0;
+        width:220px;
+        background:#fff;
+        border:1px solid #e5e7eb;
+        border-radius:6px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.12);
+        z-index:9999;
+        padding:10px 0;">
+
+        <a href="inquiry-messages.html"
+           style="display:block;padding:10px 15px;color:#555;text-decoration:none;"
+           onmouseover="this.style.background='#f5f7fa';this.style.color='#1d4ed8'"
+           onmouseout="this.style.background='white';this.style.color='#555'">
+            📩 Inquiry Messages
+        </a>
+
+        <a href="rfq-messages.html"
+           style="display:block;padding:10px 15px;color:#555;text-decoration:none;"
+           onmouseover="this.style.background='#f5f7fa';this.style.color='#1d4ed8'"
+           onmouseout="this.style.background='white';this.style.color='#555'">
+            📄 RFQ Messages
+        </a>
+
+        <a href="chat-messages.html"
+           style="display:block;padding:10px 15px;color:#555;text-decoration:none;"
+           onmouseover="this.style.background='#f5f7fa';this.style.color='#1d4ed8'"
+           onmouseout="this.style.background='white';this.style.color='#555'">
+            💬 Chat Messages
+        </a>
+
+        <a href="system-notifications.html"
+           style="display:block;padding:10px 15px;color:#555;text-decoration:none;"
+           onmouseover="this.style.background='#f5f7fa';this.style.color='#1d4ed8'"
+           onmouseout="this.style.background='white';this.style.color='#555'">
+            🔔 System Notifications
+        </a>
+
+    </div>
+
+</div>
                 
                 <a href="rfq.html" class="text-center group flex flex-col items-center">
                     <i class="far fa-file-alt text-2xl text-gray-700 group-hover:text-primary transition duration-300 relative">
@@ -286,151 +396,300 @@
             <!-- Main Content Area (Nav + Hero Slider) -->
             <div class="w-full lg:w-3/4 flex flex-col">
                 
+				
                 <!-- Horizontal Nav -->
-                <nav class="flex items-center justify-between mb-1 border-b lg:border-primary pb-2 lg:pb-0">
+<nav class="flex items-center justify-between mb-1 border-b lg:border-primary pb-2 lg:pb-0">
                  <ul class="flex space-x-6 text-sm font-bold text-textDark items-center whitespace-nowrap" style="overflow:visible;">
                         <li class="text-primary border-b-2 border-primary pb-1 cursor-pointer">Home</li>
                         <li class="hover:text-primary cursor-pointer flex items-center">Sourcing <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i> </li>
-                        <li class="hover:text-primary cursor-pointer flex items-center">Suppliers <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i></li>
                     
-					
-					 <li style="position:relative;list-style:none;"
+	
+	
+
+					 
+	
+
+	
+   <!-- supplier start -->
+<div class="relative group py-1">
+    <a href="help-center.html" class="hover-primary font-semibold text-textDark flex items-center"> Supplier
+    </a>            
+    
+    <div class="dropdown-card fixed left-0 right-0 top-auto mx-auto mt-2 w-screen max-w-full bg-white border-b border-gray-200 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-sm" 
+         style="padding: 20px 40px;">
+        
+		
+        <div style="margin: 0 auto; display: flex; gap: 10px; justify-content: space-between; align-items: stretch;">
+            
+            <div style="flex: 1; display: flex; gap: 20px; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 0 0 200px;">
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                        <span style="font-size: 18px;">🚢</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Supplier</h3>
+                    </div>
+                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px;">
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">List your product</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential buying leads</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Supplier centre</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                    </ul>
+                </div>
+                <div style="width: 380px; height: 200px; border-radius:10px; margin-top:40px; background: #eef5f0; display: flex; align-items: center; justify-content: center; overflow: hidden; ">
+                    <div style="width:100%;height:100%;"> 
+                        <img src="https://i.ibb.co/BKqsVXjc/help2.jpg" alt="Supplier Flyer" style="width:100%; height:100%; object-fit:cover; display:block;"> 
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 1px; gap: 10px; background-color: #e5e7eb; align-self:stretch;"></div>
+
+            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 0 0 200px;">
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                        <span style="font-size: 18px;">🛒</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Buyer</h3>
+                    </div>
+                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Post buying request</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential sources</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Buyer centre</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                    </ul>
+                </div>
+                <div style="width: 380px; height: 200px; border-radius:10px; margin-top:40px; display: flex; align-items: center; justify-content: center; overflow: hidden; ">
+                    <div style="width:100%;height:100%;"> 
+                        <img src="https://i.ibb.co/cStpprd3/help.jpg" alt="Buyer Flyer" style="width:100%; height:100%; object-fit:cover; display:block;"> 
+                    </div>
+                </div>
+            </div>
+			
+			
+			
+			
+
+        </div>
+    </div>
+</div>
+ <!-- supplier end -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <li style="position: relative; list-style: none;"
     onmouseenter="this.querySelector('.buyer-dropdown').style.display='block'"
     onmouseleave="this.querySelector('.buyer-dropdown').style.display='none'">
 
     <a href="buyer-central.html"
-       style="cursor:pointer;display:flex;align-items:center;text-decoration:none;color:#333;font-weight:600;">
+       style="cursor: pointer; display: flex; align-items: center; text-decoration: none; color: #1e293b; font-weight: 600; padding: 12px 18px; font-size: 15px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; transition: color 0.2s;"
+       onmouseover="this.style.color='#2563eb'"
+       onmouseout="this.style.color='#1e293b'">
         Buyer
-        <i class="fas fa-chevron-down" style="font-size:10px;margin-left:5px;color:#999;"></i>
+        <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 6px; color: #94a3b8;"></i>
     </a>
 
     <div class="buyer-dropdown" style="
-        display:none;
-        position:absolute;
-        top:100%;
-        left:-120px;
-        width:550px;
-        background:#fff;
-        border:1px solid #e5e7eb;
-        box-shadow:0 8px 25px rgba(0,0,0,0.1);
-        padding:20px;
-        z-index:9999;
-        border-radius:4px;">
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: -320px;
+        width: 940px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+        padding: 30px;
+        z-index: 99999;
+        border-radius: 8px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
 
-        <div style="display:flex;justify-content:space-between;gap:30px;">
+        <div style="display: flex; justify-content: space-between; gap: 35px;">
 
-            <!-- Service -->
-            <div>
-                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
-                    Guideline
-                </h4>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                <div style="width: 100%; height: 130px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0;">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80" 
+                         alt="Sourcing Search Engine Service" 
+                         style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
 
-                <div style="line-height:2;">
-                    <div><a href="new-user-guide.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">New User Guide</a></div>
-                    <div><a href="audited-suppliers-reports.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Audited Suppliers' Reports</a></div>
-                    <div><a href="meet-suppliers.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Meet Suppliers</a></div>
-                    <div><a href="secured-trading-service.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Secured Trading Service</a></div>
-                    <div><a href="buyer-center.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Buyer Center</a></div>
-                    <div><a href="contact-us.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Contact Us</a></div>
+                <div>
+                    <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #f0fdf4; padding-bottom: 6px; letter-spacing: -0.3px;">
+                        Search Services
+                    </h4>
+                    <div style="line-height: 2.2; font-size: 14px;">
+                        <div><a href="product-directory.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Product Directory</a></div>
+                        <div><a href="supplier-discover.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Supplier Discover</a></div>
+                        <div><a href="post-sourcing-request.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Post Sourcing Request</a></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Search -->
-            <div>
-                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
-                    Search
-                </h4>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                <div style="width: 100%; height: 130px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0;">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=400&q=80" 
+                         alt="Quick Panel Access Hub" 
+                         style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
 
-                <div style="line-height:2;">
-                    <div><a href="product-directory.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Product Directory</a></div>
-                    <div><a href="supplier-discover.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Supplier Discover</a></div>
-                    <div><a href="post-sourcing-request.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Post Sourcing Request</a></div>
+                <div>
+                    <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #faf5ff; padding-bottom: 6px; letter-spacing: -0.3px;">
+                        Quick Access Hub
+                    </h4>
+                    <div style="line-height: 2.2; font-size: 14px;">
+                        <div><a href="my-favorites.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">My Favorites</a></div>
+                        <div><a href="browsing-history.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Browsing History</a></div>
+                        <div><a href="my-rfqs.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">My RFQs</a></div>
+                        <div><a href="saved-suppliers.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Saved Suppliers</a></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Quick Links -->
-            <div>
-                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
-                    Quick Links
-                </h4>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                <div style="width: 100%; height: 130px; border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0;">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" 
+                         alt="Premium Sourcing Assistance Services" 
+                         style="width: 100%; height: 100%; object-fit: cover;" />
+                </div>
 
-                <div style="line-height:2;">
-                    <div><a href="my-favorites.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">My Favorites</a></div>
-                    <div><a href="browsing-history.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Browsing History</a></div>
-                    <div><a href="my-rfqs.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">My RFQs</a></div>
-                    <div><a href="saved-suppliers.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Saved Suppliers</a></div>
+                <div>
+                    <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: #0f172a; border-bottom: 2px solid #eff6ff; padding-bottom: 6px; letter-spacing: -0.3px;">
+                        Premium Solutions
+                    </h4>
+                    <div style="line-height: 2.2; font-size: 14px;">
+                        <div><a href="secured-trading-service.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Secured Trading Assistance</a></div>
+                        <div><a href="audited-suppliers-reports.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Audited Factory Reports</a></div>
+                        <div><a href="buyer-center.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">Global VIP Buyer Center</a></div>
+                        <div><a href="contact-us.html" style="color: #475569; text-decoration: none; display: block; padding: 2px 0;" onmouseover="this.style.color='#2563eb'; this.style.paddingLeft='4px';" onmouseout="this.style.color='#475569'; this.style.paddingLeft='0';">24/7 Priority Support</a></div>
+                    </div>
                 </div>
             </div>
 
         </div>
-
     </div>
 
 </li>
-					 
-					 
-
-<li style="position:relative;list-style:none;"
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  <!-- supplier start -->
+  <li class="relative group py-1" style="position: relative; list-style: none;"
     onmouseenter="this.querySelector('.buyer-dropdown').style.display='block'"
     onmouseleave="this.querySelector('.buyer-dropdown').style.display='none'">
-
-    <a href="buyer-central.html"
-       style="cursor:pointer;display:flex;align-items:center;text-decoration:none;color:#333;font-weight:600;">
+    
+    <!-- Trigger Main Link -->
+        <a href="buyer-central.html"
+       style="cursor: pointer; display: flex; align-items: center; text-decoration: none; color: #1e293b; font-weight: 600; padding: 12px 18px; font-size: 15px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; transition: color 0.2s;"
+       onmouseover="this.style.color='#2563eb'"
+       onmouseout="this.style.color='#1e293b'">
        Supplier
-        <i class="fas fa-chevron-down" style="font-size:10px;margin-left:5px;color:#999;"></i>
-    </a>
-
-    <div class="buyer-dropdown" style="
-        display:none;
-        position:absolute;
-        top:100%;
-        left:-120px;
-        width:550px;
-        background:#fff;
-        border:1px solid #e5e7eb;
-        box-shadow:0 8px 25px rgba(0,0,0,0.1);
-        padding:20px;
-        z-index:9999;
-        border-radius:4px;">
-
-        <div style="display:flex;justify-content:space-between;gap:30px;">
-
-            <!-- Service -->
-            <div>
-                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
-                    Service
-                </h4>
-
-                <div style="line-height:2;">
-                    <div><a href="new-user-guide.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Become a Supplier</a></div>
-                    <div><a href="audited-suppliers-reports.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Verified Suppliers'</a></div>
-                    <div><a href="meet-suppliers.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Meet Suppliers</a></div>
-                    <div><a href="secured-trading-service.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'"> Gold Supplier </a></div>
-                    <
+        <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 6px; color: #94a3b8;"></i>
+    </a>        
+    
+    <!-- Full-Width Mega Dropdown Panel -->
+    <div class="dropdown-card fixed left-0 right-0 top-auto mx-auto mt-2 w-screen max-w-full bg-white border-b border-gray-200 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-sm" 
+         style="padding: 20px 40px;">
+        
+        <div style="margin: 0 auto; display: flex; gap: 10px; justify-content: space-between; align-items: stretch;">
+            
+            <!-- SECTION 1: FOR SUPPLIER -->
+            <div style="flex: 1; display: flex; gap: 20px; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 0 0 200px;">
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                        <span style="font-size: 18px;">🚢</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Supplier</h3>
+                    </div>
+                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px;">
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">List your product</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential buying leads</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Supplier centre</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                    </ul>
+                </div>
+                <div style="width: 200px; height: 200px; border-radius: 10px; margin-top: 40px; background: #eef5f0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <div style="width: 100%; height: 100%;"> 
+                        <img src="https://i.ibb.co/p6CD06yS/expoo.jpg" alt="Supplier Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
+                    </div>
                 </div>
             </div>
 
-            <!-- Search -->
-            <div>
-                <h4 style="margin:0 0 12px;font-size:16px;font-weight:700;color:#333;">
-                    Search
-                </h4>
+            <!-- Vertical Divider Line -->
+            <div style="width: 1px; gap: 10px; background-color: #e5e7eb; align-self: stretch;"></div>
 
-                <div style="line-height:2;">
-                    <div><a href="product-directory.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Product Directory</a></div>
-                    <div><a href="supplier-discover.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Supplier Discover</a></div>
-                    <div><a href="post-sourcing-request.html" style="color:#666;text-decoration:none;" onmouseover="this.style.color='#1d4ed8'" onmouseout="this.style.color='#666'">Post Sourcing Request</a></div>
+            <!-- SECTION 2: FOR BUYER -->
+            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 0 0 200px;">
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                        <span style="font-size: 18px;">🛒</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Buyer</h3>
+                    </div>
+                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Post buying request</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential sources</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Buyer centre</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                    </ul>
+                </div>
+                <div style="width: 200px; height: 200px; border-radius: 10px; margin-top: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <div style="width: 100%; height: 100%;"> 
+                        <img src="https://i.ibb.co/5WNYkbcP/expo.jpg" alt="Buyer Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
+                    </div>
+                </div>
+            </div>
+			
+			
+			<!-- SECTION 3: FOR BUYER -->
+            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 0 0 200px;">
+                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
+                        <span style="font-size: 18px;">🛒</span>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Buyer</h3>
+                    </div>
+                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Post buying request</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential sources</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Buyer centre</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                    </ul>
+                </div>
+                <div style="width: 200px; height: 200px; border-radius: 10px; margin-top: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <div style="width: 100%; height: 100%;"> 
+                        <img src="https://i.ibb.co/BVy7DppY/dubai-expo-2020.jpg" alt="Buyer Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
+                    </div>
                 </div>
             </div>
 
-            <!-- Quick Links -->
+
+
+
+
 
         </div>
-
     </div>
-
 </li>
-
+<!-- supplier end -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
                         <li class="hover:text-primary cursor-pointer">Logistics</li>
                     </ul>
@@ -2044,8 +2303,8 @@ box-shadow:0 20px 60px rgba(0,0,0,.12);
                     <h4 class="font-bold text-textDark mb-6 uppercase text-sm">About Platform</h4>
                     <ul class="space-y-3 text-sm text-gray-500">
                         <li><a href="#" class="hover-primary">About B2B World Market</a></li>
-                        <li><a href="#" class="hover-primary">Careers</a></li>
-                        <li><a href="#" class="hover-primary">Contact Us</a></li>
+                        <li><a href="career.html" class="hover-primary">Careers</a></li>
+                        <li><a href="contact.html" class="hover-primary">Contact Us</a></li>
                         <li><a href="#" class="hover-primary">News & Blog</a></li>
                         <li><a href="#" class="hover-primary">Trade Shows</a></li>
                     </ul>
@@ -2060,6 +2319,7 @@ box-shadow:0 20px 60px rgba(0,0,0,.12);
                         <li><a href="#" class="hover-primary">Training Center</a></li>
                         <li><a href="#" class="hover-primary">Logistics Services</a></li>
                         <li><a href="#" class="hover-primary">Payment & Escrow</a></li>
+						   <li><a href="package.html" class="hover-primary">Packages</a></li>
                     </ul>
                 </div>
 
@@ -2072,6 +2332,8 @@ box-shadow:0 20px 60px rgba(0,0,0,.12);
                         <li><a href="#" class="hover-primary">Trade Assurance Protection</a></li>
                         <li><a href="#" class="hover-primary">Track Order</a></li>
                         <li><a href="#" class="hover-primary">Return Policy</a></li>
+						<li><a href="my-account.html" class="hover-primary">My Account</a></li>
+						  
                     </ul>
                 </div>
             </div>
