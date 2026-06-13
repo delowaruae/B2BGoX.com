@@ -54,17 +54,94 @@
     <div class="bg-gray-100 text-xs text-textLight py-2 border-b border-gray-200 hidden md:block">
         <div class="container mx-auto px-4 flex justify-between items-center max-w-7xl">
             <div class="flex items-center space-x-4">
-                <span>Welcome to B2B GoX - Global Sourcing Made Easy!</span>
+                <span>B2B GoX - Global Sourcing Made Easy!</span>
             </div>
             <div class="flex items-center space-x-6">
-                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
-                    <span>USD</span> <i class="fas fa-chevron-down text-[10px]"></i>
-                </div>
-                <div class="flex items-center space-x-1 cursor-pointer hover-primary">
-                    <img src="https://flagcdn.com/w20/us.png" alt="ENG" class="h-3 w-4">
-                    <span>ENG</span> <i class="fas fa-chevron-down text-[10px]"></i>
-                </div>
-                <span class="text-gray-300">|</span>
+                
+				
+				
+							<!-- Parent Interactive Node Element Container Context -->
+<div style="position: relative; display: inline-block;" onmouseover="this.querySelector('.dropdown-panel').style.opacity='1'; this.querySelector('.dropdown-panel').style.visibility='visible'; this.querySelector('.dropdown-panel').style.transform='translateY(0) scale(1)';" onmouseout="this.querySelector('.dropdown-panel').style.opacity='0'; this.querySelector('.dropdown-panel').style.visibility='hidden'; this.querySelector('.dropdown-panel').style.transform='translateY(10px) scale(0.95)';">
+
+	<!-- Your trigger element block -->
+<div class="flex items-center space-x-1 cursor-pointer hover-primary" style="display:flex;align-items:center;cursor:pointer;">
+    
+    <i class="fa-solid fa-globe text-[18px]"></i>
+
+    <span style="font-size:14px;font-weight:600;color:#475569;"> </span>
+
+    <i class="fas fa-chevron-down" style="font-size:10px;color:#94a3b8;margin-left:4px;"></i>
+
+</div>
+
+	<!-- ================= HIDING FLYOUT SELECT PANEL CONTAINER ================= -->
+	<div class="dropdown-panel" style="position: absolute; top: 100%; right: 0; margin-top:10px; width: 380px; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12); padding: 24px; box-sizing: border-box; z-index: 9999; opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.95); transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
+		
+		<!-- Visual Top Pointer Arrow Indicator -->
+		<div style="position: absolute; top: -6px; right: 24px; width: 12px; height: 12px; background-color: #ffffff; border-left: 1px solid #e2e8f0; border-top: 1px solid #e2e8f0; transform: rotate(45deg); box-sizing: border-box;"></div>
+
+		<!-- Panel Informational Details Group -->
+		<div style="margin-bottom: 24px; text-align: left;">
+			<h4 style="margin: 0 0 6px 0; font-size: 16px; font-weight: 700; color: #0f172a; letter-spacing: -0.3px;">Preferences Matrix</h4>
+			<p style="margin: 0; font-size: 13px; color: #64748b; line-height: 1.45;">Set your preferred location localization layer metrics below.</p>
+		</div>
+
+		<!-- FIELD 1: LANGUAGE CONTROLLER -->
+		<div style="margin-bottom: 20px; text-align: left;">
+			<label style="display: block; font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px;">Interface Language</label>
+			
+			<div style="display: flex; align-items: center; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 4px 14px;">
+				<div style="display: flex; align-items: center; justify-content: center; margin-right: 12px; min-width: 24px;">
+					<img src="https://flagcdn.com/w20/us.png" alt="ENG" style="height: 12px; width: 16px; border-radius: 2px; object-fit: cover;">
+				</div>
+				
+				<select style="flex: 1; background: transparent; border: none; outline: none; font-family: inherit; font-size: 14px; font-weight: 600; color: #1e293b; padding: 10px 0; cursor: pointer; appearance: none; -webkit-appearance: none;">
+					<option value="en" selected>English (United States)</option>
+					<option value="es">Español (España)</option>
+					<option value="fr">Français (France)</option>
+					<option value="de">Deutsch (Deutschland)</option>
+				</select>
+				
+				<span style="font-size: 11px; color: #94a3b8; margin-left: 8px; pointer-events: none;">▼</span>
+			</div>
+		</div>
+
+		<!-- FIELD 2: CURRENCY MAPPING MODULE -->
+		<div style="margin-bottom: 28px; text-align: left;">
+			<label style="display: block; font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px;">Regional Market Currency</label>
+			
+			<div style="display: flex; align-items: center; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 4px 14px;">
+				<div style="display: flex; align-items: center; justify-content: center; margin-right: 12px; min-width: 24px;">
+					<img src="https://flagcdn.com/w20/ae.png" alt="AE" style="height: 12px; width: 16px; border-radius: 2px; object-fit: cover;">
+				</div>
+				
+				<select style="flex: 1; background: transparent; border: none; outline: none; font-family: inherit; font-size: 14px; font-weight: 600; color: #1e293b; padding: 10px 0; cursor: pointer; appearance: none; -webkit-appearance: none;">
+					<option value="aed" selected>AED — UAE Dirham (د.إ)</option>
+					<option value="usd">USD — US Dollar ($)</option>
+					<option value="eur">EUR — Euro (€)</option>
+					<option value="gbp">GBP — Pound Sterling (£)</option>
+				</select>
+				
+				<span style="font-size: 11px; color: #94a3b8; margin-left: 8px; pointer-events: none;">▼</span>
+			</div>
+		</div>
+
+		<!-- SAVING TRIGGER EVENT INTERFACE LINK BUTTON -->
+		<button type="button" style="width: 100%; padding: 14px; background-color: #2563eb; color: #ffffff; border: none; border-radius: 12px; font-family: inherit; font-size: 14px; font-weight: 700; letter-spacing: -0.1px; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); transition: background-color 0.15s ease;" onmouseover="this.style.backgroundColor='#1d4ed8';" onmouseout="this.style.backgroundColor='#2563eb';">
+			Save Preferences
+		</button>
+
+	</div>
+
+</div>
+
+
+
+
+
+							
+							
+       <span class="text-gray-300">|</span>
                 <a href="register.html" class="hover-primary">Become a Supplier</a>
 		
 		
@@ -278,7 +355,7 @@
      onmouseleave="this.querySelector('.msg-dropdown').style.display='none'">
 
     <a href="#" class="text-center group flex flex-col items-center" style="text-decoration:none;">
-        <i class="far fa-envelope text-2xl text-gray-700" style="font-size:24px;color:#555;"></i>
+        <i class="fa-regular fa-comment-dots text-[18px]" ></i>
         <span style="font-size:10px;font-weight:500px; margin-top:4px;color:#666;">SMS</span>
     </a>
 
@@ -393,92 +470,20 @@
                 </div>
             </div>
 
+
+
+
             <!-- Main Content Area (Nav + Hero Slider) -->
-            <div class="w-full lg:w-3/4 flex flex-col">
+<div class="w-full lg:w-3/4 flex flex-col">
                 
-				
+
                 <!-- Horizontal Nav -->
 <nav class="flex items-center justify-between mb-1 border-b lg:border-primary pb-2 lg:pb-0">
                  <ul class="flex space-x-6 text-sm font-bold text-textDark items-center whitespace-nowrap" style="overflow:visible;">
                         <li class="text-primary border-b-2 border-primary pb-1 cursor-pointer">Home</li>
                         <li class="hover:text-primary cursor-pointer flex items-center">Sourcing <i class="fas fa-chevron-down text-[10px] ml-1 text-gray-400"></i> </li>
                     
-	
-	
 
-					 
-	
-
-	
-   <!-- supplier start -->
-<div class="relative group py-1">
-    <a href="help-center.html" class="hover-primary font-semibold text-textDark flex items-center"> Supplier
-    </a>            
-    
-    <div class="dropdown-card fixed left-0 right-0 top-auto mx-auto mt-2 w-screen max-w-full bg-white border-b border-gray-200 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-sm" 
-         style="padding: 20px 40px;">
-        
-		
-        <div style="margin: 0 auto; display: flex; gap: 10px; justify-content: space-between; align-items: stretch;">
-            
-            <div style="flex: 1; display: flex; gap: 20px; align-items: flex-start; justify-content: space-between;">
-                <div style="flex: 0 0 200px;">
-                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
-                        <span style="font-size: 18px;">🚢</span>
-                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Supplier</h3>
-                    </div>
-                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px;">
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">List your product</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential buying leads</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Supplier centre</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
-                    </ul>
-                </div>
-                <div style="width: 380px; height: 200px; border-radius:10px; margin-top:40px; background: #eef5f0; display: flex; align-items: center; justify-content: center; overflow: hidden; ">
-                    <div style="width:100%;height:100%;"> 
-                        <img src="https://i.ibb.co/BKqsVXjc/help2.jpg" alt="Supplier Flyer" style="width:100%; height:100%; object-fit:cover; display:block;"> 
-                    </div>
-                </div>
-            </div>
-
-            <div style="width: 1px; gap: 10px; background-color: #e5e7eb; align-self:stretch;"></div>
-
-            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: space-between;">
-                <div style="flex: 0 0 200px;">
-                    <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
-                        <span style="font-size: 18px;">🛒</span>
-                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Buyer</h3>
-                    </div>
-                    <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Post buying request</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential sources</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Buyer centre</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
-                    </ul>
-                </div>
-                <div style="width: 380px; height: 200px; border-radius:10px; margin-top:40px; display: flex; align-items: center; justify-content: center; overflow: hidden; ">
-                    <div style="width:100%;height:100%;"> 
-                        <img src="https://i.ibb.co/cStpprd3/help.jpg" alt="Buyer Flyer" style="width:100%; height:100%; object-fit:cover; display:block;"> 
-                    </div>
-                </div>
-            </div>
-			
-			
-			
-			
-
-        </div>
-    </div>
-</div>
- <!-- supplier end -->
- 
- 
- 
- 
- 
- 
  
  <li style="position: relative; list-style: none;"
     onmouseenter="this.querySelector('.buyer-dropdown').style.display='block'"
@@ -615,7 +620,7 @@
                 </div>
                 <div style="width: 200px; height: 200px; border-radius: 10px; margin-top: 40px; background: #eef5f0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                     <div style="width: 100%; height: 100%;"> 
-                        <img src="https://i.ibb.co/p6CD06yS/expoo.jpg" alt="Supplier Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
+                        <img src="https://i.ibb.co/vxFCDB3r/Supplier.jpg" alt="Supplier Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
                     </div>
                 </div>
             </div>
@@ -640,7 +645,7 @@
                 </div>
                 <div style="width: 200px; height: 200px; border-radius: 10px; margin-top: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                     <div style="width: 100%; height: 100%;"> 
-                        <img src="https://i.ibb.co/5WNYkbcP/expo.jpg" alt="Buyer Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
+                        <img src="https://i.ibb.co/vxFCDB3r/Supplier.jpg" alt="Buyer Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
                     </div>
                 </div>
             </div>
@@ -651,19 +656,19 @@
                 <div style="flex: 0 0 200px;">
                     <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
                         <span style="font-size: 18px;">🛒</span>
-                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">For Buyer</h3>
+                        <h3 style="margin: 0; font-size: 16px; color: #111111; font-weight: 700;">Quick Links</h3>
                     </div>
                     <ul class="text-textDark text-[15px] font-medium" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Post buying request</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Verify business account</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">RFQ request</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'"> Verify Supplier account</a></li>
                         <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Find potential sources</a></li>
                         <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Buyer centre</a></li>
-                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">FAQs</a></li>
+                        <li><a href="#" class="block py-1 hover:text-primary" style="transition: transform 0.2s; text-decoration: none;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">Trade Show</a></li>
                     </ul>
                 </div>
                 <div style="width: 200px; height: 200px; border-radius: 10px; margin-top: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                     <div style="width: 100%; height: 100%;"> 
-                        <img src="https://i.ibb.co/BVy7DppY/dubai-expo-2020.jpg" alt="Buyer Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
+                        <img src="https://i.ibb.co/NRyXtbW/buyers.webp" alt="Buyer Flyer" style="width: 100%; height: 100%; object-fit: cover; display: block;"> 
                     </div>
                 </div>
             </div>
@@ -677,16 +682,6 @@
     </div>
 </li>
 <!-- supplier end -->
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
  
  
@@ -771,6 +766,8 @@
 </div>
 
 </nav>
+
+
 
 
 
@@ -2364,7 +2361,7 @@ box-shadow:0 20px 60px rgba(0,0,0,.12);
         <!-- Copyright -->
         <div class="bg-bgGray pb-8">
             <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row items-center justify-between text-xs text-gray-400">
-                <p>Copyright © 2026 B2B World Market. All Rights Reserved.</p>
+                <p>Copyright © 2026 B2B GoX.com. All Rights Reserved.</p>
                 <div class="flex items-center space-x-2 mt-4 md:mt-0">
                     <span>We're using safe payment for</span>
                     <!-- Simulated Payment Badges -->
