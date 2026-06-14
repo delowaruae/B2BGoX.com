@@ -66,7 +66,7 @@
        <span class="text-gray-300">|</span>
 
 				
-	<a href="become-supplier.html" style=" display: inline-flex; align-items: center; justify-content: center; background-color: #f26522; color: #ffffff; text-decoration: none; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 20px; letter-spacing: 0.1px; white-space: nowrap; box-shadow: 0 2px 6px rgba(242, 101, 34, 0); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); " onmouseover=" this.style.backgroundColor='#e05313'; this.style.boxShadow='0 0 12px rgba(242, 101, 34, 0.7), 0 2px 8px rgba(242, 101, 34, 0.3)'; this.style.transform='translateY(-1px)'; " onmouseout=" this.style.backgroundColor='#f26522'; this.style.boxShadow='0 2px 6px rgba(242, 101, 34, 0)'; this.style.transform='translateY(0px)'; "> Be Supplier </a>
+	<a href="become-supplier.html" style=" display: inline-flex; align-items: center; justify-content: center; background-color: #004d99; color: #ffffff; text-decoration: none; font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 20px; letter-spacing: 0.1px; white-space: nowrap; box-shadow: 0 2px 6px rgba(242, 101, 34, 0); transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); " onmouseover=" this.style.backgroundColor='#e05313'; this.style.boxShadow='0 0 12px rgba(242, 101, 34, 0.7), 0 2px 8px rgba(242, 101, 34, 0.3)'; this.style.transform='translateY(-1px)'; " onmouseout=" this.style.backgroundColor='#f26522'; this.style.boxShadow='0 2px 6px rgba(242, 101, 34, 0)'; this.style.transform='translateY(0px)'; "> Be Supplier </a>
 		
 
 
@@ -432,25 +432,32 @@
             
 			
 			
+<!-- Wrapper Div: Set to block to seamlessly link the icon hover zone directly with the mega-menu grid boundary -->
 <div class="sms-trigger-wrapper"
-     style="display: inline-block;"
+     style="display: block;"
      onmouseenter="this.querySelector('.msg-mega-dropdown').style.display='block'"
      onmouseleave="this.querySelector('.msg-mega-dropdown').style.display='none'">
 
-    <a href="javascript:void(0);" class="group flex flex-col items-center text-center no-underline transition duration-200" style="transform: scale(1.05); display: inline-flex; padding: 4px 8px;">
-        <i class="fas fa-envelope text-2xl transition duration-200 group-hover:text-blue-700" style="color: #2563eb;"></i>
+    <!-- Icon Trigger Link Context Container -->
+    <a href="my-inbox.html" class="group flex flex-col items-center text-center no-underline transition duration-200" style="transform: scale(1.05); display: inline-flex; padding: 10px 16px; margin-bottom: 0;">
+        <i class="fas fa-envelope text-2xl transition duration-200 group-hover:text-gray-700" style="color: #2563eb;"></i>
         <span style="font-size: 10px; font-weight: 700; margin-top: 3px; color: #1e3a8a; letter-spacing: 0.3px;">SMS</span>
     </a>
 
-    <div class="msg-mega-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 100vw; background: #ffffff; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12); z-index: 9999; padding: 24px 0; margin-top: 0; box-sizing: border-box;">
+    <!-- FULL DESKTOP WIDTH MEGA DROPDOWN PANEL -->
+    <!-- Removed 100vw to prevent screen spill. Added seamless top anchoring so there is absolute zero gap -->
+    <div class="msg-mega-dropdown" style="display: none; position: absolute; left: 0; right: 0; width: 100%; background: #ffffff; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12); z-index: 9999; padding: 24px 0; margin-top: 0; box-sizing: border-box;">
         
-        <div style="position: absolute; top: -15px; left: 0; width: 100%; height: 15px; background: transparent;"></div>
+        <!-- Hover Bridge: Guarantees your mouse never loses focus transitioning onto the component items -->
+        <div style="position: absolute; top: -20px; left: 0; width: 100%; height: 20px; background: transparent;"></div>
         
         <div class="container mx-auto px-4 max-w-7xl">
             
+            <!-- 4-Column Responsive Messaging Grid System -->
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
                 
-                <div onclick="window.location.href='inquiry-messages.html';"
+                <!-- COLUMN 1: Inquiry Messages Box -->
+                <div onclick="window.location.href='message.html';"
                      style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
                      onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
                      onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
@@ -469,26 +476,35 @@
                     </p>
                 </div>
 
-                <div onclick="window.location.href='rfq-messages.html';"
-                     style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
-                     onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
-                     onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
-                    
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-                        <span style="font-family: sans-serif; font-size: 15px; font-weight: 700; color: #0f172a;">📄 RFQ Messages</span>
-                        <span style="background: #fef3c7; color: #d97706; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px;">Quotes</span>
-                    </div>
-                    
-                    <div style="width: 100%; height: 110px; background: #fffbeb; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; overflow: hidden;">
-                        <img src="https://img.icons8.com/illustrations/external-shadow-pack-linear-gradient-icha-sayang/100/external-rfq-business-process-shadow-pack-linear-gradient-icha-sayang.png" alt="RFQ" style="max-height: 85px; object-fit: contain;">
-                    </div>
-                    
-                    <p style="font-family: sans-serif; font-size: 12px; color: #64748b; margin: 0; line-height: 1.4;">
-                        Track current Request for Quotes, manage direct supplier bids, and view estimates.
-                    </p>
-                </div>
+                <!-- COLUMN 2: RFQ Messages Box -->
+<a href="message.html"
+   style="display:flex; flex-direction:column; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; cursor:pointer; transition:all 0.25s ease; text-decoration:none;"
+   onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
+   onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
 
-                <div onclick="window.location.href='chat-messages.html';"
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+        <span style="font-family:sans-serif; font-size:15px; font-weight:700; color:#0f172a;">
+            📄 RFQ Messages
+        </span>
+
+        <span style="background:#fef3c7; color:#d97706; font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px;">
+            Quotes
+        </span>
+    </div>
+
+    <div style="width:100%; height:110px; background:#fffbeb; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; overflow:hidden;">
+        <img src="https://img.icons8.com/illustrations/external-shadow-pack-linear-gradient-icha-sayang/100/external-rfq-business-process-shadow-pack-linear-gradient-icha-sayang.png"
+             alt="RFQ"
+             style="max-height:85px; object-fit:contain;">
+    </div>
+
+    <p style="font-family:sans-serif; font-size:12px; color:#64748b; margin:0; line-height:1.4;">
+        Track current Request for Quotes, manage direct supplier bids, and view estimates.
+    </p>
+</a>
+
+                <!-- COLUMN 3: Chat Messages Box -->
+                <div onclick="window.location.href='message.html';"
                      style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
                      onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
                      onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
@@ -507,7 +523,8 @@
                     </p>
                 </div>
 
-                <div onclick="window.location.href='system-notifications.html';"
+                <!-- COLUMN 4: System Notifications Box -->
+                <div onclick="window.location.href='message.html';"
                      style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
                      onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
                      onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
@@ -530,7 +547,7 @@
         </div>
     </div>
 
-</div>			
+</div>
 			
 			
 		
