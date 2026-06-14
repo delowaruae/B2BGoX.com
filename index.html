@@ -429,42 +429,114 @@
                 <img src="https://i.ibb.co/rK2M1mCr/x.png" alt="X" style="height: 24px; width: auto; object-fit: contain;">
             </a>
 
-            <div style="position: relative; display: inline-block;"
-                 onmouseenter="this.querySelector('.msg-dropdown').style.display='block'"
-                 onmouseleave="this.querySelector('.msg-dropdown').style.display='none'">
+            
+			
+			
+<div class="sms-trigger-wrapper"
+     style="display: inline-block;"
+     onmouseenter="this.querySelector('.msg-mega-dropdown').style.display='block'"
+     onmouseleave="this.querySelector('.msg-mega-dropdown').style.display='none'">
 
-                <a href="javascript:void(0);" class="group flex flex-col items-center text-center no-underline transition duration-200" style="transform: scale(1.05);">
-                    <i class="far fa-envelope text-2xl transition duration-200 group-hover:text-blue-700" style="color: #2563eb;"></i>
+    <a href="javascript:void(0);" class="group flex flex-col items-center text-center no-underline transition duration-200" style="transform: scale(1.05); display: inline-flex; padding: 4px 8px;">
+        <i class="fas fa-envelope text-2xl transition duration-200 group-hover:text-blue-700" style="color: #2563eb;"></i>
+        <span style="font-size: 10px; font-weight: 700; margin-top: 3px; color: #1e3a8a; letter-spacing: 0.3px;">SMS</span>
+    </a>
+
+    <div class="msg-mega-dropdown" style="display: none; position: absolute; top: 100%; left: 0; width: 100vw; background: #ffffff; border-bottom: 2px solid #e2e8f0; border-top: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12); z-index: 9999; padding: 24px 0; margin-top: 0; box-sizing: border-box;">
+        
+        <div style="position: absolute; top: -15px; left: 0; width: 100%; height: 15px; background: transparent;"></div>
+        
+        <div class="container mx-auto px-4 max-w-7xl">
+            
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
                 
-                </a>
-
-                <div class="msg-dropdown" style="display: none; position: absolute; top: 100%; right: 0; width: 220px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08); z-index: 9999; padding: 6px 0; margin-top: 8px;">
-                    <div onclick="window.location.href='inquiry-messages.html';"
-                         style="display: block; padding: 10px 16px; color: #475569; text-decoration: none; text-align: left; font-family: sans-serif; font-size: 13px; cursor: pointer;"
-                         onmouseover="this.style.background='#f8fafc'; this.style.color='#0f172a';"
-                         onmouseout="this.style.background='white'; this.style.color='#475569';">
-                         📩 Inquiry Messages
+                <div onclick="window.location.href='inquiry-messages.html';"
+                     style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
+                     onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
+                     onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
+                    
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-family: sans-serif; font-size: 15px; font-weight: 700; color: #0f172a;">📩 Inquiry Messages</span>
+                        <span style="background: #dbeafe; color: #2563eb; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px;">Active</span>
                     </div>
-                    <div onclick="window.location.href='rfq-messages.html';"
-                         style="display: block; padding: 10px 16px; color: #475569; text-decoration: none; text-align: left; font-family: sans-serif; font-size: 13px; cursor: pointer;"
-                         onmouseover="this.style.background='#f8fafc'; this.style.color='#0f172a';"
-                         onmouseout="this.style.background='white'; this.style.color='#475569';">
-                         📄 RFQ Messages
+                    
+                    <div style="width: 100%; height: 110px; background: #eff6ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; overflow: hidden;">
+                        <img src="https://img.icons8.com/illustrations/external-pack-flat-symbols-tanah-basah/100/external-inquiry-customer-reviews-pack-flat-symbols-tanah-basah.png" alt="Inquiry" style="max-height: 85px; object-fit: contain;">
                     </div>
-                    <div onclick="window.location.href='chat-messages.html';"
-                         style="display: block; padding: 10px 16px; color: #475569; text-decoration: none; text-align: left; font-family: sans-serif; font-size: 13px; cursor: pointer;"
-                         onmouseover="this.style.background='#f8fafc'; this.style.color='#0f172a';"
-                         onmouseout="this.style.background='white'; this.style.color='#475569';">
-                         💬 Chat Messages
-                    </div>
-                    <div onclick="window.location.href='system-notifications.html';"
-                         style="display: block; padding: 10px 16px; color: #475569; text-decoration: none; text-align: left; font-family: sans-serif; font-size: 13px; cursor: pointer;"
-                         onmouseover="this.style.background='#f8fafc'; this.style.color='#0f172a';"
-                         onmouseout="this.style.background='white'; this.style.color='#475569';">
-                         🔔 System Notifications
-                    </div>
+                    
+                    <p style="font-family: sans-serif; font-size: 12px; color: #64748b; margin: 0; line-height: 1.4;">
+                        Review pricing offers, corporate product inquiries, and custom specifications sheet logs.
+                    </p>
                 </div>
+
+                <div onclick="window.location.href='rfq-messages.html';"
+                     style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
+                     onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
+                     onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
+                    
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-family: sans-serif; font-size: 15px; font-weight: 700; color: #0f172a;">📄 RFQ Messages</span>
+                        <span style="background: #fef3c7; color: #d97706; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px;">Quotes</span>
+                    </div>
+                    
+                    <div style="width: 100%; height: 110px; background: #fffbeb; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; overflow: hidden;">
+                        <img src="https://img.icons8.com/illustrations/external-shadow-pack-linear-gradient-icha-sayang/100/external-rfq-business-process-shadow-pack-linear-gradient-icha-sayang.png" alt="RFQ" style="max-height: 85px; object-fit: contain;">
+                    </div>
+                    
+                    <p style="font-family: sans-serif; font-size: 12px; color: #64748b; margin: 0; line-height: 1.4;">
+                        Track current Request for Quotes, manage direct supplier bids, and view estimates.
+                    </p>
+                </div>
+
+                <div onclick="window.location.href='chat-messages.html';"
+                     style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
+                     onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
+                     onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
+                    
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-family: sans-serif; font-size: 15px; font-weight: 700; color: #0f172a;">💬 Chat Messages</span>
+                        <span style="background: #bbf7d0; color: #16a34a; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px;">Live Chat</span>
+                    </div>
+                    
+                    <div style="width: 100%; height: 110px; background: #f0fdf4; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; overflow: hidden;">
+                        <img src="https://img.icons8.com/illustrations/flat-color/100/chat.png" alt="Chat" style="max-height: 85px; object-fit: contain;">
+                    </div>
+                    
+                    <p style="font-family: sans-serif; font-size: 12px; color: #64748b; margin: 0; line-height: 1.4;">
+                        Connect in real-time instantly with verified regional logistics partners and global support channels.
+                    </p>
+                </div>
+
+                <div onclick="window.location.href='system-notifications.html';"
+                     style="display: flex; flex-direction: column; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.25s ease;"
+                     onmouseover="this.style.background='#ffffff'; this.style.borderColor='#2563eb'; this.style.boxShadow='0 10px 20px rgba(37, 99, 235, 0.06)';"
+                     onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';">
+                    
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-family: sans-serif; font-size: 15px; font-weight: 700; color: #0f172a;">🔔 System Alerts</span>
+                        <span style="background: #fee2e2; color: #dc2626; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px;">Alerts</span>
+                    </div>
+                    
+                    <div style="width: 100%; height: 110px; background: #fef2f2; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; overflow: hidden;">
+                        <img src="https://img.icons8.com/illustrations/flat-color/100/alarm.png" alt="System" style="max-height: 85px; object-fit: contain;">
+                    </div>
+                    
+                    <p style="font-family: sans-serif; font-size: 12px; color: #64748b; margin: 0; line-height: 1.4;">
+                        Monitor your dynamic account validation checkpoints, invoice logs, and compliance statuses.
+                    </p>
+                </div>
+
             </div>
+        </div>
+    </div>
+
+</div>			
+			
+			
+		
+		
+			
+			
 
         </div>
     </div>
